@@ -98,11 +98,11 @@
 	<rdfs:domain> <:TagRead>;
 	<rdfs:range> <schema:Thing>.
 
-<:rawTime> a <owl:ObjectProperty>;
+<:rawTime> a <owl:DataTypeProperty>;
 	<rdfs:domain> <:TagRead>;
 	<rdfs:range> <schema:DateTime>.
 
-<:adjustedTime> a <owl:ObjectProperty>;
+<:adjustedTime> a <owl:DataTypeProperty>;
 	<rdfs:domain> <:TagRead>;
 	<rdfs:range> <schema:DateTime>.
 
