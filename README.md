@@ -207,10 +207,10 @@ Converts to:
 @prefix athlinks: <https://athlinks.com/2017/01/rdf-schema#>
 @prefix rsu: <https://runsignup.com/API/>
 <rsu:race/1649> a <athlinks:AthleticSeries> ;
-	<rdfs:label> "10k Turkey Trek & 2k Turkey Toddle" ;
-	<rdfs:comment> "This Arvada event supports ..." ;
-	<schema:mainEntityOfPage> "https://runsignup.com/Race/CO/Arvada/SixPack10kand5k" ;
-	<schema:mainEntityOfPage> "http://10kturkeytrek.com/index.html" ;
+	<schema:name> "10k Turkey Trek & 2k Turkey Toddle" ;
+	<schema:description> "This Arvada event supports ..." ;
+	<schema:url> "https://runsignup.com/Race/CO/Arvada/SixPack10kand5k" ;
+	<schema:url> "http://10kturkeytrek.com/index.html" ;
 	<schema:location> [
 		a <schema:PostalAddress> ;
 		<schema:streetAddress> "Ralston Creek Trail @ Long Lake Ranch Park" ;
@@ -226,12 +226,16 @@ Converts to:
 		<schema:subEvent> <rsu:event/139165> ;
 		<schema:subEvent> <rsu:event/139166> .
 
-<rsu:#ProcessingFee> a <schema:PaymentChargeSpecification> ;
+<rsu:#ProcessingFee1> a <schema:PaymentChargeSpecification> ;
 			<schema:price> "3.80" ;
+			<schema:priceCurrency> "USD" .
+
+<rsu:#ProcessingFee2> a <schema:PaymentChargeSpecification> ;
+			<schema:price> "3.05" ;
 			<schema:priceCurrency> "USD" .
 	 
 <rsu:event/139165> a <athlinks:AthleticRace>;
-	<schema:label> "10k Turkey Trek" ;
+	<schema:name> "10k Turkey Trek" ;
 	<athlinks:raceType> "running race" ;
 	<athlinks:distance> [
 		a <schema:QuantitativeValue> ;
@@ -245,7 +249,7 @@ Converts to:
 		<schema:priceCurrency> "USD" ;
 		<schema:priceValidFrom> "2016-12-1T02:00:00-07:00"^^:xsd:DateTime ;
 		<schema:priceValidUntil> "2017-6-1T01:59:59-07:00"^^xsd:DateTime ;
-		<schema:priceSpecification> <rsu:ProcessingFee>
+		<schema:priceSpecification> <rsu:ProcessingFee1>
 	] ;
 	<schema:offers> [
 		a <schema:Offer> ;
@@ -253,7 +257,7 @@ Converts to:
 		<schema:priceCurrency> "USD" ;
 		<schema:priceValidFrom> "2017-6-1T02:00:00-07:00"^^:xsd:DateTime ;
 		<schema:priceValidUntil> "2017-11-1T01:59:59-07:00"^^xsd:DateTime ;
-		<schema:priceSpecification> <rsu:ProcessingFee>
+		<schema:priceSpecification> <rsu:ProcessingFee1>
 	] ;
 	<schema:offers> [
 		a <schema:Offer> ;
@@ -261,55 +265,41 @@ Converts to:
 		<schema:priceCurrency> "USD" ;
 		<schema:priceValidFrom> "2017-11-1T02:00:00-07:00"^^:xsd:DateTime ;
 		<schema:priceValidUntil> "2017-11-17T18:00:00-07:00"^^xsd:DateTime ;
-		<schema:priceSpecification> <rsu:ProcessingFee>
+		<schema:priceSpecification> <rsu:ProcessingFee1>
 	] ;
 <rsu:event/139166> a <athlinks:AthleticRace>;
-	
-                    {
-                        "event_id": 139166,
-                        "race_event_days_id": 58262,
-                        "name": "2k Turkey Toddle (un-timed)",
-                        "details": null,
-                        "start_time": "11/18/2017 09:10",
-                        "end_time": null,
-                        "registration_opens": "12/1/2016 02:00",
-                        "event_type": "running_race",
-                        "distance": "2K",
-                        "volunteer": "F",
-                        "require_dob": "T",
-                        "require_phone": "T",
-                        "registration_periods": [
-                            {
-                                "registration_opens": "12/1/2016 02:00",
-                                "registration_closes": "6/1/2017 01:59",
-                                "race_fee": "$20.00",
-                                "processing_fee": "$3.05"
-                            },
-                            {
-                                "registration_opens": "6/1/2017 02:00",
-                                "registration_closes": "11/1/2017 01:59",
-                                "race_fee": "$25.00",
-                                "processing_fee": "$3.05"
-                            },
-                            {
-                                "registration_opens": "11/1/2017 02:00",
-                                "registration_closes": "11/17/2017 18:00",
-                                "race_fee": "$25.00",
-                                "processing_fee": "$3.05"
-                            }
-                        ],
-                        "giveaway": "Children's t-shirt option"
-                    }
-                ],
-                "headings": [
-                    {
-                        "heading_text": "Driving Directions to the Park",
-                        "content": "17850 W 64th Avenue, Arvada, Colorado is the approximate address..."
-                    },
-                    {
-                        "heading_text": "More Information",
-                        "content": "<p><a href=\"http://3wraces.com/10k-turkey-trek.html\" target=\"_blank\">10kTurkeyTrek.com</a></p>"
-                    }
-                ]
-            }
+	<schema:name> "2k Turkey Toddle (un-timed)" ;
+	<athlinks:raceType> "running race" ;
+	<athlinks:distance> [
+		a <schema:QuantitativeValue> ;
+		<schema:value> "2" ;
+		<schema:unitCode> "KEL" .
+	] ;
+	<schema:startDate> "2017-11-18T09:10:00-07:00"^^xsd:DateTime ;
+	<schema:offers> [
+		a <schema:Offer> ;
+		<schema:price> "20.00" ;
+		<schema:priceCurrency> "USD" ;
+		<schema:priceValidFrom> "2016-12-1T02:00:00-07:00"^^:xsd:DateTime ;
+		<schema:priceValidUntil> "2017-6-1T01:59:59-07:00"^^xsd:DateTime ;
+		<schema:priceSpecification> <rsu:ProcessingFee2>
+	] ;
+
+	<schema:offers> [
+		a <schema:Offer> ;
+		<schema:price> "25.00" ;
+		<schema:priceCurrency> "USD" ;
+		<schema:priceValidFrom> "2017-6-1T02:00:00-07:00"^^:xsd:DateTime ;
+		<schema:priceValidUntil> "2017-11-1T01:59:59-07:00"^^xsd:DateTime ;
+		<schema:priceSpecification> <rsu:ProcessingFee2>
+	] ;
+
+	<schema:offers> [
+		a <schema:Offer> ;
+		<schema:price> "25.00" ;
+		<schema:priceCurrency> "USD" ;
+		<schema:priceValidFrom> "2017-11-1T02:00:00-07:00"^^:xsd:DateTime ;
+		<schema:priceValidUntil> "2017-11-17T01:59:59-07:00"^^xsd:DateTime ;
+		<schema:priceSpecification> <rsu:ProcessingFee2>
+	] ;
 ```
