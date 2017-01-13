@@ -8,20 +8,23 @@ RDF is a standard model for data interchange on the Web. RDF has features that f
 Our ontology is based off of schema.org and Open Graph(ogp.me). Search engines use schema.org heavly, and sites like Facebook and Pinterest use Open Graph. 
 It is our belief that this improves the portability of data for us our partners. 
 
-[Athlinks RDF API v0.1 (beta)](#athlinks-rdf-api-v0.1-(beta))
-    [More information about RDF](#more-information-about-rdf)
-    [The Athlinks Ontology](#the-athlinks-ontology)
-	[The Athlinks RDF Endpoint](#the-athlinks-rdf-endpoint)
-		[Turtle Formats currently supported](#turtle-formats-currently-supported)
-	[Authentication](#authentication)
+- [Athlinks RDF API v0.1 (beta)](#athlinks-rdf-api-v0.1-(beta))
+    - [More information about RDF](#more-information-about-rdf)
+    - [The Athlinks Ontology](#the-athlinks-ontology)
+    - [The Athlinks RDF Endpoint](#the-athlinks-rdf-endpoint)
+        - [Turtle Formats currently supported](#turtle-formats-currently-supported)
+    - [Authentication](#authentication)
+    - [Turtle](#turtle)
+    - [Units of Measurement](#units-of-measurement)
+    - [Validate your RDF documents](#validate-your-rdf-documents)
 
 ## [More information about RDF](#more-information-about-rdf)
 
-https://en.wikipedia.org/wiki/Resource_Description_Framework - High level description of RDF and its formats
-http://blog.swirrl.com/articles/introduction-to-rdf/ - Concise description of RDF
-http://docs.rdf4j.org/rdf-tutorial/ - Getting started with RDF
-http://schema.org - An example ontology
-http://openid.net/connect/ - Overview of authentication methodology
+- https://en.wikipedia.org/wiki/Resource_Description_Framework - High level description of RDF and its formats
+- http://blog.swirrl.com/articles/introduction-to-rdf/ - Concise description of RDF
+- http://docs.rdf4j.org/rdf-tutorial/ - Getting started with RDF
+- http://schema.org - An example ontology
+- http://openid.net/connect/ - Overview of authentication methodology
 
 ## [The Athlinks Ontology](#the-athlinks-ontology)
 https://github.com/athlinks/rdf-ontology
@@ -84,7 +87,9 @@ REFRESHTOKENEXPIRESIN=$(echo $TOKENRESPONSE | jq -r '.refresh_expires_in')
 echo TOKENRESPONSE was:
 echo $TOKENRESPONSE | jq -r '.'	 
 ```
-## [To Turtle](#example-of-event-data-in-turtle)
+
+## [Turtle](#turtle)
+
 Here is an example event from Run SignUp converted to using the [Athlinks Ontology](https://github.com/athlinks/rdf-ontology/blob/master/athlinks-schema.ttl) and represented in Turtle.
 
 [JSON representation of a RunSignUp Event](https://runsignup.com/Rest/race/1649/?format=json&future_events_only=T&race_headings=F&race_links=T&include_waiver=T&include_participant_caps=T&include_age_based_pricing=F&include_giveaway_details=F&include_questions=F&include_addons=T&include_membership_settings=T&include_corral_settings=F&include_donation_settings=T)
@@ -188,8 +193,10 @@ Converts to:
 	] .
 ```
 
-#### Units of Measurement
+#### [Units of Measurement](#units-of-measurement)
+
 [See GoodRelations UN/CEFACT Common Codes](http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes)
 
-#### Validate your RDF documents
+#### [Validate your RDF documents](#validate-your-rdf-documents)
+
 [Easy RDF Validation Service](http://www.easyrdf.org/converter)
