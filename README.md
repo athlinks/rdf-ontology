@@ -99,7 +99,7 @@ Converts to:
 ```ttl
 @prefix athlinks: <https://athlinks.com/2017/01/rdf-schema#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
-@prefix rsu: <https://runsignup.com/API/> .
+@prefix rsu: <https://runsignup.com/Rest/> .
 <rsu:race/1649> a <athlinks:AthleticSeries> ;
 	<rdfs:label> "10k Turkey Trek & 2k Turkey Toddle" ;
 	<rdfs:comment> "This Arvada event supports ..." ;
