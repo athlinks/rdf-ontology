@@ -1,11 +1,12 @@
-@base <http://api.chronotrack.com/2017/01/rdf-schema#> .
+@base <http://athlinks.com/2017/01/rdf-schema#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://topbraid.org/schema/#> .
 
-<http://api.chronotrack.com/2017/01/rdf-schema> a owl:Ontology ;
-	<owl:imports> <http://topbraid.org/schema/>
+<http://athlinks.com/2017/01/rdf-schema> a owl:Ontology ;
+	<owl:imports> <http://topbraid.org/schema/> ;
 	<rdfs:label> "The Athlinks Schema vocabulary".
 
 ### CLASSES
@@ -124,9 +125,3 @@
   a <owl:ObjectProperty> ;
   <rdfs:domain> <:TimingInterval> ;
   <rdfs:range> <schema:QuantitativeValue> .
-
-
-
-
-
-    
