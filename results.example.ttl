@@ -1,0 +1,187 @@
+@prefix athlinks: <https://athlinks.com/2017/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rsu: <https://runsignup.com/API/> .
+
+##  TODO: CHANGE Athlinks Ontology.ttl so the following statements are true.
+<athlinks:TimingInterval> <rdfs:subClassOf> <schema:Place>;
+	<rdfs:hasProperty> <schema:fromLocation>;
+	<rdfs:hasProperty> <schema:toLocation>;
+##
+
+<rsu:event/89810> <athlinks:timingInterval> <rsu:event/89810/full-course>.
+<rsu:event/89810> <athlinks:timingInterval> <rsu:split/30668>.
+<rsu:event/89810> <athlinks:timingInterval> <rsu:split/30669>.
+<rsu:event/89810> <athlinks:timingInterval> <rsu:split/30670>.
+<rsu:event/89810> <athlinks:timingInterval> <rsu:split/30671>.
+<rsu:event/89810> <athlinks:timingInterval> <rsu:split/30672>.
+
+<rsu:event/89810/full-course> a <athlinks:TimingInterval>;
+	<rdfs:label> "Full Course" ;
+	<schema:fromLocation> [a <schema:Place>];
+	<schema:toLocation> [a <schema:Place>].
+
+<rsu:split/30668> a <athlinks:TimingInterval>;
+	<rdfs:label> "Swim" .
+
+<rsu:split/30669> a <athlinks:TimingInterval>;
+	<rdfs:label> "T1" .
+
+<rsu:split/30670> a <athlinks:TimingInterval>;
+	<rdfs:label> "Bike" .
+
+<rsu:split/30671> a <athlinks:TimingInterval>;
+	<rdfs:label> "T2" .
+
+<rsu:split/30672> a <athlinks:TimingInterval>;
+	<rdfs:label> "Run" .
+
+<rsu:event/89810> <athlinks:bracket> <rsu:division/261454>,
+									 <rsu:division/261455>,
+									 <rsu:division/261456>,
+									 <rsu:division/261457>,
+									 <rsu:division/261458>,
+									 <rsu:division/261459>,
+									 <rsu:division/263002>,
+									 <rsu:division/263003>,
+									 <rsu:division/263004>,
+									 <rsu:division/263005>,
+									 <rsu:division/263006>,
+									 <rsu:division/263007>,
+									 <rsu:division/263008>,
+									 <rsu:division/263009>,
+									 <rsu:division/263010>,
+									 <rsu:division/263011>,
+									 <rsu:division/263012>,
+									 <rsu:division/263013>,
+									 <rsu:division/263014>,
+									 <rsu:division/263015>,
+									 <rsu:division/263016>,
+									 <rsu:division/263017>,
+									 <rsu:division/263018>,
+									 <rsu:division/263019>,
+									 <rsu:division/263020>,
+									 <rsu:division/263021>,
+									 <rsu:division/263022>,
+									 <rsu:division/263023>,
+									 <rsu:division/263024>,
+									 <rsu:division/263025>.
+<rsu:event/89810/overall> a <athlinks:Bracket>;
+	<rdfs:label> "Overall".
+<rsu:division/261454> a <athlinks:Bracket>;
+	<rdfs:label> "M Overall".
+<rsu:division/261455> a <athlinks:Bracket>;
+	<rdfs:label> "W Overall".
+<rsu:division/261456> a <athlinks:Bracket>;
+	<rdfs:label> "M 0-7".
+<rsu:division/261457> a <athlinks:Bracket>;
+	<rdfs:label> "M 8-19".
+<rsu:division/261458> a <athlinks:Bracket>;
+	<rdfs:label> "M 20-24".
+<rsu:division/261459> a <athlinks:Bracket>;
+	<rdfs:label> "M 25-29".
+<rsu:division/263002> a <athlinks:Bracket>;
+	<rdfs:label> "M 30-34".
+<rsu:division/263003> a <athlinks:Bracket>;
+	<rdfs:label> "M 35-39".
+<rsu:division/263004> a <athlinks:Bracket>;
+	<rdfs:label> "M 40-44".
+<rsu:division/263005> a <athlinks:Bracket>;
+	<rdfs:label> "M 45-49".
+<rsu:division/263006> a <athlinks:Bracket>;
+	<rdfs:label> "M 50-54".
+<rsu:division/263007> a <athlinks:Bracket>;
+	<rdfs:label> "M 55-59".
+<rsu:division/263008> a <athlinks:Bracket>;
+	<rdfs:label> "M 60-64".
+<rsu:division/263009> a <athlinks:Bracket>;
+	<rdfs:label> "M 65-69".
+<rsu:division/263010> a <athlinks:Bracket>;
+	<rdfs:label> "M 70-99".
+<rsu:division/263011> a <athlinks:Bracket>;
+	<rdfs:label> "F 0- 7".
+<rsu:division/263012> a <athlinks:Bracket>;
+	<rdfs:label> "F 8-19".
+<rsu:division/263013> a <athlinks:Bracket>;
+	<rdfs:label> "F 20-24".
+<rsu:division/263014> a <athlinks:Bracket>;
+	<rdfs:label> "F 25-29".
+<rsu:division/263015> a <athlinks:Bracket>;
+	<rdfs:label> "F 30-34".
+<rsu:division/263016> a <athlinks:Bracket>;
+	<rdfs:label> "F 35-39".
+<rsu:division/263017> a <athlinks:Bracket>;
+	<rdfs:label> "F 40-44".
+<rsu:division/263018> a <athlinks:Bracket>;
+	<rdfs:label> "F 45-49".
+<rsu:division/263019> a <athlinks:Bracket>;
+	<rdfs:label> "F 50-54".
+<rsu:division/263020> a <athlinks:Bracket>;
+	<rdfs:label> "F 55-59".
+<rsu:division/263021> a <athlinks:Bracket>;
+	<rdfs:label> "F 60-64".
+<rsu:division/263022> a <athlinks:Bracket>;
+	<rdfs:label> "F 65-69".
+<rsu:division/263023> a <athlinks:Bracket>;
+	<rdfs:label> "F 70-99".
+<rsu:division/263024> a <athlinks:Bracket>;
+	<rdfs:label> "All Male".
+<rsu:division/263025> a <athlinks:Bracket>;
+	<rdfs:label> "All Female".
+
+<rsu:event/89810/full-course/result#firstname/lastname/f/34> a <athlinks:IntervalResult>;
+	<athlinks:rawDuration> "1:10:19.6"^^xsd:dateTime;
+	<athlinks:adjustedDuration> "1:10:19.6"^^xsd:dateTime;
+	<athlinks:timingInterval> <rsu:event/89810/overall>;
+	<athlinks:ranking> [
+		a <athlinks:BracketRanking>;
+		<athlinks:bracket> <rsu:event/89810/overall>;
+		<athlinks:rank> "4"^^xsd:integer;
+	] , [
+		a <athlinks:BracketRanking>;
+		<athlinks:bracket> <rsu:division/261455>;
+		<athlinks:rank> "1"^^xsd:integer;
+	] , [
+		a <athlinks:BracketRanking>;
+		<athlinks:bracket> <rsu:division/263025>;
+		<athlinks:rank> "1"^^xsd:integer;
+	] . 
+
+<rsu:split/30668/result#firstname/lastname/f/34> a <athlinks:IntervalResult>;
+	<schema:rawDuration> "4:44"^^xsd:dateTime;
+	<athlinks:timingInterval> <rsu:split/30668>.
+	
+<rsu:split/30669/result#firstname/lastname/f/34> a <athlinks:IntervalResult>;
+	<schema:rawDuration> "0:41"^^xsd:dateTime;
+	<athlinks:timingInterval> <rsu:split/30669>.
+
+<rsu:split/30670/result#firstname/lastname/f/34> a <athlinks:IntervalResult>;
+	<schema:rawDuration> "40:06"^^xsd:dateTime;
+	<athlinks:timingInterval> <rsu:split/30670>.
+
+<rsu:split/30671/result#firstname/lastname/f/34> a <athlinks:IntervalResult>;
+	<schema:rawDuration> "0:29"^^xsd:dateTime;
+	<athlinks:timingInterval> <rsu:split/30671>.
+
+<rsu:split/30672/result#firstname/lastname/f/34> a <athlinks:IntervalResult>;
+	<schema:rawDuration> "0:41"^^xsd:dateTime;
+	<athlinks:timingInterval> <rsu:split/30672>.
+	
+<rsu:event/89810/participant#firstname/lastname/f/34> a <schema:Person>;
+	<schema:birthDate> "1982/1/1"^^xsd:DateTime; 
+	<schema:givenName> "FirstName";
+	<schema:familyName> "LastName";
+	<schema:gender> "F";
+	<schema:address> [
+		a <schema:PostalAddress>;
+		<schema:addressLocality> "Tucson";
+		<schema:addressRegion> "AZ";
+	];
+	<athlinks:intervalResult> <rsu:event/89810/overall#firstname/lastname/f/34>;
+	<athlinks:intervalResult> <rsu:split/30668/result#firstname/lastname/f/34>;
+	<athlinks:intervalResult> <rsu:split/30669/result#firstname/lastname/f/34>;
+	<athlinks:intervalResult> <rsu:split/30670/result#firstname/lastname/f/34>;
+	<athlinks:intervalResult> <rsu:split/30671/result#firstname/lastname/f/34>;
+	<athlinks:intervalResult> <rsu:split/30672/result#firstname/lastname/f/34>.
+	
+
+	
