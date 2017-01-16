@@ -18,7 +18,9 @@
   <rdfs:hasProperty> <:defaultPace>;
   <rdfs:hasProperty> <:distanceFromStart>;
   <rdfs:hasProperty> <:distance>;
-  <rdfs:subClassOf> <schema:ExerciseAction> .
+  <rdfs:hasProperty> <schema:fromLocation>;
+  <rdfs:hasProperty> <schema:toLocation>;
+  <rdfs:subClassOf> <schema:Place> .
 
 <:TimingPoint> a <rdfs:Class>;
 	<rdfs:subClassOf> <schema:Place>;
