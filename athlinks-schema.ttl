@@ -45,7 +45,8 @@
 	<rdfs:hasProperty> <:bib>;
     <rdfs:hasProperty> <schema:duration>;
     <rdfs:hasProperty> <:timingInterval>;
-    <rdfs:hasProperty> <:ranking>.
+    <rdfs:hasProperty> <:ranking>
+    <rdfs:hasProperty> <:pace> .
 
 <:BracketRanking> a <rdfs:Class>;
 	<rdfs:label> "Bracket Ranking";
