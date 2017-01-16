@@ -194,7 +194,7 @@ Converts to:
 	] .
 ```
 
-[Example Event Results RDF Document](https://github.com/athlinks/rdf-ontology/blob/master/results.example.ttl)
+[Example Event Results RDF Document](https://github.com/athlinks/rdf-ontology/blob/master/examples/results.example.ttl)
 
 #### [Units of Measurement](#units-of-measurement)
 
