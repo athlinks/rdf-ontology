@@ -127,7 +127,7 @@
 	<athlinks:rawDuration> "1:10:19.6"^^xsd:dateTime;
 	<athlinks:adjustedDuration> "1:10:19.6"^^xsd:dateTime;
 	<athlinks:timingInterval> <rsu:event/89810/overall>;
-	<athlinks:bib> 100
+	<athlinks:bib> 100;
 	<athlinks:ranking> [
 		a <athlinks:BracketRanking>;
 		<athlinks:bracket> <rsu:event/89810/overall>;
@@ -166,7 +166,7 @@
 	<athlinks:timingInterval> <rsu:split/30672>.
 	
 <rsu:event/89810/participant#Kelly/Fleming/f/34> a <schema:Person>;
-	<schema:birthDate> "1982/1/1"^^xsd:DateTime; 
+	<schema:birthDate> "1982/1/1"^^xsd:dateTime; 
 	<schema:givenName> "Kelly";
 	<schema:familyName> "Fleming";
 	<schema:gender> "F";
@@ -184,7 +184,7 @@
 
 
 <rsu:event/89810/participant#Julio/Garcia/m/43> a <schema:Person>;
-	<schema:birthDate> "1973/1/1"^^xsd:DateTime; 
+	<schema:birthDate> "1973/1/1"^^xsd:dateTime; 
 	<schema:givenName> "Julio";
 	<schema:familyName> "Garcia";
 	<schema:gender> "M";
@@ -204,7 +204,7 @@
 	<athlinks:rawDuration> "1:04:21.4"^^xsd:dateTime;
 	<athlinks:adjustedDuration> "1:04:21.4"^^xsd:dateTime;
 	<athlinks:timingInterval> <rsu:event/89810/overall>;
-	<athlinks:bib> 99
+	<athlinks:bib> 99;
 	<athlinks:ranking> [
 		a <athlinks:BracketRanking>;
 		<athlinks:bracket> <rsu:event/89810/overall>;
@@ -244,7 +244,7 @@
 
 
 <rsu:event/89810/participant#Petra/Schumann/f/43> a <schema:Person>;
-	<schema:birthDate> "1973/1/1"^^xsd:DateTime;
+	<schema:birthDate> "1973/1/1"^^xsd:dateTime;
 	<schema:givenName> "Petra";
 	<schema:familyName> "Schumann";
 	<schema:gender> "F";
@@ -264,7 +264,7 @@
 	<athlinks:rawDuration> "1:51:45.1"^^xsd:dateTime;
 	<athlinks:adjustedDuration> "1:51:45.1"^^xsd:dateTime;
 	<athlinks:timingInterval> <rsu:event/89810/overall>;
-	<athlinks:bib> 28
+	<athlinks:bib> 28;
 	<athlinks:ranking> [
 		a <athlinks:BracketRanking>;
 		<athlinks:bracket> <rsu:event/89810/overall>;
