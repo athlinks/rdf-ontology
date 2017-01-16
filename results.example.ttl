@@ -8,6 +8,7 @@
 	<rdfs:hasProperty> <schema:toLocation>;
 ##
 
+<rsu:event/89810> <athlinks:raceType> "triathlon".
 <rsu:event/89810> <athlinks:timingInterval> <rsu:event/89810/full-course>.
 <rsu:event/89810> <athlinks:timingInterval> <rsu:split/30668>.
 <rsu:event/89810> <athlinks:timingInterval> <rsu:split/30669>.
