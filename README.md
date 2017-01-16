@@ -33,7 +33,7 @@ This describes the types and predicates that Athlinks expects.
 
 ## [The Athlinks RDF Endpoint](#the-athlinks-rdf-endpoint)
 You can post RDF data in a varity of Turtle based formats to: 
-http://api.athlinks.com/rdf
+http://adp.athlinks.com/rdf
 
 #### [Turtle Formats currently supported](#turtle-formats-currently-supported)
 
