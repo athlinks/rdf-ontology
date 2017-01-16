@@ -60,6 +60,7 @@
   a owl:Class ;
   rdfs:comment "An athletic race, a distinct course." ;
   rdfs:label "Athletic Race" ;
+  rdfs:hasProperty :raceType ;
   rdfs:subClassOf schema:SportsEvent .
 
 <:AthleticEvent>
@@ -127,3 +128,10 @@
   a <owl:ObjectProperty> ;
   <rdfs:domain> <:TimingInterval> ;
   <rdfs:range> <schema:QuantitativeValue> .
+
+<:raceType>
+  a <owl:DataTypeProperty>;
+  <rdfs:domain> <schema:String>;
+  <rdfs:range> [ a rdfs:Datatype ;
+                owl:oneOf ("triathlon" "5k" "10k" "marathon" "other")
+              ] ;
