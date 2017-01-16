@@ -28,6 +28,7 @@ It is our belief that this improves the portability of data for us and our partn
 
 ## [The Athlinks Ontology](#the-athlinks-ontology)
 https://github.com/athlinks/rdf-ontology/blob/master/athlinks-schema.ttl
+
 This describes the types and predicates that Athlinks expects.
 
 ## [The Athlinks RDF Endpoint](#the-athlinks-rdf-endpoint)
