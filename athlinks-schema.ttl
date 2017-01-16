@@ -138,7 +138,7 @@
               ] .
 <:bib>
   a <owl:DataTypeProperty>;
-  <rdfs:range> <xsd:integer> .
+  <rdfs:range> <xsd:string> .
 
 <:pace>
   a <owl:DataTypeProperty>
