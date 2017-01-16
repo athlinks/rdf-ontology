@@ -15,6 +15,7 @@ It is our belief that this improves the portability of data for us and our partn
         - [Turtle Formats currently supported](#turtle-formats-currently-supported)
     - [Authentication](#authentication)
     - [Turtle](#turtle)
+    - [Result Submission](#result-submission)
     - [Units of Measurement](#units-of-measurement)
     - [Validate your RDF documents](#validate-your-rdf-documents)
 
@@ -194,7 +195,11 @@ Converts to:
 	] .
 ```
 
-[Example Event Results RDF Document](https://github.com/athlinks/rdf-ontology/blob/master/examples/results.example.ttl)
+#### [Result Submission](#result-submission)
+
+Once an event has been submitted such as in the example above, results for the event can be submitted. Note that the results must refer to the event in the results RDF doc.
+
+[Example Results RDF Document](https://github.com/athlinks/rdf-ontology/blob/master/examples/results.example.ttl)
 
 #### [Units of Measurement](#units-of-measurement)
 
