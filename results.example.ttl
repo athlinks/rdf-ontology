@@ -128,7 +128,7 @@
 <rsu:division/263025> a <athlinks:Bracket>;
 	<rdfs:label> "All Female".
 
-<rsu:event/89810/full-course/result#firstname/lastname/f/34> a <athlinks:IntervalResult>;
+<rsu:event/89810/full-course/result#Kelly/Fleming/f/34> a <athlinks:IntervalResult>;
 	<athlinks:rawDuration> "1:10:19.6"^^xsd:dateTime;
 	<athlinks:adjustedDuration> "1:10:19.6"^^xsd:dateTime;
 	<athlinks:timingInterval> <rsu:event/89810/overall>;
@@ -146,42 +146,151 @@
 		<athlinks:rank> "1"^^xsd:integer;
 	] . 
 
-<rsu:split/30668/result#firstname/lastname/f/34> a <athlinks:IntervalResult>;
+<rsu:split/30668/result#Kelly/Fleming/f/34> a <athlinks:IntervalResult>;
 	<schema:rawDuration> "4:44"^^xsd:dateTime;
 	<athlinks:timingInterval> <rsu:split/30668>.
 	
-<rsu:split/30669/result#firstname/lastname/f/34> a <athlinks:IntervalResult>;
+<rsu:split/30669/result#Kelly/Fleming/f/34> a <athlinks:IntervalResult>;
 	<schema:rawDuration> "0:41"^^xsd:dateTime;
 	<athlinks:timingInterval> <rsu:split/30669>.
 
-<rsu:split/30670/result#firstname/lastname/f/34> a <athlinks:IntervalResult>;
+<rsu:split/30670/result#Kelly/Fleming/f/34> a <athlinks:IntervalResult>;
 	<schema:rawDuration> "40:06"^^xsd:dateTime;
 	<athlinks:timingInterval> <rsu:split/30670>.
 
-<rsu:split/30671/result#firstname/lastname/f/34> a <athlinks:IntervalResult>;
+<rsu:split/30671/result#Kelly/Fleming/f/34> a <athlinks:IntervalResult>;
 	<schema:rawDuration> "0:29"^^xsd:dateTime;
 	<athlinks:timingInterval> <rsu:split/30671>.
 
-<rsu:split/30672/result#firstname/lastname/f/34> a <athlinks:IntervalResult>;
+<rsu:split/30672/result#Kelly/Fleming/f/34> a <athlinks:IntervalResult>;
 	<schema:rawDuration> "0:41"^^xsd:dateTime;
 	<athlinks:timingInterval> <rsu:split/30672>.
 	
-<rsu:event/89810/participant#firstname/lastname/f/34> a <schema:Person>;
+<rsu:event/89810/participant#Kelly/Fleming/f/34> a <schema:Person>;
 	<schema:birthDate> "1982/1/1"^^xsd:DateTime; 
-	<schema:givenName> "FirstName";
-	<schema:familyName> "LastName";
+	<schema:givenName> "Kelly";
+	<schema:familyName> "Fleming";
 	<schema:gender> "F";
 	<schema:address> [
 		a <schema:PostalAddress>;
 		<schema:addressLocality> "Tucson";
 		<schema:addressRegion> "AZ";
 	];
-	<athlinks:intervalResult> <rsu:event/89810/overall#firstname/lastname/f/34>;
-	<athlinks:intervalResult> <rsu:split/30668/result#firstname/lastname/f/34>;
-	<athlinks:intervalResult> <rsu:split/30669/result#firstname/lastname/f/34>;
-	<athlinks:intervalResult> <rsu:split/30670/result#firstname/lastname/f/34>;
-	<athlinks:intervalResult> <rsu:split/30671/result#firstname/lastname/f/34>;
-	<athlinks:intervalResult> <rsu:split/30672/result#firstname/lastname/f/34>.
-	
+	<athlinks:intervalResult> <rsu:event/89810/overall#Kelly/Fleming/f/34>;
+	<athlinks:intervalResult> <rsu:split/30668/result#Kelly/Fleming/f/34>;
+	<athlinks:intervalResult> <rsu:split/30669/result#Kelly/Fleming/f/34>;
+	<athlinks:intervalResult> <rsu:split/30670/result#Kelly/Fleming/f/34>;
+	<athlinks:intervalResult> <rsu:split/30671/result#Kelly/Fleming/f/34>;
+	<athlinks:intervalResult> <rsu:split/30672/result#Kelly/Fleming/f/34>.
 
+
+<rsu:event/89810/participant#Julio/Garcia/m/43> a <schema:Person>;
+	<schema:birthDate> "1973/1/1"^^xsd:DateTime; 
+	<schema:givenName> "Julio";
+	<schema:familyName> "Garcia";
+	<schema:gender> "M";
+	<schema:address> [
+		a <schema:PostalAddress>;
+		<schema:addressLocality> "Tucson";
+		<schema:addressRegion> "AZ";
+	];
+	<athlinks:intervalResult> <rsu:event/89810/overall#Julio/Garcia/m/43>;
+	<athlinks:intervalResult> <rsu:split/30668/result#Julio/Garcia/m/43>;
+	<athlinks:intervalResult> <rsu:split/30669/result#Julio/Garcia/m/43>;
+	<athlinks:intervalResult> <rsu:split/30670/result#Julio/Garcia/m/43>;
+	<athlinks:intervalResult> <rsu:split/30671/result#Julio/Garcia/m/43>;
+	<athlinks:intervalResult> <rsu:split/30672/result#Julio/Garcia/m/43>.
+
+<rsu:event/89810/full-course/result#Julio/Garcia/m/43> a <athlinks:IntervalResult>;
+	<athlinks:rawDuration> "1:04:21.4"^^xsd:dateTime;
+	<athlinks:adjustedDuration> "1:04:21.4"^^xsd:dateTime;
+	<athlinks:timingInterval> <rsu:event/89810/overall>;
+	<athlinks:ranking> [
+		a <athlinks:BracketRanking>;
+		<athlinks:bracket> <rsu:event/89810/overall>;
+		<athlinks:rank> "1"^^xsd:integer;
+	] , [
+		a <athlinks:BracketRanking>;
+		<athlinks:bracket> <rsu:division/261454>;
+		<athlinks:rank> "1"^^xsd:integer;
+	] , [
+		a <athlinks:BracketRanking>;
+		<athlinks:bracket> <rsu:division/263024>;
+		<athlinks:rank> "1"^^xsd:integer;
+	] . 
+
+<rsu:split/30668/result#Julio/Garcia/m/43> a <athlinks:IntervalResult>;
+	<schema:rawDuration> "5:02"^^xsd:dateTime;
+	<athlinks:timingInterval> <rsu:split/30668>.
 	
+<rsu:split/30669/result#Julio/Garcia/m/43> a <athlinks:IntervalResult>;
+	<schema:rawDuration> "0:59"^^xsd:dateTime;
+	<athlinks:timingInterval> <rsu:split/30669>.
+
+<rsu:split/30670/result#Julio/Garcia/m/43> a <athlinks:IntervalResult>;
+	<schema:rawDuration> "35:02"^^xsd:dateTime;
+	<athlinks:timingInterval> <rsu:split/30670>.
+
+<rsu:split/30671/result#Julio/Garcia/m/43> a <athlinks:IntervalResult>;
+	<schema:rawDuration> "0:42"^^xsd:dateTime;
+	<athlinks:timingInterval> <rsu:split/30671>.
+
+<rsu:split/30672/result#Julio/Garcia/m/43> a <athlinks:IntervalResult>;
+	<schema:rawDuration> "22:36"^^xsd:dateTime;
+	<athlinks:timingInterval> <rsu:split/30672>.
+
+
+<rsu:event/89810/participant#Petra/Schumann/f/43> a <schema:Person>;
+	<schema:birthDate> "1973/1/1"^^xsd:DateTime;
+	<schema:givenName> "Petra";
+	<schema:familyName> "Schumann";
+	<schema:gender> "F";
+	<schema:address> [
+		a <schema:PostalAddress>;
+		<schema:addressLocality> "Tucson";
+		<schema:addressRegion> "AZ";
+	];
+	<athlinks:intervalResult> <rsu:event/89810/overall#Petra/Schumann/f/43>;
+	<athlinks:intervalResult> <rsu:split/30668/result#Petra/Schumann/f/43>;
+	<athlinks:intervalResult> <rsu:split/30669/result#Petra/Schumann/f/43>;
+	<athlinks:intervalResult> <rsu:split/30670/result#Petra/Schumann/f/43>;
+	<athlinks:intervalResult> <rsu:split/30671/result#Petra/Schumann/f/43>;
+	<athlinks:intervalResult> <rsu:split/30672/result#Petra/Schumann/f/43>.
+
+<rsu:event/89810/full-course/result#Petra/Schumann/f/43> a <athlinks:IntervalResult>;
+	<athlinks:rawDuration> "1:51:45.1"^^xsd:dateTime;
+	<athlinks:adjustedDuration> "1:51:45.1"^^xsd:dateTime;
+	<athlinks:timingInterval> <rsu:event/89810/overall>;
+	<athlinks:ranking> [
+		a <athlinks:BracketRanking>;
+		<athlinks:bracket> <rsu:event/89810/overall>;
+		<athlinks:rank> "91"^^xsd:integer;
+	] , [
+		a <athlinks:BracketRanking>;
+		<athlinks:bracket> <rsu:division/263018>;
+		<athlinks:rank> "8"^^xsd:integer;
+	] , [
+		a <athlinks:BracketRanking>;
+		<athlinks:bracket> <rsu:division/263025>;
+		<athlinks:rank> "51"^^xsd:integer;
+	] . 
+
+<rsu:split/30668/result#Petra/Schumann/f/43> a <athlinks:IntervalResult>;
+	<schema:rawDuration> "9:38"^^xsd:dateTime;
+	<athlinks:timingInterval> <rsu:split/30668>.
+	
+<rsu:split/30669/result#Petra/Schumann/f/43> a <athlinks:IntervalResult>;
+	<schema:rawDuration> "3:12"^^xsd:dateTime;
+	<athlinks:timingInterval> <rsu:split/30669>.
+
+<rsu:split/30670/result#Petra/Schumann/f/43> a <athlinks:IntervalResult>;
+	<schema:rawDuration> "50:47"^^xsd:dateTime;
+	<athlinks:timingInterval> <rsu:split/30670>.
+
+<rsu:split/30671/result#Petra/Schumann/f/43> a <athlinks:IntervalResult>;
+	<schema:rawDuration> "2:28"^^xsd:dateTime;
+	<athlinks:timingInterval> <rsu:split/30671>.
+
+<rsu:split/30672/result#Petra/Schumann/f/43> a <athlinks:IntervalResult>;
+	<schema:rawDuration> "45:40"^^xsd:dateTime;
+	<athlinks:timingInterval> <rsu:split/30672>.
