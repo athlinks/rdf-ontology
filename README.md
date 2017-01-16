@@ -91,7 +91,7 @@ echo $TOKENRESPONSE | jq -r '.'
 
 ## [Turtle](#turtle)
 
-Here is an example event from Run SignUp converted to using the [Athlinks Ontology](https://github.com/athlinks/rdf-ontology/blob/master/athlinks-schema.ttl) and represented in Turtle.
+Here is an example event from RunSignUp converted to using the [Athlinks Ontology](https://github.com/athlinks/rdf-ontology/blob/master/athlinks-schema.ttl) and represented in Turtle.
 
 [JSON representation of a RunSignUp Event](https://runsignup.com/Rest/race/1649/?format=json&future_events_only=T&race_headings=F&race_links=T&include_waiver=T&include_participant_caps=T&include_age_based_pricing=F&include_giveaway_details=F&include_questions=F&include_addons=T&include_membership_settings=T&include_corral_settings=F&include_donation_settings=T)
 
