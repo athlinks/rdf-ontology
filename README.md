@@ -5,8 +5,8 @@
 # [Athlinks RDF API v0.1 (beta)](#athlinks-rdf-api-v0.1-(beta))
 
 RDF is a standard model for data interchange on the Web. RDF has features that facilitate data merging even if the underlying schemas differ, and it specifically supports the evolution of schemas over time without requiring all the data consumers to be changed. 
-Our ontology is based off of schema.org and Open Graph(ogp.me). Search engines use schema.org heavly, and sites like Facebook and Pinterest use Open Graph. 
-It is our belief that this improves the portability of data for us our partners. 
+Our ontology is based off of schema.org and Open Graph(ogp.me). Search engines use schema.org heavily, and sites like Facebook and Pinterest use Open Graph. 
+It is our belief that this improves the portability of data for us and our partners. 
 
 - [Athlinks RDF API v0.1 (beta)](#athlinks-rdf-api-v0.1-(beta))
     - [More information about RDF](#more-information-about-rdf)
@@ -136,7 +136,7 @@ Converts to:
 		<schema:value> "10" ;
 		<schema:unitCode> "KEL" ;
 	] ;
-	<schema:startDate> "2017-11-18T09:00:00-07:00"^^xsd:DateTime ;
+	<schema:startDate> "2017-11-18T09:00:00-07:00"^^xsd:dateTime ;
 	<schema:offers> [
 		a <schema:Offer> ;
 		<schema:price> "35.00" ;
