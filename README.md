@@ -193,6 +193,8 @@ Converts to:
 	] .
 ```
 
+[Example Event Results RDF Document](https://github.com/athlinks/rdf-ontology/blob/master/results.example.ttl)
+
 #### [Units of Measurement](#units-of-measurement)
 
 [See GoodRelations UN/CEFACT Common Codes](http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes)
