@@ -42,6 +42,7 @@
 	<rdfs:subClassOf> <schema:MoveAction>;
 	<rdfs:hasProperty> <:beginTagRead>;
 	<rdfs:hasProperty> <:endTagRead>;
+	<rdfs:hasProperty> <:bib>;
     <rdfs:hasProperty> <schema:duration>;
     <rdfs:hasProperty> <:timingInterval>;
     <rdfs:hasProperty> <:ranking>.
@@ -131,7 +132,13 @@
 
 <:raceType>
   a <owl:DataTypeProperty>;
-  <rdfs:domain> <schema:String>;
-  <rdfs:range> [ a rdfs:Datatype ;
+  <rdfs:range> [ a xsd:string ;
                 owl:oneOf ("triathlon" "5k" "10k" "marathon" "other")
-              ] ;
+              ] .
+<:bib>
+  a <owl:DataTypeProperty>;
+  <rdfs:range> <xsd:integer> .
+
+<:pace>
+  a <owl:DataTypeProperty>
+  <rdfs:range> <schema:DateTime> .
