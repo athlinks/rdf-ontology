@@ -99,99 +99,105 @@ Here is an example event from RunSignUp converted to using the [Athlinks Ontolog
 Converts to:
 
 ```ttl
-@prefix athlinks: <https://athlinks.com/2017/01/rdf-schema#> .
+@prefix athlinks: <http://adp.athlinks.com/2017/01/rdf-schema#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix rsu: <https://runsignup.com/Rest/> .
-<rsu:race/1649> a <athlinks:AthleticSeries> ;
-	<rdfs:label> "10k Turkey Trek & 2k Turkey Toddle" ;
-	<rdfs:comment> "This Arvada event supports ..." ;
-	<schema:mainEntityOfPage> "https://runsignup.com/Race/CO/Arvada/SixPack10kand5k" ;
-	<schema:mainEntityOfPage> "http://10kturkeytrek.com/index.html" ;
-	<schema:location> [
-		a <schema:PostalAddress> ;
-		<schema:streetAddress> "Ralston Creek Trail @ Long Lake Ranch Park" ;
-		<schema:addressCountry> "US" ;
-		<schema:addressLocality> "Arvada" ;
-		<schema:addressRegion> "CO" ;
-		<schema:postalCode> "80007" ;
+@prefix athlinks: <http://adp.athlinks.com/2017/01/rdf-schema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+
+<rsu:race/1649> a athlinks:AthleticSeries ;
+	rdfs:label "10k Turkey Trek & 2k Turkey Toddle" ;
+	rdfs:comment "This Arvada event supports ..." ;
+	schema:mainEntityOfPage "https://runsignup.com/Race/CO/Arvada/SixPack10kand5k" ;
+	schema:mainEntityOfPage "http://10kturkeytrek.com/index.html" ;
+	schema:location [
+		a schema:PostalAddress ;
+		schema:streetAddress "Ralston Creek Trail @ Long Lake Ranch Park" ;
+		schema:addressCountry "US" ;
+		schema:addressLocality "Arvada" ;
+		schema:addressRegion "CO" ;
+		schema:postalCode "80007" ;
 	] ;
-	<schema:logo> "https://d368g9lw5ileu7.cloudfront.net/races/race1649-logo.bym87Y.png" ;
-	<schema:subEvent> <rsu:raceEventDays/58262> .
+	schema:logo "https://d368g9lw5ileu7.cloudfront.net/races/race1649-logo.bym87Y.png" ;
+	schema:subEvent <rsu:raceEventDays/58262> .
 
-<rsu:raceEventDays/58262> a <athlinks:AthleticEvent> ;	
-		<schema:subEvent> <rsu:event/139165> ;
-		<schema:subEvent> <rsu:event/139166> .
+<rsu:raceEventDays/58262> a athlinks:AthleticEvent ;	
+		schema:subEvent <rsu:event/139165> ;
+		schema:subEvent <rsu:event/139166> .
 
-<rsu:#ProcessingFee1> a <schema:PaymentChargeSpecification> ;
-			<schema:price> "3.80" ;
-			<schema:priceCurrency> "USD" .
+<rsu:#ProcessingFee1> a schema:PaymentChargeSpecification ;
+			schema:price "3.80" ;
+			schema:priceCurrency "USD" .
 
-<rsu:#ProcessingFee2> a <schema:PaymentChargeSpecification> ;
-			<schema:price> "3.05" ;
-			<schema:priceCurrency> "USD" .
+<rsu:#ProcessingFee2> a schema:PaymentChargeSpecification ;
+			schema:price "3.05" ;
+			schema:priceCurrency "USD" .
 	 
-<rsu:event/139165> a <athlinks:AthleticRace>;
-	<rdfs:label> "10k Turkey Trek" ;
-	<athlinks:raceType> "running race" ;
-	<athlinks:distance> [
-		a <schema:QuantitativeValue> ;
-		<schema:value> "10" ;
-		<schema:unitCode> "KEL" ;
+<rsu:event/139165> a athlinks:AthleticRace;
+	rdfs:label "10k Turkey Trek" ;
+	athlinks:raceType "running race" ;
+	athlinks:distance [
+		a schema:QuantitativeValue ;
+		schema:value "10" ;
+		schema:unitCode "KEL" ;
 	] ;
-	<schema:startDate> "2017-11-18T09:00:00-07:00"^^xsd:dateTime ;
-	<schema:offers> [
-		a <schema:Offer> ;
-		<schema:price> "35.00" ;
-		<schema:priceCurrency> "USD" ;
-		<schema:priceValidFrom> "2016-12-1T02:00:00-07:00"^^xsd:dateTime ;
-		<schema:priceValidUntil> "2017-6-1T01:59:59-07:00"^^xsd:dateTime ;
-		<schema:priceSpecification> <rsu:ProcessingFee1> ;
+	schema:startDate "2017-11-18T09:00:00-07:00"^^xsd:dateTime ;
+	schema:offers [
+		a schema:Offer ;
+		schema:price "35.00" ;
+		schema:priceCurrency "USD" ;
+		schema:priceValidFrom "2016-12-1T02:00:00-07:00"^^xsd:dateTime ;
+		schema:priceValidUntil "2017-6-1T01:59:59-07:00"^^xsd:dateTime ;
+		schema:priceSpecification <rsu:ProcessingFee1> ;
 	] , [
-		a <schema:Offer> ;
-		<schema:price> "40.00" ;
-		<schema:priceCurrency> "USD" ;
-		<schema:priceValidFrom> "2017-6-1T02:00:00-07:00"^^xsd:dateTime ;
-		<schema:priceValidUntil> "2017-11-1T01:59:59-07:00"^^xsd:dateTime ;
-		<schema:priceSpecification> <rsu:ProcessingFee1> ;
+		a schema:Offer ;
+		schema:price "40.00" ;
+		schema:priceCurrency "USD" ;
+		schema:priceValidFrom "2017-6-1T02:00:00-07:00"^^xsd:dateTime ;
+		schema:priceValidUntil "2017-11-1T01:59:59-07:00"^^xsd:dateTime ;
+		schema:priceSpecification <rsu:ProcessingFee1> ;
 	] , [
-		a <schema:Offer> ;
-		<schema:price> "45.00" ;
-		<schema:priceCurrency> "USD" ;
-		<schema:priceValidFrom> "2017-11-1T02:00:00-07:00"^^xsd:dateTime ;
-		<schema:priceValidUntil> "2017-11-17T18:00:00-07:00"^^xsd:dateTime ;
-		<schema:priceSpecification> <rsu:ProcessingFee1> ;
+		a schema:Offer ;
+		schema:price "45.00" ;
+		schema:priceCurrency "USD" ;
+		schema:priceValidFrom "2017-11-1T02:00:00-07:00"^^xsd:dateTime ;
+		schema:priceValidUntil "2017-11-17T18:00:00-07:00"^^xsd:dateTime ;
+		schema:priceSpecification <rsu:ProcessingFee1> ;
 	] .
 
-<rsu:event/139166> a <athlinks:AthleticRace>;
-	<rdfs:label> "2k Turkey Toddle (un-timed)" ;
-	<athlinks:raceType> "running race" ;
-	<athlinks:distance> [
-		a <schema:QuantitativeValue> ;
-		<schema:value> "2" ;
-		<schema:unitCode> "KEL" ;
+<rsu:event/139166> a athlinks:AthleticRace;
+	rdfs:label "2k Turkey Toddle (un-timed)" ;
+	athlinks:raceType "running race" ;
+	athlinks:distance [
+		a schema:QuantitativeValue ;
+		schema:value "2" ;
+		schema:unitCode "KEL" ;
 	] ;
-	<schema:startDate> "2017-11-18T09:10:00-07:00"^^xsd:dateTime ;
-	<schema:offers> [
-		a <schema:Offer> ;
-		<schema:price> "20.00" ;
-		<schema:priceCurrency> "USD" ;
-		<schema:priceValidFrom> "2016-12-1T02:00:00-07:00"^^xsd:dateTime ;
-		<schema:priceValidUntil> "2017-6-1T01:59:59-07:00"^^xsd:dateTime ;
-		<schema:priceSpecification> <rsu:ProcessingFee2> ;
+	schema:startDate "2017-11-18T09:10:00-07:00"^^xsd:dateTime ;
+	schema:offers [
+		a schema:Offer ;
+		schema:price "20.00" ;
+		schema:priceCurrency "USD" ;
+		schema:priceValidFrom "2016-12-1T02:00:00-07:00"^^xsd:dateTime ;
+		schema:priceValidUntil "2017-6-1T01:59:59-07:00"^^xsd:dateTime ;
+		schema:priceSpecification <rsu:ProcessingFee2> ;
 	] , [
-		a <schema:Offer> ;
-		<schema:price> "25.00" ;
-		<schema:priceCurrency> "USD" ;
-		<schema:priceValidFrom> "2017-6-1T02:00:00-07:00"^^xsd:dateTime ;
-		<schema:priceValidUntil> "2017-11-1T01:59:59-07:00"^^xsd:dateTime ;
-		<schema:priceSpecification> <rsu:ProcessingFee2> ;
+		a schema:Offer ;
+		schema:price "25.00" ;
+		schema:priceCurrency "USD" ;
+		schema:priceValidFrom "2017-6-1T02:00:00-07:00"^^xsd:dateTime ;
+		schema:priceValidUntil "2017-11-1T01:59:59-07:00"^^xsd:dateTime ;
+		schema:priceSpecification <rsu:ProcessingFee2> ;
 	] , [
-		a <schema:Offer> ;
-		<schema:price> "25.00" ;
-		<schema:priceCurrency> "USD" ;
-		<schema:priceValidFrom> "2017-11-1T02:00:00-07:00"^^xsd:dateTime ;
-		<schema:priceValidUntil> "2017-11-17T01:59:59-07:00"^^xsd:dateTime ;
-		<schema:priceSpecification> <rsu:ProcessingFee2> ;
+		a schema:Offer ;
+		schema:price "25.00" ;
+		schema:priceCurrency "USD" ;
+		schema:priceValidFrom "2017-11-1T02:00:00-07:00"^^xsd:dateTime ;
+		schema:priceValidUntil "2017-11-17T01:59:59-07:00"^^xsd:dateTime ;
+		schema:priceSpecification <rsu:ProcessingFee2> ;
 	] .
 ```
 
