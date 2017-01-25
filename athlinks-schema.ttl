@@ -1,77 +1,80 @@
-@base <http://adp.athlinks.com/2017/01/rdf-schema#> .
+# baseURI http://adp.athlinks.com/2017/01/rdf-schema#
+
+@prefix athlinks: <http://adp.athlinks.com/2017/01/rdf-schema#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix schema: <http://topbraid.org/schema/#> .
+@prefix schema: <http://schema.org/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <http://athlinks.com/2017/01/rdf-schema> a owl:Ontology ;
-	<owl:imports> <http://topbraid.org/schema/> ;
-	<rdfs:label> "The Athlinks Schema vocabulary".
+	owl:imports <http://topbraid.org/schema/> ;
+	rdfs:label "The Athlinks Schema vocabulary".
 
 ### CLASSES
 
-<:TimingInterval>
-  a <rdfs:Class> ;
-  <rdfs:comment> "A measured distance over all or part of an athletic event course." ;
-  <rdfs:label> "Timing interval" ;
-  <rdfs:hasProperty> <:defaultPace>;
-  <rdfs:hasProperty> <:distanceFromStart>;
-  <rdfs:hasProperty> <:distance>;
-  <rdfs:hasProperty> <schema:fromLocation>;
-  <rdfs:hasProperty> <schema:toLocation>;
-  <rdfs:subClassOf> <schema:Place> .
+athlinks:TimingInterval
+  a rdfs:Class ;
+  rdfs:comment "A measured distance over all or part of an athletic event course." ;
+  rdfs:label "Timing interval" ;
+  rdfs:hasProperty athlinks:defaultPace;
+  rdfs:hasProperty athlinks:distanceFromStart;
+  rdfs:hasProperty athlinks:distance;
+  rdfs:hasProperty schema:fromLocation;
+  rdfs:hasProperty schema:toLocation;
+  rdfs:subClassOf schema:Place .
 
-<:TimingPoint> a <rdfs:Class>;
-	<rdfs:subClassOf> <schema:Place>;
-	<rdfs:label> "Timing point";
-	<rdfs:comment> "A point located within a timing interval at which sensors are deployed to capture tag reads of passing athletes.".
+athlinks:TimingPoint a rdfs:Class;
+	rdfs:subClassOf schema:Place;
+	rdfs:label "Timing point";
+	rdfs:comment "A point located within a timing interval at which sensors are deployed to capture tag reads of passing athletes.".
 
-<:TagRead> a <rdfs:Class>;
-	<rdfs:label> "RFID tag read";
-	<rdfs:comment> "The representation of a raw reading of an RFID tag.";
-	<rdfs:hasProperty> <:timingDevice>;
-	<rdfs:hasProperty> <schema:agent>;
-	<rdfs:hasProperty> <schema:location>;
-	<rdfs:hasProperty> <:rawTime>;
-	<rdfs:hasProperty> <:adjustedTime>.
+athlinks:TagRead a rdfs:Class;
+	rdfs:label "RFID tag read";
+	rdfs:comment "The representation of a raw reading of an RFID tag.";
+	rdfs:hasProperty athlinks:timingDevice;
+	rdfs:hasProperty schema:agent;
+	rdfs:hasProperty schema:location;
+	rdfs:hasProperty athlinks:rawTime;
+	rdfs:hasProperty athlinks:adjustedTime.
 
-<:IntervalResult> a <rdfs:Class>;
-	<rdfs:label> "Interval Result";
-	<rdfs:comment> "The duration calculated for an interval by an actor.";
-	<rdfs:subClassOf> <schema:MoveAction>;
-	<rdfs:hasProperty> <:beginTagRead>;
-	<rdfs:hasProperty> <:endTagRead>;
-	<rdfs:hasProperty> <:bib>;
-    <rdfs:hasProperty> <schema:duration>;
-    <rdfs:hasProperty> <:timingInterval>;
-    <rdfs:hasProperty> <:ranking>;
-    <rdfs:hasProperty> <:pace> .
+athlinks:IntervalResult a rdfs:Class;
+	rdfs:label "Interval Result";
+	rdfs:comment "The duration calculated for an interval by an actor.";
+	rdfs:subClassOf schema:MoveAction;
+	rdfs:hasProperty athlinks:beginTagRead;
+	rdfs:hasProperty athlinks:endTagRead;
+	rdfs:hasProperty athlinks:bib;
+    rdfs:hasProperty schema:duration;
+    rdfs:hasProperty athlinks:timingInterval;
+    rdfs:hasProperty athlinks:ranking;
+    rdfs:hasProperty athlinks:pace .
 
-<:BracketRanking> a <rdfs:Class>;
-	<rdfs:label> "Bracket Ranking";
-	<rdfs:comment> "A raking of an Interval Result when ranked within a Bracket.";
-	<rdfs:hasProperty> <:bracket>;
-	<rdfs:hasProperty> <:intervalResult>;
-	<rdfs:hasProperty> <:timingInterval>;
-	<rdfs:hasProperty> <:rank>.
+athlinks:BracketRanking a rdfs:Class;
+	rdfs:label "Bracket Ranking";
+	rdfs:comment "A raking of an Interval Result when ranked within a Bracket.";
+	rdfs:hasProperty athlinks:bracket;
+	rdfs:hasProperty athlinks:intervalResult;
+	rdfs:hasProperty athlinks:timingInterval;
+	rdfs:hasProperty athlinks:rank.
 
-<:Bracket> a <rdfs:Class>.
+athlinks:Bracket a rdfs:Class.
 
-<:AthleticRace>
+athlinks:AthleticRace
   a owl:Class ;
   rdfs:comment "An athletic race, a distinct course." ;
   rdfs:label "Athletic Race" ;
-  rdfs:hasProperty <:raceType> ;
+  rdfs:hasProperty athlinks:raceType ;
   rdfs:subClassOf schema:SportsEvent .
 
-<:AthleticEvent>
+athlinks:AthleticEvent
   a owl:Class ;
   rdfs:comment "An Athletic Event, a group of Athletic Races that are all part of the same event." ;
   rdfs:label "Athletic Race" ;
   rdfs:subClassOf schema:SportsEvent .
 
-<:AthleticSeries>
+athlinks:AthleticSeries
   a owl:Class ;
   rdfs:comment "An Athletic Series, a group of Athletic Events that are part of the same series." ;
   rdfs:label "Athletic Race" ;
@@ -79,67 +82,67 @@
 
 ## PROPERTIES
 
-<:rank> a <owl:DataTypeProperty>;
-	<rdfs:domain> <:BracketRanking>;
-	<rdfs:range> <schema:Integer>.
+athlinks:rank a owl:DataTypeProperty;
+	rdfs:domain athlinks:BracketRanking;
+	rdfs:range schema:Integer.
 
-<:timingInterval> a <owl:ObjectProperty>;
-    <rdfs:domain> <:IntervalResult>;
-    <rdfs:label> "The Interval component of the course";
-    <schema:rangeIncludes> <schema:ExerciseAction> .
+athlinks:timingInterval a owl:ObjectProperty;
+    rdfs:domain athlinks:IntervalResult;
+    rdfs:label "The Interval component of the course";
+    schema:rangeIncludes schema:ExerciseAction .
 
-<:bracket> a <owl:ObjectProperty>;
-    <rdfs:domain> <:BracketRanking>;
-    <rdfs:range> <:Bracket>.
+athlinks:bracket a owl:ObjectProperty;
+    rdfs:domain athlinks:BracketRanking;
+    rdfs:range athlinks:Bracket.
 
-<:endTagRead> a <owl:ObjectProperty>;
-    <rdfs:domain> <:IntervalResult>;
-    <rdfs:range> <:TagRead>.
+athlinks:endTagRead a owl:ObjectProperty;
+    rdfs:domain athlinks:IntervalResult;
+    rdfs:range athlinks:TagRead.
 
-<:beginTagRead> a <owl:ObjectProperty>;
-    <rdfs:domain> <:IntervalResult>;
-    <rdfs:range> <:TagRead>.
+athlinks:beginTagRead a owl:ObjectProperty;
+    rdfs:domain athlinks:IntervalResult;
+    rdfs:range athlinks:TagRead.
 
-<:timingDevice> a <owl:ObjectProperty>;
-	<rdfs:domain> <:TagRead>;
-	<rdfs:range> <schema:Thing>.
+athlinks:timingDevice a owl:ObjectProperty;
+	rdfs:domain athlinks:TagRead;
+	rdfs:range schema:Thing.
 
-<:rawTime> a <owl:DataTypeProperty>;
-	<rdfs:domain> <:TagRead>;
-	<rdfs:range> <schema:DateTime>.
+athlinks:rawTime a owl:DataTypeProperty;
+	rdfs:domain athlinks:TagRead;
+	rdfs:range schema:DateTime.
 
-<:adjustedTime> a <owl:DataTypeProperty>;
-	<rdfs:domain> <:TagRead>;
-	<rdfs:range> <schema:DateTime>.
+athlinks:adjustedTime a owl:DataTypeProperty;
+	rdfs:domain athlinks:TagRead;
+	rdfs:range schema:DateTime.
 
-<:ranking> a <owl:ObjectProperty>;
-	<rdfs:domain> <:IntervalResult>;
-	<rdfs:range> <:BracketRanking>.
+athlinks:ranking a owl:ObjectProperty;
+	rdfs:domain athlinks:IntervalResult;
+	rdfs:range athlinks:BracketRanking.
 
-<:defaultPace>
-  a <owl:ObjectProperty> ;
-  <rdfs:domain> <:TimingInterval> ;
-  <rdfs:range> <schema:QuantitativeValue> .
+athlinks:defaultPace
+  a owl:ObjectProperty ;
+  rdfs:domain athlinks:TimingInterval ;
+  rdfs:range schema:QuantitativeValue .
 
-<:distanceFromStart>
-  a <owl:ObjectProperty> ;
-  <rdfs:domain> <:TimingInterval> ;
-  <rdfs:range> <schema:QuantitativeValue> .
+athlinks:distanceFromStart
+  a owl:ObjectProperty ;
+  rdfs:domain athlinks:TimingInterval ;
+  rdfs:range schema:QuantitativeValue .
 
-<:distance>
-  a <owl:ObjectProperty> ;
-  <rdfs:domain> <:TimingInterval> ;
-  <rdfs:range> <schema:QuantitativeValue> .
+athlinks:distance
+  a owl:ObjectProperty ;
+  rdfs:domain athlinks:TimingInterval ;
+  rdfs:range schema:QuantitativeValue .
 
-<:raceType>
-  a <owl:DataTypeProperty>;
-  <rdfs:range> [ a xsd:string ;
+athlinks:raceType
+  a owl:DataTypeProperty;
+  rdfs:range [ a xsd:string ;
                 owl:oneOf ("triathlon" "5k" "10k" "marathon" "other")
               ] .
-<:bib>
-  a <owl:DataTypeProperty>;
-  <rdfs:range> <xsd:string> .
+athlinks:bib
+  a owl:DataTypeProperty;
+  rdfs:range xsd:string .
 
-<:pace>
-  a <owl:DataTypeProperty> ;
-  <rdfs:range> <schema:DateTime> .
+athlinks:pace
+  a owl:DataTypeProperty ;
+  rdfs:range schema:DateTime .
