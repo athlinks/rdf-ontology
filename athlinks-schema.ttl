@@ -131,7 +131,6 @@ athlinks:distanceFromStart
 
 athlinks:distance
   a owl:ObjectProperty ;
-  rdfs:domain athlinks:TimingInterval ;
   rdfs:range schema:QuantitativeValue .
 
 athlinks:raceType
