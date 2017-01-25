@@ -1,4 +1,4 @@
-@base <http://athlinks.com/2017/01/rdf-schema#> .
+@base <http://adp.athlinks.com/2017/01/rdf-schema#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
@@ -45,7 +45,7 @@
 	<rdfs:hasProperty> <:bib>;
     <rdfs:hasProperty> <schema:duration>;
     <rdfs:hasProperty> <:timingInterval>;
-    <rdfs:hasProperty> <:ranking>
+    <rdfs:hasProperty> <:ranking>;
     <rdfs:hasProperty> <:pace> .
 
 <:BracketRanking> a <rdfs:Class>;
@@ -62,7 +62,7 @@
   a owl:Class ;
   rdfs:comment "An athletic race, a distinct course." ;
   rdfs:label "Athletic Race" ;
-  rdfs:hasProperty :raceType ;
+  rdfs:hasProperty <:raceType> ;
   rdfs:subClassOf schema:SportsEvent .
 
 <:AthleticEvent>
@@ -141,5 +141,5 @@
   <rdfs:range> <xsd:string> .
 
 <:pace>
-  a <owl:DataTypeProperty>
+  a <owl:DataTypeProperty> ;
   <rdfs:range> <schema:DateTime> .
