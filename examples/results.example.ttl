@@ -1,6 +1,8 @@
 @prefix athlinks: <http://adp.athlinks.com/2017/01/rdf-schema#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix rsu: <https://runsignup.com/API/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
 
 <rsu:event/89810> athlinks:raceType "triathlon".
 <rsu:event/89810> athlinks:timingInterval <rsu:event/89810/full-course>.
