@@ -4,9 +4,9 @@
 
 # [Athlinks RDF API v0.1 (beta)](#athlinks-rdf-api-v0.1-(beta))
 
-RDF is a standard model for data interchange on the Web. RDF has features that facilitate data merging even if the underlying schemas differ, and it specifically supports the evolution of schemas over time without requiring all the data consumers to be changed. 
-Our ontology is based off of schema.org and Open Graph(ogp.me). Search engines use schema.org heavily, and sites like Facebook and Pinterest use Open Graph. 
-It is our belief that this improves the portability of data for us and our partners. 
+RDF is a standard model for data interchange on the Web. RDF has features that facilitate data merging even if the underlying schemas differ, and it specifically supports the evolution of schemas over time without requiring all the data consumers to be changed.
+Our ontology is based off of schema.org and Open Graph(ogp.me). Search engines use schema.org heavily, and sites like Facebook and Pinterest use Open Graph.
+It is our belief that this improves the portability of data for us and our partners.
 
 - [Athlinks RDF API v0.1 (beta)](#athlinks-rdf-api-v0.1-(beta))
     - [More information about RDF](#more-information-about-rdf)
@@ -33,7 +33,7 @@ https://github.com/athlinks/rdf-ontology/blob/master/athlinks-schema.ttl
 This describes the types and predicates that Athlinks expects.
 
 ## [The Athlinks RDF Endpoint](#the-athlinks-rdf-endpoint)
-You can post RDF data in a varity of Turtle based formats to: 
+You can post RDF data in a varity of Turtle based formats to:
 http://adp.athlinks.com/rdf
 
 #### [Turtle Formats currently supported](#turtle-formats-currently-supported)
@@ -44,8 +44,8 @@ http://adp.athlinks.com/rdf
 
 Primer: https://www.w3.org/2007/02/turtle/primer/
 
-We also plan on supporting formats such as RDF/XML (https://www.w3.org/TR/rdf-syntax-grammar/) and JSON-LD (https://www.w3.org/TR/json-ld/). 
- 
+We also plan on supporting formats such as RDF/XML (https://www.w3.org/TR/rdf-syntax-grammar/) and JSON-LD (https://www.w3.org/TR/json-ld/).
+
 Example data upload
 ```bash
 #!/bin/bash
@@ -108,7 +108,7 @@ Converts to:
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix schema: <http://schema.org/> .
 
-<rsu:race/1649> a athlinks:AthleticSeries ;
+rsu:race\/1649 a athlinks:AthleticSeries ;
 	rdfs:label "10k Turkey Trek & 2k Turkey Toddle" ;
 	rdfs:comment "This Arvada event supports ..." ;
 	schema:mainEntityOfPage "https://runsignup.com/Race/CO/Arvada/SixPack10kand5k" ;
@@ -122,21 +122,21 @@ Converts to:
 		schema:postalCode "80007" ;
 	] ;
 	schema:logo "https://d368g9lw5ileu7.cloudfront.net/races/race1649-logo.bym87Y.png" ;
-	schema:subEvent <rsu:raceEventDays/58262> .
+	schema:subEvent rsu:raceEventDays\/58262 .
 
-<rsu:raceEventDays/58262> a athlinks:AthleticEvent ;	
-		schema:subEvent <rsu:event/139165> ;
-		schema:subEvent <rsu:event/139166> .
+rsu:raceEventDays\/58262 a athlinks:AthleticEvent ;
+		schema:subEvent rsu:event\/139165 ;
+		schema:subEvent rsu:event\/139166 .
 
-<rsu:#ProcessingFee1> a schema:PaymentChargeSpecification ;
+rsu:#ProcessingFee1 a schema:PaymentChargeSpecification ;
 			schema:price "3.80" ;
 			schema:priceCurrency "USD" .
 
-<rsu:#ProcessingFee2> a schema:PaymentChargeSpecification ;
+rsu:#ProcessingFee2 a schema:PaymentChargeSpecification ;
 			schema:price "3.05" ;
 			schema:priceCurrency "USD" .
-	 
-<rsu:event/139165> a athlinks:AthleticRace;
+
+rsu:event\/139165 a athlinks:AthleticRace;
 	rdfs:label "10k Turkey Trek" ;
 	athlinks:raceType "running race" ;
 	athlinks:distance [
@@ -151,24 +151,24 @@ Converts to:
 		schema:priceCurrency "USD" ;
 		schema:priceValidFrom "2016-12-1T02:00:00-07:00"^^xsd:dateTime ;
 		schema:priceValidUntil "2017-6-1T01:59:59-07:00"^^xsd:dateTime ;
-		schema:priceSpecification <rsu:ProcessingFee1> ;
+		schema:priceSpecification rsu:ProcessingFee1 ;
 	] , [
 		a schema:Offer ;
 		schema:price "40.00" ;
 		schema:priceCurrency "USD" ;
 		schema:priceValidFrom "2017-6-1T02:00:00-07:00"^^xsd:dateTime ;
 		schema:priceValidUntil "2017-11-1T01:59:59-07:00"^^xsd:dateTime ;
-		schema:priceSpecification <rsu:ProcessingFee1> ;
+		schema:priceSpecification rsu:ProcessingFee1 ;
 	] , [
 		a schema:Offer ;
 		schema:price "45.00" ;
 		schema:priceCurrency "USD" ;
 		schema:priceValidFrom "2017-11-1T02:00:00-07:00"^^xsd:dateTime ;
 		schema:priceValidUntil "2017-11-17T18:00:00-07:00"^^xsd:dateTime ;
-		schema:priceSpecification <rsu:ProcessingFee1> ;
+		schema:priceSpecification rsu:ProcessingFee1 ;
 	] .
 
-<rsu:event/139166> a athlinks:AthleticRace;
+rsu:event\/139166 a athlinks:AthleticRace;
 	rdfs:label "2k Turkey Toddle (un-timed)" ;
 	athlinks:raceType "running race" ;
 	athlinks:distance [
@@ -183,21 +183,21 @@ Converts to:
 		schema:priceCurrency "USD" ;
 		schema:priceValidFrom "2016-12-1T02:00:00-07:00"^^xsd:dateTime ;
 		schema:priceValidUntil "2017-6-1T01:59:59-07:00"^^xsd:dateTime ;
-		schema:priceSpecification <rsu:ProcessingFee2> ;
+		schema:priceSpecification rsu:ProcessingFee2 ;
 	] , [
 		a schema:Offer ;
 		schema:price "25.00" ;
 		schema:priceCurrency "USD" ;
 		schema:priceValidFrom "2017-6-1T02:00:00-07:00"^^xsd:dateTime ;
 		schema:priceValidUntil "2017-11-1T01:59:59-07:00"^^xsd:dateTime ;
-		schema:priceSpecification <rsu:ProcessingFee2> ;
+		schema:priceSpecification rsu:ProcessingFee2 ;
 	] , [
 		a schema:Offer ;
 		schema:price "25.00" ;
 		schema:priceCurrency "USD" ;
 		schema:priceValidFrom "2017-11-1T02:00:00-07:00"^^xsd:dateTime ;
 		schema:priceValidUntil "2017-11-17T01:59:59-07:00"^^xsd:dateTime ;
-		schema:priceSpecification <rsu:ProcessingFee2> ;
+		schema:priceSpecification rsu:ProcessingFee2 ;
 	] .
 ```
 

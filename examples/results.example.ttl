@@ -1,172 +1,174 @@
 @prefix athlinks: <http://adp.athlinks.com/2017/01/rdf-schema#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix rsu: <https://runsignup.com/API/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
 
-<rsu:event/89810> athlinks:raceType "triathlon".
-<rsu:event/89810> athlinks:timingInterval <rsu:event/89810/full-course>.
-<rsu:event/89810> athlinks:timingInterval <rsu:split/30668>.
-<rsu:event/89810> athlinks:timingInterval <rsu:split/30669>.
-<rsu:event/89810> athlinks:timingInterval <rsu:split/30670>.
-<rsu:event/89810> athlinks:timingInterval <rsu:split/30671>.
-<rsu:event/89810> athlinks:timingInterval <rsu:split/30672>.
+rsu:event\/89810 athlinks:raceType "triathlon".
+rsu:event\/89810 athlinks:timingInterval rsu:event\/89810\/full-course .
+rsu:event\/89810 athlinks:timingInterval rsu:split\/30668 .
+rsu:event\/89810 athlinks:timingInterval rsu:split\/30669 .
+rsu:event\/89810 athlinks:timingInterval rsu:split\/30670 .
+rsu:event\/89810 athlinks:timingInterval rsu:split\/30671 .
+rsu:event\/89810 athlinks:timingInterval rsu:split\/30672 .
 
-<rsu:event/89810/full-course> a athlinks:timingInterval;
+rsu:event\/89810\/full-course a athlinks:timingInterval;
 	rdfs:label "Full Course" ;
 	schema:fromLocation [a schema:Place];
 	schema:toLocation [a schema:Place].
 
-<rsu:split/30668> a athlinks:timingInterval;
+rsu:split\/30668 a athlinks:timingInterval;
 	rdfs:label "Swim" .
 
-<rsu:split/30669> a athlinks:timingInterval;
+rsu:split\/30669 a athlinks:timingInterval;
 	rdfs:label "T1" .
 
-<rsu:split/30670> a athlinks:timingInterval;
+rsu:split\/30670 a athlinks:timingInterval;
 	rdfs:label "Bike" .
 
-<rsu:split/30671> a athlinks:timingInterval;
+rsu:split\/30671 a athlinks:timingInterval;
 	rdfs:label "T2" .
 
-<rsu:split/30672> a athlinks:timingInterval;
+rsu:split\/30672 a athlinks:timingInterval;
 	rdfs:label "Run" .
 
-<rsu:event/89810> athlinks:bracket <rsu:division/261454>,
-									 <rsu:division/261455>,
-									 <rsu:division/261456>,
-									 <rsu:division/261457>,
-									 <rsu:division/261458>,
-									 <rsu:division/261459>,
-									 <rsu:division/263002>,
-									 <rsu:division/263003>,
-									 <rsu:division/263004>,
-									 <rsu:division/263005>,
-									 <rsu:division/263006>,
-									 <rsu:division/263007>,
-									 <rsu:division/263008>,
-									 <rsu:division/263009>,
-									 <rsu:division/263010>,
-									 <rsu:division/263011>,
-									 <rsu:division/263012>,
-									 <rsu:division/263013>,
-									 <rsu:division/263014>,
-									 <rsu:division/263015>,
-									 <rsu:division/263016>,
-									 <rsu:division/263017>,
-									 <rsu:division/263018>,
-									 <rsu:division/263019>,
-									 <rsu:division/263020>,
-									 <rsu:division/263021>,
-									 <rsu:division/263022>,
-									 <rsu:division/263023>,
-									 <rsu:division/263024>,
-									 <rsu:division/263025>.
-<rsu:event/89810/overall> a athlinks:Bracket;
+rsu:event\/89810 athlinks:bracket rsu:division\/261454,
+									 rsu:division\/261455,
+									 rsu:division\/261456,
+									 rsu:division\/261457,
+									 rsu:division\/261458,
+									 rsu:division\/261459,
+									 rsu:division\/263002,
+									 rsu:division\/263003,
+									 rsu:division\/263004,
+									 rsu:division\/263005,
+									 rsu:division\/263006,
+									 rsu:division\/263007,
+									 rsu:division\/263008,
+									 rsu:division\/263009,
+									 rsu:division\/263010,
+									 rsu:division\/263011,
+									 rsu:division\/263012,
+									 rsu:division\/263013,
+									 rsu:division\/263014,
+									 rsu:division\/263015,
+									 rsu:division\/263016,
+									 rsu:division\/263017,
+									 rsu:division\/263018,
+									 rsu:division\/263019,
+									 rsu:division\/263020,
+									 rsu:division\/263021,
+									 rsu:division\/263022,
+									 rsu:division\/263023,
+									 rsu:division\/263024,
+									 rsu:division\/263025.
+rsu:event\/89810\/overall a athlinks:Bracket;
 	rdfs:label "Overall".
-<rsu:division/261454> a athlinks:Bracket;
+rsu:division\/261454 a athlinks:Bracket;
 	rdfs:label "M Overall".
-<rsu:division/261455> a athlinks:Bracket;
+rsu:division\/261455 a athlinks:Bracket;
 	rdfs:label "W Overall".
-<rsu:division/261456> a athlinks:Bracket;
+rsu:division\/261456 a athlinks:Bracket;
 	rdfs:label "M 0-7".
-<rsu:division/261457> a athlinks:Bracket;
+rsu:division\/261457 a athlinks:Bracket;
 	rdfs:label "M 8-19".
-<rsu:division/261458> a athlinks:Bracket;
+rsu:division\/261458 a athlinks:Bracket;
 	rdfs:label "M 20-24".
-<rsu:division/261459> a athlinks:Bracket;
+rsu:division\/261459 a athlinks:Bracket;
 	rdfs:label "M 25-29".
-<rsu:division/263002> a athlinks:Bracket;
+rsu:division\/263002 a athlinks:Bracket;
 	rdfs:label "M 30-34".
-<rsu:division/263003> a athlinks:Bracket;
+rsu:division\/263003 a athlinks:Bracket;
 	rdfs:label "M 35-39".
-<rsu:division/263004> a athlinks:Bracket;
+rsu:division\/263004 a athlinks:Bracket;
 	rdfs:label "M 40-44".
-<rsu:division/263005> a athlinks:Bracket;
+rsu:division\/263005 a athlinks:Bracket;
 	rdfs:label "M 45-49".
-<rsu:division/263006> a athlinks:Bracket;
+rsu:division\/263006 a athlinks:Bracket;
 	rdfs:label "M 50-54".
-<rsu:division/263007> a athlinks:Bracket;
+rsu:division\/263007 a athlinks:Bracket;
 	rdfs:label "M 55-59".
-<rsu:division/263008> a athlinks:Bracket;
+rsu:division\/263008 a athlinks:Bracket;
 	rdfs:label "M 60-64".
-<rsu:division/263009> a athlinks:Bracket;
+rsu:division\/263009 a athlinks:Bracket;
 	rdfs:label "M 65-69".
-<rsu:division/263010> a athlinks:Bracket;
+rsu:division\/263010 a athlinks:Bracket;
 	rdfs:label "M 70-99".
-<rsu:division/263011> a athlinks:Bracket;
+rsu:division\/263011 a athlinks:Bracket;
 	rdfs:label "F 0- 7".
-<rsu:division/263012> a athlinks:Bracket;
+rsu:division\/263012 a athlinks:Bracket;
 	rdfs:label "F 8-19".
-<rsu:division/263013> a athlinks:Bracket;
+rsu:division\/263013 a athlinks:Bracket;
 	rdfs:label "F 20-24".
-<rsu:division/263014> a athlinks:Bracket;
+rsu:division\/263014 a athlinks:Bracket;
 	rdfs:label "F 25-29".
-<rsu:division/263015> a athlinks:Bracket;
+rsu:division\/263015 a athlinks:Bracket;
 	rdfs:label "F 30-34".
-<rsu:division/263016> a athlinks:Bracket;
+rsu:division\/263016 a athlinks:Bracket;
 	rdfs:label "F 35-39".
-<rsu:division/263017> a athlinks:Bracket;
+rsu:division\/263017 a athlinks:Bracket;
 	rdfs:label "F 40-44".
-<rsu:division/263018> a athlinks:Bracket;
+rsu:division\/263018 a athlinks:Bracket;
 	rdfs:label "F 45-49".
-<rsu:division/263019> a athlinks:Bracket;
+rsu:division\/263019 a athlinks:Bracket;
 	rdfs:label "F 50-54".
-<rsu:division/263020> a athlinks:Bracket;
+rsu:division\/263020 a athlinks:Bracket;
 	rdfs:label "F 55-59".
-<rsu:division/263021> a athlinks:Bracket;
+rsu:division\/263021 a athlinks:Bracket;
 	rdfs:label "F 60-64".
-<rsu:division/263022> a athlinks:Bracket;
+rsu:division\/263022 a athlinks:Bracket;
 	rdfs:label "F 65-69".
-<rsu:division/263023> a athlinks:Bracket;
+rsu:division\/263023 a athlinks:Bracket;
 	rdfs:label "F 70-99".
-<rsu:division/263024> a athlinks:Bracket;
+rsu:division\/263024 a athlinks:Bracket;
 	rdfs:label "All Male".
-<rsu:division/263025> a athlinks:Bracket;
+rsu:division\/263025 a athlinks:Bracket;
 	rdfs:label "All Female".
 
-<rsu:event/89810/full-course/result#Kelly/Fleming/f/34> a athlinks:IntervalResult;
+rsu:event\/89810\/full-course\/result#Kelly\/Fleming\/f\/34 a athlinks:IntervalResult;
 	athlinks:rawDuration "1:10:19.6"^^xsd:dateTime;
 	athlinks:adjustedDuration "1:10:19.6"^^xsd:dateTime;
-	athlinks:timingInterval <rsu:event/89810/overall>;
+	athlinks:timingInterval rsu:event\/89810\/overall;
 	athlinks:bib 100;
 	athlinks:ranking [
 		a athlinks:BracketRanking;
-		athlinks:Bracket <rsu:event/89810/overall>;
+		athlinks:Bracket rsu:event\/89810\/overall;
 		athlinks:rank "4"^^xsd:integer;
 	] , [
 		a athlinks:BracketRanking;
-		athlinks:Bracket <rsu:division/261455>;
+		athlinks:Bracket rsu:division\/261455;
 		athlinks:rank "1"^^xsd:integer;
 	] , [
 		a athlinks:BracketRanking;
-		athlinks:Bracket <rsu:division/263025>;
+		athlinks:Bracket rsu:division\/263025;
 		athlinks:rank "1"^^xsd:integer;
-	] . 
+	] .
 
-<rsu:split/30668/result#Kelly/Fleming/f/34> a athlinks:IntervalResult;
+rsu:split\/30668\/result#Kelly\/Fleming\/f\/34 a athlinks:IntervalResult;
 	athlinks:rawDuration "4:44"^^xsd:dateTime;
 	athlinks:pace "1:35"^^xsd:dateTime;
-	athlinks:timingInterval <rsu:split/30668>.
-	
-<rsu:split/30669/result#Kelly/Fleming/f/34> a athlinks:IntervalResult;
-	athlinks:rawDuration "0:41"^^xsd:dateTime;
-	athlinks:timingInterval <rsu:split/30669>.
+	athlinks:timingInterval rsu:split\/30668.
 
-<rsu:split/30670/result#Kelly/Fleming/f/34> a athlinks:IntervalResult;
+rsu:split\/30669\/result#Kelly\/Fleming\/f\/34 a athlinks:IntervalResult;
+	athlinks:rawDuration "0:41"^^xsd:dateTime;
+	athlinks:timingInterval rsu:split\/30669.
+
+rsu:split\/30670\/result#Kelly\/Fleming\/f\/34 a athlinks:IntervalResult;
 	athlinks:rawDuration "40:06"^^xsd:dateTime;
 	athlinks:pace "3:05"^^xsd:dateTime;
-	athlinks:timingInterval <rsu:split/30670>.
+	athlinks:timingInterval rsu:split\/30670.
 
-<rsu:split/30671/result#Kelly/Fleming/f/34> a athlinks:IntervalResult;
+rsu:split\/30671\/result#Kelly\/Fleming\/f\/34 a athlinks:IntervalResult;
 	athlinks:rawDuration "0:29"^^xsd:dateTime;
-	athlinks:timingInterval <rsu:split/30671>.
+	athlinks:timingInterval rsu:split\/30671.
 
-<rsu:split/30672/result#Kelly/Fleming/f/34> a athlinks:IntervalResult;
+rsu:split\/30672\/result#Kelly\/Fleming\/f\/34 a athlinks:IntervalResult;
 	athlinks:rawDuration "0:41"^^xsd:dateTime;
 	athlinks:pace "7:51"^^xsd:dateTime;
-	athlinks:timingInterval <rsu:split/30672>.
-	
-<rsu:event/89810/participant#Kelly/Fleming/f/34> a <schema:Person>;
-	schema:birthDate "1982/1/1"^^xsd:dateTime; 
+	athlinks:timingInterval rsu:split\/30672.
+
+rsu:event\/89810\/participant#Kelly\/Fleming\/f\/34 a schema:Person;
+	schema:birthDate "1982/1/1"^^xsd:dateTime;
 	schema:givenName "Kelly";
 	schema:familyName "Fleming";
 	schema:gender "F";
@@ -175,16 +177,16 @@
 		schema:addressLocality "Tucson";
 		schema:addressRegion "AZ";
 	];
-	athlinks:IntervalResult <rsu:event/89810/overall#Kelly/Fleming/f/34>;
-	athlinks:IntervalResult <rsu:split/30668/result#Kelly/Fleming/f/34>;
-	athlinks:IntervalResult <rsu:split/30669/result#Kelly/Fleming/f/34>;
-	athlinks:IntervalResult <rsu:split/30670/result#Kelly/Fleming/f/34>;
-	athlinks:IntervalResult <rsu:split/30671/result#Kelly/Fleming/f/34>;
-	athlinks:IntervalResult <rsu:split/30672/result#Kelly/Fleming/f/34>.
+	athlinks:IntervalResult rsu:event\/89810\/overall\#Kelly\/Fleming\/f\/34;
+	athlinks:IntervalResult rsu:split\/30668\/result\#Kelly\/Fleming\/f\/34;
+	athlinks:IntervalResult rsu:split\/30669\/result\#Kelly\/Fleming\/f\/34;
+	athlinks:IntervalResult rsu:split\/30670\/result\#Kelly\/Fleming\/f\/34;
+	athlinks:IntervalResult rsu:split\/30671\/result\#Kelly\/Fleming\/f\/34;
+	athlinks:IntervalResult rsu:split\/30672\/result\#Kelly\/Fleming\/f\/34.
 
 
-<rsu:event/89810/participant#Julio/Garcia/m/43> a <schema:Person>;
-	schema:birthDate "1973/1/1"^^xsd:dateTime; 
+rsu:event\/89810\/participant#Julio\/Garcia\/m\/43 a schema:Person;
+	schema:birthDate "1973/1/1"^^xsd:dateTime;
 	schema:givenName "Julio";
 	schema:familyName "Garcia";
 	schema:gender "M";
@@ -193,57 +195,57 @@
 		schema:addressLocality "Tucson";
 		schema:addressRegion "AZ";
 	];
-	athlinks:IntervalResult <rsu:event/89810/overall#Julio/Garcia/m/43>;
-	athlinks:IntervalResult <rsu:split/30668/result#Julio/Garcia/m/43>;
-	athlinks:IntervalResult <rsu:split/30669/result#Julio/Garcia/m/43>;
-	athlinks:IntervalResult <rsu:split/30670/result#Julio/Garcia/m/43>;
-	athlinks:IntervalResult <rsu:split/30671/result#Julio/Garcia/m/43>;
-	athlinks:IntervalResult <rsu:split/30672/result#Julio/Garcia/m/43>.
+	athlinks:IntervalResult rsu:event\/89810\/overall\#Julio\/Garcia\/m\/43;
+	athlinks:IntervalResult rsu:split\/30668\/result\#Julio\/Garcia\/m\/43;
+	athlinks:IntervalResult rsu:split\/30669\/result\#Julio\/Garcia\/m\/43;
+	athlinks:IntervalResult rsu:split\/30670\/result\#Julio\/Garcia\/m\/43;
+	athlinks:IntervalResult rsu:split\/30671\/result\#Julio\/Garcia\/m\/43;
+	athlinks:IntervalResult rsu:split\/30672\/result\#Julio\/Garcia\/m\/43.
 
-<rsu:event/89810/full-course/result#Julio/Garcia/m/43> a athlinks:IntervalResult;
+rsu:event\/89810\/full-course\/result\#Julio\/Garcia\/m\/43 a athlinks:IntervalResult;
 	athlinks:rawDuration "1:04:21.4"^^xsd:dateTime;
 	athlinks:adjustedDuration "1:04:21.4"^^xsd:dateTime;
-	athlinks:timingInterval <rsu:event/89810/overall>;
+	athlinks:timingInterval rsu:event\/89810\/overall;
 	athlinks:bib 99;
 	athlinks:ranking [
 		a athlinks:BracketRanking;
-		athlinks:Bracket <rsu:event/89810/overall>;
+		athlinks:Bracket rsu:event\/89810\/overall;
 		athlinks:rank "1"^^xsd:integer;
 	] , [
 		a athlinks:BracketRanking;
-		athlinks:Bracket <rsu:division/261454>;
+		athlinks:Bracket rsu:division\/261454;
 		athlinks:rank "1"^^xsd:integer;
 	] , [
 		a athlinks:BracketRanking;
-		athlinks:Bracket <rsu:division/263024>;
+		athlinks:Bracket rsu:division\/263024;
 		athlinks:rank "1"^^xsd:integer;
-	] . 
+	] .
 
-<rsu:split/30668/result#Julio/Garcia/m/43> a athlinks:IntervalResult;
+rsu:split\/30668\/result\#Julio\/Garcia\/m\/43 a athlinks:IntervalResult;
 	athlinks:rawDuration "5:02"^^xsd:dateTime;
 	athlinks:pace "1:41"^^xsd:dateTime;
-	athlinks:timingInterval <rsu:split/30668>.
-	
-<rsu:split/30669/result#Julio/Garcia/m/43> a athlinks:IntervalResult;
-	athlinks:rawDuration "0:59"^^xsd:dateTime;
-	athlinks:timingInterval <rsu:split/30669>.
+	athlinks:timingInterval rsu:split\/30668.
 
-<rsu:split/30670/result#Julio/Garcia/m/43> a athlinks:IntervalResult;
+rsu:split\/30669\/result\#Julio\/Garcia\/m\/43 a athlinks:IntervalResult;
+	athlinks:rawDuration "0:59"^^xsd:dateTime;
+	athlinks:timingInterval rsu:split\/30669.
+
+rsu:split\/30670\/result\#Julio\/Garcia\/m\/43 a athlinks:IntervalResult;
 	athlinks:rawDuration "35:02"^^xsd:dateTime;
 	athlinks:pace "2:42"^^xsd:dateTime;
-	athlinks:timingInterval <rsu:split/30670>.
+	athlinks:timingInterval rsu:split\/30670.
 
-<rsu:split/30671/result#Julio/Garcia/m/43> a athlinks:IntervalResult;
+rsu:split\/30671\/result\#Julio\/Garcia\/m\/43 a athlinks:IntervalResult;
 	athlinks:rawDuration "0:42"^^xsd:dateTime;
-	athlinks:timingInterval <rsu:split/30671>.
+	athlinks:timingInterval rsu:split\/30671.
 
-<rsu:split/30672/result#Julio/Garcia/m/43> a athlinks:IntervalResult;
+rsu:split\/30672\/result\#Julio\/Garcia\/m\/43 a athlinks:IntervalResult;
 	athlinks:rawDuration "22:36"^^xsd:dateTime;
 	athlinks:pace "7:17"^^xsd:dateTime;
-	athlinks:timingInterval <rsu:split/30672>.
+	athlinks:timingInterval rsu:split\/30672.
 
 
-<rsu:event/89810/participant#Petra/Schumann/f/43> a <schema:Person>;
+rsu:event\/89810\/participant\#Petra\/Schumann\/f\/43 a schema:Person;
 	schema:birthDate "1973/1/1"^^xsd:dateTime;
 	schema:givenName "Petra";
 	schema:familyName "Schumann";
@@ -253,51 +255,51 @@
 		schema:addressLocality "Tucson";
 		schema:addressRegion "AZ";
 	];
-	athlinks:IntervalResult <rsu:event/89810/overall#Petra/Schumann/f/43>;
-	athlinks:IntervalResult <rsu:split/30668/result#Petra/Schumann/f/43>;
-	athlinks:IntervalResult <rsu:split/30669/result#Petra/Schumann/f/43>;
-	athlinks:IntervalResult <rsu:split/30670/result#Petra/Schumann/f/43>;
-	athlinks:IntervalResult <rsu:split/30671/result#Petra/Schumann/f/43>;
-	athlinks:IntervalResult <rsu:split/30672/result#Petra/Schumann/f/43>.
+	athlinks:IntervalResult rsu:event\/89810\/overall\#Petra\/Schumann\/f\/43;
+	athlinks:IntervalResult rsu:split\/30668\/result\#Petra\/Schumann\/f\/43;
+	athlinks:IntervalResult rsu:split\/30669\/result\#Petra\/Schumann\/f\/43;
+	athlinks:IntervalResult rsu:split\/30670\/result\#Petra\/Schumann\/f\/43;
+	athlinks:IntervalResult rsu:split\/30671\/result\#Petra\/Schumann\/f\/43;
+	athlinks:IntervalResult rsu:split\/30672\/result\#Petra\/Schumann\/f\/43.
 
-<rsu:event/89810/full-course/result#Petra/Schumann/f/43> a athlinks:IntervalResult;
+rsu:event\/89810\/full-course\/result\#Petra\/Schumann\/f\/43 a athlinks:IntervalResult;
 	athlinks:rawDuration "1:51:45.1"^^xsd:dateTime;
 	athlinks:adjustedDuration "1:51:45.1"^^xsd:dateTime;
-	athlinks:timingInterval <rsu:event/89810/overall>;
+	athlinks:timingInterval rsu:event\/89810\/overall;
 	athlinks:bib 28;
 	athlinks:ranking [
 		a athlinks:BracketRanking;
-		athlinks:Bracket <rsu:event/89810/overall>;
+		athlinks:Bracket rsu:event\/89810\/overall;
 		athlinks:rank "91"^^xsd:integer;
 	] , [
 		a athlinks:BracketRanking;
-		athlinks:Bracket <rsu:division/263018>;
+		athlinks:Bracket rsu:division\/263018;
 		athlinks:rank "8"^^xsd:integer;
 	] , [
 		a athlinks:BracketRanking;
-		athlinks:Bracket <rsu:division/263025>;
+		athlinks:Bracket rsu:division\/263025;
 		athlinks:rank "51"^^xsd:integer;
-	] . 
+	] .
 
-<rsu:split/30668/result#Petra/Schumann/f/43> a athlinks:IntervalResult;
+rsu:split\/30668\/result\#Petra\/Schumann\/f\/43 a athlinks:IntervalResult;
 	athlinks:rawDuration "9:38"^^xsd:dateTime;
 	athlinks:pace "3:13"^^xsd:dateTime;
-	athlinks:timingInterval <rsu:split/30668>.
-	
-<rsu:split/30669/result#Petra/Schumann/f/43> a athlinks:IntervalResult;
-	athlinks:rawDuration "3:12"^^xsd:dateTime;
-	athlinks:timingInterval <rsu:split/30669>.
+	athlinks:timingInterval rsu:split\/30668.
 
-<rsu:split/30670/result#Petra/Schumann/f/43> a athlinks:IntervalResult;
+rsu:split\/30669\/result\#Petra\/Schumann\/f\/43 a athlinks:IntervalResult;
+	athlinks:rawDuration "3:12"^^xsd:dateTime;
+	athlinks:timingInterval rsu:split\/30669.
+
+rsu:split\/30670\/result\#Petra\/Schumann\/f\/43 a athlinks:IntervalResult;
 	athlinks:rawDuration "50:47"^^xsd:dateTime;
 	athlinks:pace "3:54"^^xsd:dateTime;
-	athlinks:timingInterval <rsu:split/30670>.
+	athlinks:timingInterval rsu:split\/30670.
 
-<rsu:split/30671/result#Petra/Schumann/f/43> a athlinks:IntervalResult;
+rsu:split\/30671\/result\#Petra\/Schumann\/f\/43 a athlinks:IntervalResult;
 	athlinks:rawDuration "2:28"^^xsd:dateTime;
-	athlinks:timingInterval <rsu:split/30671>.
+	athlinks:timingInterval rsu:split\/30671.
 
-<rsu:split/30672/result#Petra/Schumann/f/43> a athlinks:IntervalResult;
+rsu:split\/30672\/result\#Petra\/Schumann\/f\/43 a athlinks:IntervalResult;
 	athlinks:rawDuration "45:40"^^xsd:dateTime;
 	athlinks:pace "14:44"^^xsd:dateTime;
-	athlinks:timingInterval <rsu:split/30672>.
+	athlinks:timingInterval rsu:split\/30672.
