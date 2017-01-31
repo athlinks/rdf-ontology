@@ -14,13 +14,6 @@
 
 ### CLASSES
 
-athlinks:User
-  a rdfs:Class ;
-  rdfs:subClassOf schema:Person;
-  rdfs:comment "User .";
-  rdfs:label "User".
-  rdfs:hasProperty athlinks:id
-
 athlinks:TimingInterval
   a rdfs:Class ;
   rdfs:comment "A measured distance over all or part of an athletic event course." ;
