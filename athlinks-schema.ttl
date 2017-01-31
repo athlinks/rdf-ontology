@@ -145,10 +145,10 @@ athlinks:bib
 
 athlinks:pace
   a owl:DataTypeProperty ;
-  rdfs:range schema:DateTime .
+  rdfs:range schema:QuantitativeValue .
 
 athlinks:seriesType
   a owl:DataTypeProperty;
-  rdfs:range[ a xsd:string ;
-		owl:oneOf("Master", "Social", "Points", "Series")
-	     ] .
+  rdfs:range [ a xsd:string ;
+								owl:oneOf("Master", "Social", "Points", "Series")
+	     				] .
