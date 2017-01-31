@@ -74,19 +74,14 @@ athlinks:AthleticRace
   rdfs:label "Athletic Race" ;
   rdfs:hasProperty athlinks:raceType ;
   rdfs:subClassOf schema:SportsEvent ;
-  rdfs:hasProperty athlinks:giveaway  ;
-  rdfs:hasProperty athlinks:require_phone ;
-  rdfs:hasProperty athlinks:require_dob ;
-  rdfs:hasProperty athlinks:volunteer ;
+  rdfs:hasProperty athlinks:giveaway .
 
 athlinks:AthleticEvent
   a owl:Class ;
   rdfs:comment "An Athletic Event, a group of Athletic Races that are all part of the same event." ;
   rdfs:label "Athletic Race" ;
   rdfs:subClassOf schema:SportsEvent ;
-  rdfs:hasProperty athlinks:isPartnerRace ;
-  rdfs:hasProperty athlinks:externalResultsUrl ;
-  rdfs:hasProperty athlinks:externalRaceUrl .
+  rdfs:hasProperty athlinks:isPartnerRace .
 
 athlinks:AthleticSeries
   a owl:Class ;
