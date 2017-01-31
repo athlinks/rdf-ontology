@@ -14,6 +14,12 @@
 
 ### CLASSES
 
+athlinks:User 
+  a rdfs:Class ;
+  rdfs:subClassOf schema:Person;
+  rdfs:comment "User .";
+  rdfs:label "User".
+
 athlinks:TimingInterval
   a rdfs:Class ;
   rdfs:comment "A measured distance over all or part of an athletic event course." ;
@@ -66,13 +72,22 @@ athlinks:AthleticRace
   rdfs:comment "An athletic race, a distinct course." ;
   rdfs:label "Athletic Race" ;
   rdfs:hasProperty athlinks:raceType ;
-  rdfs:subClassOf schema:SportsEvent .
+  rdfs:subClassOf schema:SportsEvent ;
+  rdfs:hasProperty athlinks:giveaway  ;
+  rdfs:hasProperty athlinks:require_phone ;
+  rdfs:hasProperty athlinks:require_dob ;
+  rdfs:hasProperty athlinks:volunteer ;
 
 athlinks:AthleticEvent
   a owl:Class ;
   rdfs:comment "An Athletic Event, a group of Athletic Races that are all part of the same event." ;
   rdfs:label "Athletic Race" ;
-  rdfs:subClassOf schema:SportsEvent .
+  rdfs:subClassOf schema:SportsEvent ;
+  rdfs:hasProperty athlinks:details  ;
+  rdfs:hasProperty athlinks:description ;
+  rdfs:hasProperty athlinks:isPartnerRace ;
+  rdfs:hasProperty athlinks:externalResultsUrl ;
+  rdfs:hasProperty athlinks:externalRaceUrl .
 
 athlinks:AthleticSeries
   a owl:Class ;
@@ -147,8 +162,47 @@ athlinks:pace
   a owl:DataTypeProperty ;
   rdfs:range schema:DateTime .
 
+# For  AthleticRace PROPERTIES
+athlinks:giveaway
+  a owl:DataTypeProperty;
+  rdfs:range xsd:string .
+
+athlinks:require_phone
+  a owl:DataTypeProperty;
+  rdfs:range xsd:boolean .
+
+athlinks:require_dob
+  a owl:DataTypeProperty;
+  rdfs:range xsd:boolean .
+
+athlinks:volunteer
+  a owl:DataTypeProperty;
+  rdfs:range xsd:boolean .
+
+For AthleticEvent PROPERTIES
+athlinks:details
+  a owl:DataTypeProperty;
+  rdfs:range xsd:string .
+
+athlinks:description
+  a owl:DataTypeProperty;
+  rdfs:range xsd:string .
+
+athlinks:isPartnerRace
+  a owl:DataTypeProperty;
+  rdfs:range xsd:boolean .
+
+athlinks:externalResultsUrl
+  a owl:DataTypeProperty;
+  rdfs:range xsd:string .
+
+athlinks:externalRaceUrl
+  a owl:DataTypeProperty;
+  rdfs:range xsd:string .
+
 athlinks:seriesType
   a owl:DataTypeProperty;
   rdfs:range[ a xsd:string ;
 		owl:oneOf("Master", "Social", "Points", "Series")
 	     ] .
+
