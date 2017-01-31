@@ -94,7 +94,8 @@ athlinks:AthleticSeries
   a owl:Class ;
   rdfs:comment "An Athletic Series, a group of Athletic Events that are part of the same series." ;
   rdfs:label "Athletic Race" ;
-  rdfs:subClassOf schema:SportsEvent ;.
+  rdfs:hasProperty athlinks:seriesType ;
+  rdfs:subClassOf schema:SportsEvent .
 
 ## PROPERTIES
 
@@ -138,12 +139,12 @@ athlinks:ranking a owl:ObjectProperty;
 athlinks:defaultPace
   a owl:ObjectProperty ;
   rdfs:domain athlinks:TimingInterval ;
-  rdfs:range schema:QuantitativeValue .
+  rdfs:range schema:Duration .
 
 athlinks:distanceFromStart
   a owl:ObjectProperty ;
   rdfs:domain athlinks:TimingInterval ;
-  rdfs:range schema:QuantitativeValue .
+  rdfs:range schema:Duration .
 
 athlinks:distance
   a owl:ObjectProperty ;
@@ -160,7 +161,13 @@ athlinks:bib
 
 athlinks:pace
   a owl:DataTypeProperty ;
-  rdfs:range schema:DateTime .
+  rdfs:range schema:Duration .
+
+athlinks:seriesType
+  a owl:DataTypeProperty;
+  rdfs:range [ a xsd:string ;
+								owl:oneOf("Master", "Social", "Points", "Series")
+	     				] .
 
 # For  AthleticRace PROPERTIES
 athlinks:giveaway
@@ -194,8 +201,8 @@ athlinks:isPartnerRace
 
 athlinks:externalResultsUrl
   a owl:DataTypeProperty;
-  rdfs:range xsd:string .
+  rdfs:range schema:URL .
 
 athlinks:externalRaceUrl
   a owl:DataTypeProperty;
-  rdfs:range xsd:string .
+  rdfs:range schema:URL .
