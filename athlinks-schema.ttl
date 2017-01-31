@@ -84,8 +84,6 @@ athlinks:AthleticEvent
   rdfs:comment "An Athletic Event, a group of Athletic Races that are all part of the same event." ;
   rdfs:label "Athletic Race" ;
   rdfs:subClassOf schema:SportsEvent ;
-  rdfs:hasProperty athlinks:details  ;
-  rdfs:hasProperty athlinks:description ;
   rdfs:hasProperty athlinks:isPartnerRace ;
   rdfs:hasProperty athlinks:externalResultsUrl ;
   rdfs:hasProperty athlinks:externalRaceUrl .
@@ -139,12 +137,12 @@ athlinks:ranking a owl:ObjectProperty;
 athlinks:defaultPace
   a owl:ObjectProperty ;
   rdfs:domain athlinks:TimingInterval ;
-  rdfs:range schema:Duration .
+  rdfs:range schema:QuantitativeValue .
 
 athlinks:distanceFromStart
   a owl:ObjectProperty ;
   rdfs:domain athlinks:TimingInterval ;
-  rdfs:range schema:Duration .
+  rdfs:range schema:QuantitativeValue .
 
 athlinks:distance
   a owl:ObjectProperty ;
@@ -161,7 +159,7 @@ athlinks:bib
 
 athlinks:pace
   a owl:DataTypeProperty ;
-  rdfs:range schema:Duration .
+  rdfs:range schema:QuantitativeValue .
 
 athlinks:seriesType
   a owl:DataTypeProperty;
@@ -174,35 +172,7 @@ athlinks:giveaway
   a owl:DataTypeProperty;
   rdfs:range xsd:string .
 
-athlinks:require_phone
-  a owl:DataTypeProperty;
-  rdfs:range xsd:boolean .
-
-athlinks:require_dob
-  a owl:DataTypeProperty;
-  rdfs:range xsd:boolean .
-
-athlinks:volunteer
-  a owl:DataTypeProperty;
-  rdfs:range xsd:boolean .
-
 For AthleticEvent PROPERTIES
-athlinks:details
-  a owl:DataTypeProperty;
-  rdfs:range xsd:string .
-
-athlinks:description
-  a owl:DataTypeProperty;
-  rdfs:range xsd:string .
-
 athlinks:isPartnerRace
   a owl:DataTypeProperty;
   rdfs:range xsd:boolean .
-
-athlinks:externalResultsUrl
-  a owl:DataTypeProperty;
-  rdfs:range schema:URL .
-
-athlinks:externalRaceUrl
-  a owl:DataTypeProperty;
-  rdfs:range schema:URL .
