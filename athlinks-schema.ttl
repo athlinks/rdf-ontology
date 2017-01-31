@@ -73,15 +73,13 @@ athlinks:AthleticRace
   rdfs:comment "An athletic race, a distinct course." ;
   rdfs:label "Athletic Race" ;
   rdfs:hasProperty athlinks:raceType ;
-  rdfs:subClassOf schema:SportsEvent ;
-  rdfs:hasProperty athlinks:giveaway .
+  rdfs:subClassOf schema:SportsEvent .
 
 athlinks:AthleticEvent
   a owl:Class ;
   rdfs:comment "An Athletic Event, a group of Athletic Races that are all part of the same event." ;
   rdfs:label "Athletic Race" ;
-  rdfs:subClassOf schema:SportsEvent ;
-  rdfs:hasProperty athlinks:isPartnerRace .
+  rdfs:subClassOf schema:SportsEvent .
 
 athlinks:AthleticSeries
   a owl:Class ;
@@ -161,13 +159,3 @@ athlinks:seriesType
   rdfs:range [ a xsd:string ;
 								owl:oneOf("Master", "Social", "Points", "Series")
 	     				] .
-
-# For  AthleticRace PROPERTIES
-athlinks:giveaway
-  a owl:DataTypeProperty;
-  rdfs:range xsd:string .
-
-For AthleticEvent PROPERTIES
-athlinks:isPartnerRace
-  a owl:DataTypeProperty;
-  rdfs:range xsd:boolean .
