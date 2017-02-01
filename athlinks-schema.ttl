@@ -78,6 +78,7 @@ athlinks:AthleticSeries
   a owl:Class ;
   rdfs:comment "An Athletic Series, a group of Athletic Events that are part of the same series." ;
   rdfs:label "Athletic Race" ;
+  rdfs:hasProperty athlinks:seriesType ;
   rdfs:subClassOf schema:SportsEvent .
 
 ## PROPERTIES
@@ -144,4 +145,10 @@ athlinks:bib
 
 athlinks:pace
   a owl:DataTypeProperty ;
-  rdfs:range schema:DateTime .
+  rdfs:range schema:QuantitativeValue .
+
+athlinks:seriesType
+  a owl:DataTypeProperty;
+  rdfs:range [ a xsd:string ;
+								owl:oneOf("Master", "Social", "Points", "Series")
+	     				] .
