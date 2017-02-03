@@ -18,12 +18,13 @@ athlinks:TimingInterval
   a rdfs:Class ;
   rdfs:comment "A measured distance over all or part of an athletic event course." ;
   rdfs:label "Timing interval" ;
-#  rdfs:hasProperty athlinks:defaultPace;
-#  rdfs:hasProperty athlinks:distanceFromStart;
-#  rdfs:hasProperty athlinks:distance;
-#  rdfs:hasProperty schema:fromLocation;
-#  rdfs:hasProperty schema:toLocation;
   rdfs:subClassOf schema:Place .
+  #members:
+  #athlinks:defaultPace;
+  #athlinks:distanceFromStart;
+  #athlinks:distance;
+  #schema:fromLocation;
+  #schema:toLocation;
 
 athlinks:TimingPoint a rdfs:Class;
   rdfs:subClassOf schema:Place;
@@ -33,33 +34,36 @@ athlinks:TimingPoint a rdfs:Class;
 athlinks:TagRead a rdfs:Class;
   rdfs:label "RFID tag read";
   rdfs:comment "The representation of a raw reading of an RFID tag." .
-#  rdfs:hasProperty athlinks:timingDevice;
-#  rdfs:hasProperty schema:agent;
-#  rdfs:hasProperty schema:location;
-#  rdfs:hasProperty athlinks:rawTime;
-#  rdfs:hasProperty athlinks:adjustedTime.
+  #members:
+  #athlinks:timingDevice;
+  #schema:agent;
+  #schema:location;
+  #athlinks:rawTime;
+  #athlinks:adjustedTime.
 
 athlinks:IntervalResult a rdfs:Class;
   rdfs:label "Interval Result";
   rdfs:comment "The duration calculated for an interval by an actor.";
   rdfs:subClassOf schema:MoveAction .
-#  rdfs:hasProperty athlinks:beginTagRead;
-#  rdfs:hasProperty athlinks:endTagRead;
-#  rdfs:hasProperty athlinks:bib;
-#  rdfs:hasProperty schema:duration;
-#  rdfs:hasProperty athlinks:timingInterval;
-#  rdfs:hasProperty athlinks:ranking;
-#  rdfs:hasProperty athlinks:chipTime .
-#  rdfs:hasProperty athlinks:clockTime .
+  #members:
+  #athlinks:beginTagRead;
+  #athlinks:endTagRead;
+  #athlinks:bib;
+  #schema:duration;
+  #athlinks:timingInterval;
+  #athlinks:ranking;
+  #athlinks:chipTime .
+  #athlinks:clockTime .
 
 athlinks:BracketRanking a rdfs:Class;
   rdfs:label "Bracket Ranking";
   rdfs:comment "A raking of an Interval Result when ranked within a Bracket." .
-#  rdfs:hasProperty athlinks:bracket;
-#  rdfs:hasProperty athlinks:intervalResult;
-#  rdfs:hasProperty athlinks:timingInterval;
-#  rdfs:hasProperty athlinks:rank.
-#  rdfs:hasProperty athlinks:agePercentage.
+  #members:
+  #athlinks:bracket;
+  #athlinks:intervalResult;
+  #athlinks:timingInterval;
+  #athlinks:rank.
+  #athlinks:agePercentage.
 
 athlinks:Bracket a rdfs:Class.
 
@@ -67,8 +71,9 @@ athlinks:AthleticRace
   a owl:Class ;
   rdfs:comment "An athletic race, a distinct course." ;
   rdfs:label "Athletic Race" ;
-#  rdfs:hasProperty athlinks:raceType ;
   rdfs:subClassOf schema:SportsEvent .
+  #members:
+  #athlinks:raceType ;
 
 athlinks:AthleticEvent
   a owl:Class ;
@@ -80,8 +85,9 @@ athlinks:AthleticSeries
   a owl:Class ;
   rdfs:comment "An Athletic Series, a group of Athletic Events that are part of the same series." ;
   rdfs:label "Athletic Race" ;
-#  rdfs:hasProperty athlinks:seriesType ;
   rdfs:subClassOf schema:SportsEvent .
+  #members:
+  #athlinks:seriesType ;
 
 ## PROPERTIES
 
