@@ -8,7 +8,7 @@
 @prefix schema: <http://schema.org/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<http://athlinks.com/2017/01/rdf-schema> a owl:Ontology ;
+<http://adp.athlinks.com/2017/01/rdf-schema> a owl:Ontology ;
 	owl:imports <http://topbraid.org/schema/> ;
 	rdfs:label "The Athlinks Schema vocabulary".
 
@@ -150,5 +150,5 @@ athlinks:pace
 athlinks:seriesType
   a owl:DataTypeProperty;
   rdfs:range [ a xsd:string ;
-								owl:oneOf("Master", "Social", "Points", "Series")
-	     				] .
+                owl:oneOf("Master" "Social" "Points" "Series")
+              ] .
