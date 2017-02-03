@@ -125,9 +125,9 @@ rsu:division\/263024 a athlinks:Bracket;
 rsu:division\/263025 a athlinks:Bracket;
 	rdfs:label "All Female".
 
-rsu:event\/89810\/full-course\/result#Kelly\/Fleming\/f\/34 a athlinks:IntervalResult;
-	athlinks:rawDuration "1:10:19.6"^^xsd:dateTime;
-	athlinks:adjustedDuration "1:10:19.6"^^xsd:dateTime;
+rsu:event\/89810\/full-course\/result\#Kelly\/Fleming\/f\/34 a athlinks:IntervalResult;
+	athlinks:clockTime "1:10:19.6"^^xsd:duration;
+	athlinks:chipTime "1:10:19.6"^^xsd:duration;
 	athlinks:timingInterval rsu:event\/89810\/overall;
 	athlinks:bib 100;
 	athlinks:ranking [
@@ -144,30 +144,30 @@ rsu:event\/89810\/full-course\/result#Kelly\/Fleming\/f\/34 a athlinks:IntervalR
 		athlinks:rank "1"^^xsd:integer;
 	] .
 
-rsu:split\/30668\/result#Kelly\/Fleming\/f\/34 a athlinks:IntervalResult;
-	athlinks:rawDuration "4:44"^^xsd:dateTime;
+rsu:split\/30668\/result\#Kelly\/Fleming\/f\/34 a athlinks:IntervalResult;
+	athlinks:chipTime "4:44"^^xsd:duration;
 	athlinks:pace "1:35"^^xsd:dateTime;
 	athlinks:timingInterval rsu:split\/30668.
 
-rsu:split\/30669\/result#Kelly\/Fleming\/f\/34 a athlinks:IntervalResult;
-	athlinks:rawDuration "0:41"^^xsd:dateTime;
+rsu:split\/30669\/result\#Kelly\/Fleming\/f\/34 a athlinks:IntervalResult;
+	athlinks:chipTime "0:41"^^xsd:duration;
 	athlinks:timingInterval rsu:split\/30669.
 
-rsu:split\/30670\/result#Kelly\/Fleming\/f\/34 a athlinks:IntervalResult;
-	athlinks:rawDuration "40:06"^^xsd:dateTime;
+rsu:split\/30670\/result\#Kelly\/Fleming\/f\/34 a athlinks:IntervalResult;
+	athlinks:chipTime "40:06"^^xsd:duration;
 	athlinks:pace "3:05"^^xsd:dateTime;
 	athlinks:timingInterval rsu:split\/30670.
 
-rsu:split\/30671\/result#Kelly\/Fleming\/f\/34 a athlinks:IntervalResult;
-	athlinks:rawDuration "0:29"^^xsd:dateTime;
+rsu:split\/30671\/result\#Kelly\/Fleming\/f\/34 a athlinks:IntervalResult;
+	athlinks:chipTime "0:29"^^xsd:duration;
 	athlinks:timingInterval rsu:split\/30671.
 
-rsu:split\/30672\/result#Kelly\/Fleming\/f\/34 a athlinks:IntervalResult;
-	athlinks:rawDuration "0:41"^^xsd:dateTime;
+rsu:split\/30672\/result\#Kelly\/Fleming\/f\/34 a athlinks:IntervalResult;
+	athlinks:chipTime "0:41"^^xsd:duration;
 	athlinks:pace "7:51"^^xsd:dateTime;
 	athlinks:timingInterval rsu:split\/30672.
 
-rsu:event\/89810\/participant#Kelly\/Fleming\/f\/34 a schema:Person;
+rsu:event\/89810\/participant\#Kelly\/Fleming\/f\/34 a schema:Person;
 	schema:birthDate "1982/1/1"^^xsd:dateTime;
 	schema:givenName "Kelly";
 	schema:familyName "Fleming";
@@ -185,7 +185,7 @@ rsu:event\/89810\/participant#Kelly\/Fleming\/f\/34 a schema:Person;
 	athlinks:IntervalResult rsu:split\/30672\/result\#Kelly\/Fleming\/f\/34.
 
 
-rsu:event\/89810\/participant#Julio\/Garcia\/m\/43 a schema:Person;
+rsu:event\/89810\/participant\#Julio\/Garcia\/m\/43 a schema:Person;
 	schema:birthDate "1973/1/1"^^xsd:dateTime;
 	schema:givenName "Julio";
 	schema:familyName "Garcia";
@@ -203,8 +203,8 @@ rsu:event\/89810\/participant#Julio\/Garcia\/m\/43 a schema:Person;
 	athlinks:IntervalResult rsu:split\/30672\/result\#Julio\/Garcia\/m\/43.
 
 rsu:event\/89810\/full-course\/result\#Julio\/Garcia\/m\/43 a athlinks:IntervalResult;
-	athlinks:rawDuration "1:04:21.4"^^xsd:dateTime;
-	athlinks:adjustedDuration "1:04:21.4"^^xsd:dateTime;
+	athlinks:chipTime "1:04:21.4"^^xsd:duration;
+	athlinks:clockTime "1:04:21.4"^^xsd:duration;
 	athlinks:timingInterval rsu:event\/89810\/overall;
 	athlinks:bib 99;
 	athlinks:ranking [
@@ -222,25 +222,25 @@ rsu:event\/89810\/full-course\/result\#Julio\/Garcia\/m\/43 a athlinks:IntervalR
 	] .
 
 rsu:split\/30668\/result\#Julio\/Garcia\/m\/43 a athlinks:IntervalResult;
-	athlinks:rawDuration "5:02"^^xsd:dateTime;
-	athlinks:pace "1:41"^^xsd:dateTime;
+	athlinks:chipTime "5:02"^^xsd:duration;
+	athlinks:pace "1:41"^^xsd:duration;
 	athlinks:timingInterval rsu:split\/30668.
 
 rsu:split\/30669\/result\#Julio\/Garcia\/m\/43 a athlinks:IntervalResult;
-	athlinks:rawDuration "0:59"^^xsd:dateTime;
+	athlinks:chipTime "0:59"^^xsd:duration;
 	athlinks:timingInterval rsu:split\/30669.
 
 rsu:split\/30670\/result\#Julio\/Garcia\/m\/43 a athlinks:IntervalResult;
-	athlinks:rawDuration "35:02"^^xsd:dateTime;
+	athlinks:chipTime "35:02"^^xsd:duration;
 	athlinks:pace "2:42"^^xsd:dateTime;
 	athlinks:timingInterval rsu:split\/30670.
 
 rsu:split\/30671\/result\#Julio\/Garcia\/m\/43 a athlinks:IntervalResult;
-	athlinks:rawDuration "0:42"^^xsd:dateTime;
+	athlinks:chipTime "0:42"^^xsd:duration;
 	athlinks:timingInterval rsu:split\/30671.
 
 rsu:split\/30672\/result\#Julio\/Garcia\/m\/43 a athlinks:IntervalResult;
-	athlinks:rawDuration "22:36"^^xsd:dateTime;
+	athlinks:chipTime "22:36"^^xsd:duration;
 	athlinks:pace "7:17"^^xsd:dateTime;
 	athlinks:timingInterval rsu:split\/30672.
 
@@ -263,8 +263,8 @@ rsu:event\/89810\/participant\#Petra\/Schumann\/f\/43 a schema:Person;
 	athlinks:IntervalResult rsu:split\/30672\/result\#Petra\/Schumann\/f\/43.
 
 rsu:event\/89810\/full-course\/result\#Petra\/Schumann\/f\/43 a athlinks:IntervalResult;
-	athlinks:rawDuration "1:51:45.1"^^xsd:dateTime;
-	athlinks:adjustedDuration "1:51:45.1"^^xsd:dateTime;
+	athlinks:chipTime "1:51:45.1"^^xsd:duration;
+	athlinks:clockTime "1:51:45.1"^^xsd:duration;
 	athlinks:timingInterval rsu:event\/89810\/overall;
 	athlinks:bib 28;
 	athlinks:ranking [
@@ -282,24 +282,24 @@ rsu:event\/89810\/full-course\/result\#Petra\/Schumann\/f\/43 a athlinks:Interva
 	] .
 
 rsu:split\/30668\/result\#Petra\/Schumann\/f\/43 a athlinks:IntervalResult;
-	athlinks:rawDuration "9:38"^^xsd:dateTime;
+	athlinks:chipTime "9:38"^^xsd:duration;
 	athlinks:pace "3:13"^^xsd:dateTime;
 	athlinks:timingInterval rsu:split\/30668.
 
 rsu:split\/30669\/result\#Petra\/Schumann\/f\/43 a athlinks:IntervalResult;
-	athlinks:rawDuration "3:12"^^xsd:dateTime;
+	athlinks:chipTime "3:12"^^xsd:duration;
 	athlinks:timingInterval rsu:split\/30669.
 
 rsu:split\/30670\/result\#Petra\/Schumann\/f\/43 a athlinks:IntervalResult;
-	athlinks:rawDuration "50:47"^^xsd:dateTime;
+	athlinks:chipTime "50:47"^^xsd:duration;
 	athlinks:pace "3:54"^^xsd:dateTime;
 	athlinks:timingInterval rsu:split\/30670.
 
 rsu:split\/30671\/result\#Petra\/Schumann\/f\/43 a athlinks:IntervalResult;
-	athlinks:rawDuration "2:28"^^xsd:dateTime;
+	athlinks:chipTime "2:28"^^xsd:duration;
 	athlinks:timingInterval rsu:split\/30671.
 
 rsu:split\/30672\/result\#Petra\/Schumann\/f\/43 a athlinks:IntervalResult;
-	athlinks:rawDuration "45:40"^^xsd:dateTime;
+	athlinks:chipTime "45:40"^^xsd:duration;
 	athlinks:pace "14:44"^^xsd:dateTime;
 	athlinks:timingInterval rsu:split\/30672.

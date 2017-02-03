@@ -128,11 +128,11 @@ rsu:raceEventDays\/58262 a athlinks:AthleticEvent ;
 		schema:subEvent rsu:event\/139165 ;
 		schema:subEvent rsu:event\/139166 .
 
-rsu:#ProcessingFee1 a schema:PaymentChargeSpecification ;
+rsu:\#ProcessingFee1 a schema:PaymentChargeSpecification ;
 			schema:price "3.80" ;
 			schema:priceCurrency "USD" .
 
-rsu:#ProcessingFee2 a schema:PaymentChargeSpecification ;
+rsu:\#ProcessingFee2 a schema:PaymentChargeSpecification ;
 			schema:price "3.05" ;
 			schema:priceCurrency "USD" .
 
