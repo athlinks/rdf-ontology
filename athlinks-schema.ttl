@@ -13,6 +13,32 @@
   rdfs:label "The Athlinks Schema vocabulary".
 
 ### CLASSES
+athlinks:TerrainSpecifics a rdfs:Class;
+  rdfs:comment "Specifics about course terrain such as altitude or grade." ;
+  rdfs:label "Terrain Specifics" ;
+  rdfs:subClassOf schema:Landform ;
+  #members:
+  #athlinks:elevUnit;
+  #athlinks:altitude;
+
+athlinks:Directions a rdfs:Class;
+  rdfs:comment "Directions to an event or race." ;
+  rdfs:label "Directions" ;
+  rdfs:subClassOf schema:Text ;
+
+athlinks:AgeReferenceDate a rdfs:Class;
+  rdfs:comment "When event has a minimum age, this is the date by which they must be that age." ;
+  rdfs:label "Age Reference Date" ;
+  rdfs:subClassOf schema:Date ;
+
+athlinks:Timer a rdfs:Class;
+  rdfs:comment "A person or organization who times events." ;
+  rdfs:label "Timer" ;
+  rdfs:subClassOf schema:Organization ;
+  rdfs:subClassOf schema:Person ;
+  #members:
+  #schema:contactPoint;
+  #schema:name;
 
 athlinks:TimingInterval
   a rdfs:Class ;
@@ -74,6 +100,17 @@ athlinks:AthleticRace
   rdfs:subClassOf schema:SportsEvent .
   #members:
   #athlinks:raceType ;
+  #athlinks:startMarked;
+  #athlinks:finishMarked;
+  #athlinks:distanceUnit;
+  #athlinks:integrity;
+  #athlinks:createUser;
+  #athlinks:isHidden;
+  #athlinks:isVisible;
+  #athlinks:isEnabled;
+  #athlinks:isApproved;
+  #athlinks:isHandicap;
+  #athlinks:isNavigable;
 
 athlinks:AthleticEvent
   a owl:Class ;
@@ -89,7 +126,7 @@ athlinks:AthleticSeries
   #members:
   #athlinks:seriesType ;
 
-## PROPERTIESz
+## PROPERTIES
 
 athlinks:rank a owl:DataTypeProperty;
   rdfs:domain athlinks:BracketRanking;
@@ -175,3 +212,68 @@ athlinks:agePercentage
   a owl:DataTypeProperty ;
   rdfs:domain athlinks:IntervalResult;
   rdfs:range schema:Decimal .
+
+athlinks:isHidden
+  a owl:DataTypeProperty ;
+  rdfs:domain athlinks:AthleticRace;
+  rdfs:range schema:Boolean .
+
+athlinks:isVisible
+  a owl:DataTypeProperty ;
+  rdfs:domain athlinks:AthleticRace;
+  rdfs:range schema:Boolean .
+
+athlinks:isEnabled
+  a owl:DataTypeProperty ;
+  rdfs:domain athlinks:AthleticRace;
+  rdfs:range schema:Boolean .
+
+athlinks:isApproved
+  a owl:DataTypeProperty ;
+  rdfs:domain athlinks:AthleticRace;
+  rdfs:range schema:Boolean .
+
+athlinks:isHandicap
+  a owl:DataTypeProperty ;
+  rdfs:domain athlinks:AthleticRace;
+  rdfs:range schema:Boolean .
+
+athlinks:isNavigable
+  a owl:DataTypeProperty ;
+  rdfs:domain athlinks:AthleticRace;
+  rdfs:range schema:Boolean .
+
+athlinks:elevUnit
+  a owl:DataTypeProperty ;
+  rdfs:domain athlinks:TerrainSpecifics;
+  rdfs:range schema:Float .
+
+athlinks:altitude
+  a owl:DataTypeProperty ;
+  rdfs:domain athlinks:TerrainSpecifics;
+  rdfs:range schema:Float .
+
+athlinks:startMarked
+  a owl:DataTypeProperty ;
+  rdfs:domain athlinks:AthleticRace;
+  rdfs:range schema:Boolean .
+
+athlinks:finishMarked
+  a owl:DataTypeProperty ;
+  rdfs:domain athlinks:AthleticRace;
+  rdfs:range schema:Boolean .
+
+athlinks:distanceUnit
+  a owl:DataTypeProperty ;
+  rdfs:domain athlinks:AthleticRace;
+  rdfs:range schema:Float .
+
+athlinks:integrity
+  a owl:DataTypeProperty ;
+  rdfs:domain athlinks:AthleticRace;
+  rdfs:range schema:Integer .
+
+athlinks:createUser
+  a owl:DataTypeProperty ;
+  rdfs:domain athlinks:AthleticRace;
+  rdfs:range schema:Integer .
