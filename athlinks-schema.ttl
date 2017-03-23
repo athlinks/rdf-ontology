@@ -89,7 +89,7 @@ athlinks:AthleticSeries
   #members:
   #athlinks:seriesType ;
 
-## PROPERTIES
+## PROPERTIESz
 
 athlinks:rank a owl:DataTypeProperty;
   rdfs:domain athlinks:BracketRanking;
@@ -158,7 +158,7 @@ athlinks:pace
 athlinks:seriesType
   a owl:DataTypeProperty;
   rdfs:range [ a xsd:string ;
-                owl:oneOf("Master" "Social" "Points" "Series")
+                owl:oneOf("Master" "Social" "Points" "Series" "MasterSeries")
               ] .
 
 athlinks:clockTime
