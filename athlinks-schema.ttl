@@ -277,3 +277,8 @@ athlinks:createUser
   a owl:DataTypeProperty ;
   rdfs:domain athlinks:AthleticRace;
   rdfs:range schema:Integer .
+
+athlinks:difficulty
+    a owl:DataTypeProperty ;
+    rdfs:domain athlinks:AthleticRace;
+    rdfs:range schema:Integer .
