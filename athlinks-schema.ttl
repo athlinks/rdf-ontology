@@ -12,19 +12,6 @@
   rdfs:label "The Athlinks Schema vocabulary".
 
 ### CLASSES
-athlinks:TerrainSpecifics a rdfs:Class;
-  rdfs:comment "Specifics about course terrain such as altitude or grade." ;
-  rdfs:label "Terrain Specifics" ;
-  rdfs:subClassOf schema:Landform ;
-  #members:
-  #athlinks:elevUnit;
-  #athlinks:altitude;
-
-athlinks:Directions a rdfs:Class;
-  rdfs:comment "Directions to an event or race." ;
-  rdfs:label "Directions" ;
-  rdfs:subClassOf schema:Text ;
-
 athlinks:TimingInterval
   a rdfs:Class ;
   rdfs:comment "A measured distance over all or part of an athletic event course." ;
@@ -85,17 +72,10 @@ athlinks:AthleticRace
   rdfs:subClassOf schema:SportsEvent .
   #members:
   #athlinks:raceType ;
-  #athlinks:startMarked;
-  #athlinks:finishMarked;
   #athlinks:distanceUnit;
-  #athlinks:integrity;
+  #athlinks:distanceDisplayUnit;
   #athlinks:createUser;
-  #athlinks:isHidden;
-  #athlinks:isVisible;
-  #athlinks:isEnabled;
-  #athlinks:isApproved;
-  #athlinks:isHandicap;
-  #athlinks:isNavigable;
+  #ageReferenceDate;
 
 athlinks:AthleticEvent
   a owl:Class ;
@@ -195,75 +175,55 @@ athlinks:agePercentage
   rdfs:domain athlinks:IntervalResult;
   rdfs:range xsd:decimal .
 
-athlinks:isHidden
+athlinks:elevation
   a owl:DataTypeProperty ;
-  rdfs:domain athlinks:AthleticRace;
-  rdfs:range xsd:boolean .
-
-athlinks:isVisible
-  a owl:DataTypeProperty ;
-  rdfs:domain athlinks:AthleticRace;
-  rdfs:range xsd:boolean .
-
-athlinks:isEnabled
-  a owl:DataTypeProperty ;
-  rdfs:domain athlinks:AthleticRace;
-  rdfs:range xsd:boolean .
-
-athlinks:isApproved
-  a owl:DataTypeProperty ;
-  rdfs:domain athlinks:AthleticRace;
-  rdfs:range xsd:boolean .
-
-athlinks:isHandicap
-  a owl:DataTypeProperty ;
-  rdfs:domain athlinks:AthleticRace;
-  rdfs:range xsd:boolean .
-
-athlinks:isNavigable
-  a owl:DataTypeProperty ;
-  rdfs:domain athlinks:AthleticRace;
-  rdfs:range xsd:boolean .
-
-athlinks:elevUnit
-  a owl:DataTypeProperty ;
-  rdfs:domain athlinks:TerrainSpecifics;
-  rdfs:range xsd:float .
+  rdfs:label "Elevation"
+  rdfs:comment "Elevation"
+  rdfs:domain schema:Landform;
+  rdfs:range schema:QuantitativeValue .
 
 athlinks:altitude
   a owl:DataTypeProperty ;
-  rdfs:domain athlinks:TerrainSpecifics;
-  rdfs:range xsd:float .
+  rdfs:label "Altitude"
+  rdfs:comment "Altitude"
+  rdfs:domain schema:Landform;
+  rdfs:range schema:QuantitativeValue .
 
-athlinks:startMarked
+athlinks:elevationGradeType
   a owl:DataTypeProperty ;
-  rdfs:domain athlinks:AthleticRace;
-  rdfs:range xsd:boolean .
+  rdfs:domain schema:Landform;
+  rdfs:range schema:QuantitiveValue .
 
-athlinks:finishMarked
+athlinks:elevationType
   a owl:DataTypeProperty ;
-  rdfs:domain athlinks:AthleticRace;
-  rdfs:range xsd:boolean .
+  rdfs:domain schema:Landform;
+  rdfs:range schema:QuantitiveValue .
+
+athlinks:altitudeType
+  a owl:DataTypeProperty ;
+  rdfs:domain schema:Landform;
+  rdfs:range sschema:QuantitiveValue .
 
 athlinks:distanceUnit
   a owl:DataTypeProperty ;
+  rdfs:label "Default Distance Unit"
+  rdfs:comment "Default Distance Unit"
   rdfs:domain athlinks:AthleticRace;
-  rdfs:range xsd:float .
+  rdfs:range schema:QuantitiveValue .
 
-athlinks:integrity
+athlinks:distanceDisplayUnit
   a owl:DataTypeProperty ;
+  rdfs:label "Distance Unit to Display"
+  rdfs:comment "Distance Unit to Display"
   rdfs:domain athlinks:AthleticRace;
-  rdfs:range xsd:int .
+  rdfs:range schema:QuantitiveValue .
 
 athlinks:createUser
   a owl:DataTypeProperty ;
+  rdfs:label "ID of User Who Created Race"
+  rdfs:comment "ID of User Who Created Race"
   rdfs:domain athlinks:AthleticRace;
   rdfs:range xsd:int .
-
-athlinks:difficulty
-    a owl:DataTypeProperty ;
-    rdfs:domain athlinks:AthleticRace;
-    rdfs:range xsd:int .
 
 athlinks:ageReferenceDate
     a owl:DataTypeProperty;
@@ -297,3 +257,9 @@ athlinks:scoring
   a owl:ObjectProperty ;
   rdfs:comment "The scoring used on an AthleticEventGroup" ;
   rdfs:domain athlinks:AthleticEventGroup ;
+
+athlinks:directions
+  rdfs:comment "Directions to an event or race." ;
+  rdfs:domain schema:Event ;
+  rdfs:label "Directions" ;
+  rdfs:range schema:Text ;
