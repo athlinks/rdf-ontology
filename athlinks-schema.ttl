@@ -18,52 +18,52 @@ athlinks:TimingInterval
   rdfs:label "Timing interval" ;
   rdfs:subClassOf schema:Place .
   #members:
-  #athlinks:defaultPace;
-  #athlinks:distanceFromStart;
-  #athlinks:distance;
-  #schema:fromLocation;
-  #schema:toLocation;
+  #athlinks:defaultPace ;
+  #athlinks:distanceFromStart ;
+  #athlinks:distance ;
+  #schema:fromLocation ;
+  #schema:toLocation ;
 
-athlinks:TimingPoint a rdfs:Class;
-  rdfs:subClassOf schema:Place;
-  rdfs:label "Timing point";
-  rdfs:comment "A point located within a timing interval at which sensors are deployed to capture tag reads of passing athletes.".
+athlinks:TimingPoint a rdfs:Class ;
+  rdfs:subClassOf schema:Place ;
+  rdfs:label "Timing point" ;
+  rdfs:comment "A point located within a timing interval at which sensors are deployed to capture tag reads of passing athletes." .
 
-athlinks:TagRead a rdfs:Class;
+athlinks:TagRead a rdfs:Class ;
   rdfs:label "RFID tag read";
   rdfs:comment "The representation of a raw reading of an RFID tag." .
   #members:
-  #athlinks:timingDevice;
-  #schema:agent;
-  #schema:location;
-  #athlinks:rawTime;
-  #athlinks:adjustedTime.
+  #athlinks:timingDevice ;
+  #schema:agent ;
+  #schema:location ;
+  #athlinks:rawTime ;
+  #athlinks:adjustedTime .
 
-athlinks:IntervalResult a rdfs:Class;
+athlinks:IntervalResult a rdfs:Class ;
   rdfs:label "Interval Result";
   rdfs:comment "The duration calculated for an interval by an actor.";
   rdfs:subClassOf schema:MoveAction .
   #members:
-  #athlinks:beginTagRead;
-  #athlinks:endTagRead;
-  #athlinks:bib;
-  #schema:duration;
-  #athlinks:timingInterval;
-  #athlinks:ranking;
-  #athlinks:chipTime .
+  #athlinks:beginTagRead ;
+  #athlinks:endTagRead ;
+  #athlinks:bib ;
+  #schema:duration ;
+  #athlinks:timingInterval ;
+  #athlinks:ranking ;
+  #athlinks:chipTime ;
   #athlinks:clockTime .
 
-athlinks:BracketRanking a rdfs:Class;
+athlinks:BracketRanking a rdfs:Class ;
   rdfs:label "Bracket Ranking";
   rdfs:comment "A raking of an Interval Result when ranked within a Bracket." .
   #members:
-  #athlinks:bracket;
-  #athlinks:intervalResult;
-  #athlinks:timingInterval;
-  #athlinks:rank.
-  #athlinks:agePercentage.
+  #athlinks:bracket ;
+  #athlinks:intervalResult ;
+  #athlinks:timingInterval ;
+  #athlinks:rank ;
+  #athlinks:agePercentage .
 
-athlinks:Bracket a rdfs:Class.
+athlinks:Bracket a rdfs:Class .
 
 athlinks:AthleticRace
   a owl:Class ;
@@ -72,10 +72,10 @@ athlinks:AthleticRace
   rdfs:subClassOf schema:SportsEvent .
   #members:
   #athlinks:raceType ;
-  #athlinks:distanceUnit;
-  #athlinks:distanceDisplayUnit;
-  #athlinks:createUser;
-  #ageReferenceDate;
+  #athlinks:distanceUnit ;
+  #athlinks:distanceDisplayUnit ;
+  #athlinks:createUser ;
+  #ageReferenceDate .
 
 athlinks:AthleticEvent
   a owl:Class ;
@@ -89,177 +89,169 @@ athlinks:AthleticEventGroup
   rdfs:label "Athletic Event Group" ;
   rdfs:subClassOf schema:SportsEvent .
   #members:
-  #athlinks:subEventGroup
-  #athlinks:visibility
-  #athlinks:recurrence
-  #athlinks:scoring
+  #athlinks:subEventGroup ;
+  #athlinks:visibility ;
+  #athlinks:recurrence ;
+  #athlinks:scoring .
 
 ## PROPERTIES
 
-athlinks:rank a owl:DataTypeProperty;
-  rdfs:domain athlinks:BracketRanking;
-  rdfs:range schema:Integer.
+athlinks:rank a owl:DataTypeProperty ;
+  rdfs:domain athlinks:BracketRanking ;
+  rdfs:range schema:Integer .
 
-athlinks:timingInterval a owl:ObjectProperty;
-  rdfs:domain athlinks:IntervalResult;
-  rdfs:label "The Interval component of the course";
+athlinks:timingInterval a owl:ObjectProperty ;
+  rdfs:domain athlinks:IntervalResult ;
+  rdfs:label "The Interval component of the course" ;
   schema:rangeIncludes schema:ExerciseAction .
 
-athlinks:bracket a owl:ObjectProperty;
-  rdfs:domain athlinks:BracketRanking;
-  rdfs:range athlinks:Bracket.
+athlinks:bracket a owl:ObjectProperty ;
+  rdfs:domain athlinks:BracketRanking ;
+  rdfs:range athlinks:Bracket .
 
-athlinks:endTagRead a owl:ObjectProperty;
-  rdfs:domain athlinks:IntervalResult;
-  rdfs:range athlinks:TagRead.
+athlinks:endTagRead a owl:ObjectProperty ;
+  rdfs:domain athlinks:IntervalResult ;
+  rdfs:range athlinks:TagRead .
 
-athlinks:beginTagRead a owl:ObjectProperty;
-  rdfs:domain athlinks:IntervalResult;
-  rdfs:range athlinks:TagRead.
+athlinks:beginTagRead a owl:ObjectProperty ;
+  rdfs:domain athlinks:IntervalResult ;
+  rdfs:range athlinks:TagRead .
 
-athlinks:timingDevice a owl:ObjectProperty;
-  rdfs:domain athlinks:TagRead;
-  rdfs:range schema:Thing.
+athlinks:timingDevice a owl:ObjectProperty ;
+  rdfs:domain athlinks:TagRead ;
+  rdfs:range schema:Thing .
 
-athlinks:rawTime a owl:DataTypeProperty;
-  rdfs:domain athlinks:TagRead;
-  rdfs:range schema:DateTime.
+athlinks:rawTime a owl:DataTypeProperty ;
+  rdfs:domain athlinks:TagRead ;
+  rdfs:range schema:DateTime .
 
-athlinks:adjustedTime a owl:DataTypeProperty;
-  rdfs:domain athlinks:TagRead;
-  rdfs:range schema:DateTime.
+athlinks:adjustedTime a owl:DataTypeProperty ;
+  rdfs:domain athlinks:TagRead ;
+  rdfs:range schema:DateTime .
 
-athlinks:ranking a owl:ObjectProperty;
-  rdfs:domain athlinks:IntervalResult;
-  rdfs:range athlinks:BracketRanking.
+athlinks:ranking a owl:ObjectProperty ;
+  rdfs:domain athlinks:IntervalResult ;
+  rdfs:range athlinks:BracketRanking .
 
-athlinks:defaultPace
-  a owl:ObjectProperty ;
+athlinks:defaultPace a owl:ObjectProperty ;
   rdfs:domain athlinks:TimingInterval ;
   rdfs:range schema:QuantitativeValue .
 
-athlinks:distanceFromStart
-  a owl:ObjectProperty ;
+athlinks:distanceFromStart a owl:ObjectProperty ;
   rdfs:domain athlinks:TimingInterval ;
   rdfs:range schema:QuantitativeValue .
 
-athlinks:distance
-  a owl:ObjectProperty ;
+athlinks:distance a owl:ObjectProperty ;
   rdfs:range schema:QuantitativeValue .
 
 athlinks:raceType
-  a owl:DataTypeProperty;
+  a owl:DataTypeProperty ;
   rdfs:range [ a xsd:string ;
                 owl:oneOf ("triathlon" "5k" "10k" "marathon" "other")
               ] .
-athlinks:bib
-  a owl:DataTypeProperty;
+
+athlinks:bib a owl:DataTypeProperty ;
   rdfs:range xsd:string .
 
-athlinks:pace
-  a owl:DataTypeProperty ;
+athlinks:pace a owl:DataTypeProperty ;
   rdfs:range schema:QuantitativeValue .
 
-athlinks:clockTime
-  a owl:DataTypeProperty ;
-  rdfs:domain athlinks:IntervalResult;
+athlinks:clockTime a owl:DataTypeProperty ;
+  rdfs:domain athlinks:IntervalResult ;
   rdfs:range schema:Duration .
 
-athlinks:chipTime
-  a owl:DataTypeProperty ;
-  rdfs:domain athlinks:IntervalResult;
+athlinks:chipTime a owl:DataTypeProperty ;
+  rdfs:domain athlinks:IntervalResult ;
   rdfs:range schema:Duration .
 
-athlinks:agePercentage
-  a owl:DataTypeProperty ;
-  rdfs:domain athlinks:IntervalResult;
+athlinks:agePercentage a owl:DataTypeProperty ;
+  rdfs:domain athlinks:IntervalResult ;
   rdfs:range xsd:decimal .
 
-athlinks:elevation
-  a owl:DataTypeProperty ;
-  rdfs:label "Elevation"
-  rdfs:comment "Elevation"
-  rdfs:domain schema:Landform;
+athlinks:elevation a owl:DataTypeProperty ;
+  rdfs:label "Elevation" ;
+  rdfs:comment "Elevation" ;
+  rdfs:domain schema:Landform ;
   rdfs:range schema:QuantitativeValue .
 
-athlinks:altitude
-  a owl:DataTypeProperty ;
-  rdfs:label "Altitude"
-  rdfs:comment "Altitude"
-  rdfs:domain schema:Landform;
+athlinks:altitude a owl:DataTypeProperty ;
+  rdfs:label "Altitude" ;
+  rdfs:comment "Altitude" ;
+  rdfs:domain schema:Landform ;
   rdfs:range schema:QuantitativeValue .
 
-athlinks:elevationGradeType
-  a owl:DataTypeProperty ;
-  rdfs:domain schema:Landform;
+athlinks:elevationGradeType a owl:DataTypeProperty ;
+  rdfs:label "Elevation Grade" ;
+  rdfs:comment "Elevation Grade" ;
+  rdfs:domain schema:Landform ;
   rdfs:range schema:QuantitiveValue .
 
-athlinks:elevationType
-  a owl:DataTypeProperty ;
-  rdfs:domain schema:Landform;
+athlinks:elevation a owl:DataTypeProperty ;
+  rdfs:label "Elevation" ;
+  rdfs:comment "Elevation" ;
+  rdfs:domain schema:Landform ;
   rdfs:range schema:QuantitiveValue .
 
-athlinks:altitudeType
-  a owl:DataTypeProperty ;
-  rdfs:domain schema:Landform;
-  rdfs:range sschema:QuantitiveValue .
-
-athlinks:distanceUnit
-  a owl:DataTypeProperty ;
-  rdfs:label "Default Distance Unit"
-  rdfs:comment "Default Distance Unit"
-  rdfs:domain athlinks:AthleticRace;
+athlinks:altitudeType a owl:DataTypeProperty ;
+  rdfs:label "Altitude Type" ;
+  rdfs:comment "Altitude Type" ;
+  rdfs:domain schema:Landform ;
   rdfs:range schema:QuantitiveValue .
 
-athlinks:distanceDisplayUnit
-  a owl:DataTypeProperty ;
-  rdfs:label "Distance Unit to Display"
-  rdfs:comment "Distance Unit to Display"
-  rdfs:domain athlinks:AthleticRace;
+athlinks:distanceUnit a owl:DataTypeProperty ;
+  rdfs:label "Default Distance Unit" ;
+  rdfs:comment "Default Distance Unit" ;
+  rdfs:domain athlinks:AthleticRace ;
   rdfs:range schema:QuantitiveValue .
 
-athlinks:createUser
-  a owl:DataTypeProperty ;
-  rdfs:label "ID of User Who Created Race"
-  rdfs:comment "ID of User Who Created Race"
-  rdfs:domain athlinks:AthleticRace;
+athlinks:distanceDisplayUnit a owl:DataTypeProperty ;
+  rdfs:label "Distance Unit to Display" ;
+  rdfs:comment "Distance Unit to Display" ;
+  rdfs:domain athlinks:AthleticRace ;
+  rdfs:range schema:QuantitiveValue .
+
+athlinks:createUser a owl:DataTypeProperty ;
+  rdfs:label "ID of User Who Created Race" ;
+  rdfs:comment "ID of User Who Created Race" ;
+  rdfs:domain athlinks:AthleticRace ;
   rdfs:range xsd:int .
 
-athlinks:ageReferenceDate
-    a owl:DataTypeProperty;
-    rdfs:comment "When event has a minimum age, this is the date by which they must be that age." ;
-    rdfs:domain athlinks:AthleticRace ;
-    rdfs:range schema:Date .
+athlinks:ageReferenceDate a owl:DataTypeProperty ;
+  rdfs:label "Age Reference Date" ;
+  rdfs:comment "When event has a minimum age, this is the date by which they must be that age." ;
+  rdfs:domain athlinks:AthleticRace ;
+  rdfs:range schema:Date .
 
-athlinks:subEventGroup
-  a owl:ObjectProperty;
+athlinks:subEventGroup a owl:ObjectProperty ;
   rdfs:comment "A list of AthleticEventGroups" ;
   rdfs:domain athlinks:AthleticEventGroup ;
   rdfs:range athlinks:AthleticEventGroup .
 
-athlinks:visibility
-  a owl:DataTypeProperty ;
-  rdfs:comment "Denotes who has access to see an object"
+athlinks:visibility a owl:DataTypeProperty ;
+  rdfs:comment "Denotes who has access to see an object" ;
   rdfs:domain athlinks:AthleticEventGroup ;
   rdfs:range [ a xsd:string ;
                 owl:oneOf ("Private" "Friends" "Invite" "Public")
               ] .
-
-athlinks:recurrence
-  a owl:DataTypeProperty ;
-  rdfs:comment "The default recurrence of a certain scheduling item"
+athlinks:recurrence  a owl:DataTypeProperty ;
+  rdfs:comment "The default recurrence of a certain scheduling item" ;
   rdfs:domain athlinks:AthleticEventGroup ;
   rdfs:range [ a xsd:string ;
                 owl:oneOf ("Monthly" "Yearly" "None")
               ] .
 
-athlinks:scoring
-  a owl:ObjectProperty ;
+athlinks:scoring a owl:ObjectProperty ;
   rdfs:comment "The scoring used on an AthleticEventGroup" ;
-  rdfs:domain athlinks:AthleticEventGroup ;
+  rdfs:domain athlinks:AthleticEventGroup .
 
-athlinks:directions
+athlinks:directions a owl:ObjectProperty ;
   rdfs:comment "Directions to an event or race." ;
   rdfs:domain schema:Event ;
   rdfs:label "Directions" ;
-  rdfs:range schema:Text ;
+  rdfs:range schema:Text .
+
+athlinks:streetAddress2 a owl:ObjectProperty ;
+  rdfs:comment "Second line of street address" ;
+  rdfs:domain schema:PostalAddress ;
+  rdfs:label "Street Address 2" ;
+  rdfs:range schema:Text .
