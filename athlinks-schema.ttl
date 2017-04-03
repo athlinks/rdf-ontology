@@ -152,7 +152,6 @@ athlinks:raceType
   rdfs:range [ a xsd:string ;
                 owl:oneOf ("triathlon" "5k" "10k" "marathon" "other")
               ] .
-
 athlinks:bib
   a owl:DataTypeProperty;
   rdfs:range xsd:string .
@@ -234,7 +233,7 @@ athlinks:subEventGroup
   a owl:ObjectProperty;
   rdfs:comment "A list of AthleticEventGroups" ;
   rdfs:domain athlinks:AthleticEventGroup ;
-  rdfs:range athlinks:AthleticEventGroup.
+  rdfs:range athlinks:AthleticEventGroup .
 
 athlinks:visibility
   a owl:DataTypeProperty ;
