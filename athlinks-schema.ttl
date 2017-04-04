@@ -232,6 +232,7 @@ athlinks:subEventGroup
 athlinks:visibility
   a owl:DataTypeProperty ;
   rdfs:comment "Denotes who has access to see an object";
+  rdfs:label "Denotes who has access to see an object" ;
   rdfs:domain athlinks:AthleticEventGroup ;
   rdfs:range [ a xsd:string ;
                 owl:oneOf ("Private" "Friends" "Invite" "Public")
@@ -239,7 +240,7 @@ athlinks:visibility
 
 athlinks:recurrence
   a owl:DataTypeProperty ;
-  rdfs:comment "The default recurrence of a certain scheduling item";
+  rdfs:label "The default recurrence of a certain scheduling item";
   rdfs:domain athlinks:AthleticEventGroup ;
   rdfs:range [ a xsd:string ;
                 owl:oneOf ("Monthly" "Yearly" "None")
