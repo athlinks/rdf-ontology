@@ -187,15 +187,9 @@ athlinks:altitude a owl:DataTypeProperty;
   rdfs:domain schema:Landform;
   rdfs:range schema:QuantitativeValue.
 
-athlinks:elevationGradeType a owl:DataTypeProperty;
+athlinks:elevationGrade a owl:DataTypeProperty;
   rdfs:label "Elevation Grade";
   rdfs:comment "Elevation Grade";
-  rdfs:domain schema:Landform;
-  rdfs:range schema:QuantitiveValue.
-
-athlinks:elevationType a owl:DataTypeProperty;
-  rdfs:label "Elevation";
-  rdfs:comment "Elevation";
   rdfs:domain schema:Landform;
   rdfs:range schema:QuantitiveValue.
 
@@ -203,7 +197,7 @@ athlinks:altitudeType a owl:DataTypeProperty;
   rdfs:label "Altitude Type";
   rdfs:comment "Altitude Type";
   rdfs:domain schema:Landform;
-  rdfs:range schema:QuantitiveValue.
+  rdfs:range schema:Text.
 
 athlinks:distanceUnit a owl:DataTypeProperty;
   rdfs:label "Default Distance Unit";
@@ -217,11 +211,11 @@ athlinks:distanceDisplayUnit a owl:DataTypeProperty;
   rdfs:domain athlinks:AthleticRace;
   rdfs:range schema:QuantitiveValue.
 
-athlinks:createUser a owl:DataTypeProperty;
+athlinks:createdBy a owl:DataTypeProperty;
   rdfs:label "ID of User Who Created Race";
   rdfs:comment "ID of User Who Created Race";
   rdfs:domain athlinks:AthleticRace;
-  rdfs:range xsd:int.
+  rdfs:range schema:creator.
 
 athlinks:ageReferenceDate a owl:DataTypeProperty;
   rdfs:label "Age Reference Date";
@@ -260,10 +254,4 @@ athlinks:directions a owl:ObjectProperty ;
   rdfs:comment "Directions to an event or race." ;
   rdfs:domain schema:Event ;
   rdfs:label "Directions" ;
-  rdfs:range schema:Text.
-
-athlinks:streetAddress2 a owl:ObjectProperty ;
-  rdfs:comment "Second line of street address" ;
-  rdfs:domain schema:PostalAddress ;
-  rdfs:label "Street Address 2" ;
   rdfs:range schema:Text.
