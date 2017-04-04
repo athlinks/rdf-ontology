@@ -193,23 +193,17 @@ athlinks:elevationGrade a owl:DataTypeProperty;
   rdfs:domain schema:Landform;
   rdfs:range schema:QuantitiveValue.
 
-athlinks:altitudeType a owl:DataTypeProperty;
-  rdfs:label "Altitude Type";
-  rdfs:comment "Altitude Type";
-  rdfs:domain schema:Landform;
-  rdfs:range schema:Text.
-
 athlinks:distanceUnit a owl:DataTypeProperty;
   rdfs:label "Default Distance Unit";
   rdfs:comment "Default Distance Unit";
   rdfs:domain athlinks:AthleticRace;
-  rdfs:range schema:QuantitiveValue.
+  rdfs:range schema:Text.
 
 athlinks:distanceDisplayUnit a owl:DataTypeProperty;
   rdfs:label "Distance Unit to Display";
   rdfs:comment "Distance Unit to Display";
   rdfs:domain athlinks:AthleticRace;
-  rdfs:range schema:QuantitiveValue.
+  rdfs:range schema:Text.
 
 athlinks:createdBy a owl:DataTypeProperty;
   rdfs:label "ID of User Who Created Race";
