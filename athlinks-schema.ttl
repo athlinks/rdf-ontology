@@ -72,9 +72,6 @@ athlinks:AthleticRace
   rdfs:subClassOf schema:SportsEvent .
   #members:
   #athlinks:raceType ;
-  #athlinks:distanceUnit;
-  #athlinks:distanceDisplayUnit;
-  #athlinks:createUser;
   #ageReferenceDate.
 
 athlinks:AthleticEvent
@@ -175,42 +172,6 @@ athlinks:agePercentage
   rdfs:domain athlinks:IntervalResult;
   rdfs:range xsd:decimal .
 
-athlinks:elevation a owl:DataTypeProperty;
-  rdfs:label "Elevation";
-  rdfs:comment "Elevation";
-  rdfs:domain schema:Landform;
-  rdfs:range schema:QuantitativeValue.
-
-athlinks:altitude a owl:DataTypeProperty;
-  rdfs:label "Altitude";
-  rdfs:comment "Altitude";
-  rdfs:domain schema:Landform;
-  rdfs:range schema:QuantitativeValue.
-
-athlinks:elevationGrade a owl:DataTypeProperty;
-  rdfs:label "Elevation Grade";
-  rdfs:comment "Elevation Grade";
-  rdfs:domain schema:Landform;
-  rdfs:range schema:QuantitiveValue.
-
-athlinks:distanceUnit a owl:DataTypeProperty;
-  rdfs:label "Default Distance Unit";
-  rdfs:comment "Default Distance Unit";
-  rdfs:domain athlinks:AthleticRace;
-  rdfs:range schema:Text.
-
-athlinks:distanceDisplayUnit a owl:DataTypeProperty;
-  rdfs:label "Distance Unit to Display";
-  rdfs:comment "Distance Unit to Display";
-  rdfs:domain athlinks:AthleticRace;
-  rdfs:range schema:Text.
-
-athlinks:createdBy a owl:DataTypeProperty;
-  rdfs:label "ID of User Who Created Race";
-  rdfs:comment "ID of User Who Created Race";
-  rdfs:domain athlinks:AthleticRace;
-  rdfs:range schema:creator.
-
 athlinks:ageReferenceDate a owl:DataTypeProperty;
   rdfs:label "Age Reference Date";
   rdfs:comment "When event has a minimum age, this is the date by which they must be that age." ;
@@ -226,7 +187,7 @@ athlinks:subEventGroup
 athlinks:visibility
   a owl:DataTypeProperty ;
   rdfs:comment "Denotes who has access to see an object";
-  rdfs:label "Denotes who has access to see an object" ;
+  rdfs:label "Visibility Access" ;
   rdfs:domain athlinks:AthleticEventGroup ;
   rdfs:range [ a xsd:string ;
                 owl:oneOf ("Private" "Friends" "Invite" "Public")
@@ -234,7 +195,8 @@ athlinks:visibility
 
 athlinks:recurrence
   a owl:DataTypeProperty ;
-  rdfs:label "The default recurrence of a certain scheduling item";
+  rdfs:label "Schedule Recurrance";
+  rdfs:comment "The default recurrence of a certain scheduling item";
   rdfs:domain athlinks:AthleticEventGroup ;
   rdfs:range [ a xsd:string ;
                 owl:oneOf ("Monthly" "Yearly" "None")
