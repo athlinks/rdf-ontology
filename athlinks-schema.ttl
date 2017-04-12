@@ -6,14 +6,12 @@
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix schema: <http://schema.org/> .
-@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <http://adp.athlinks.com/2017/01/rdf-schema> a owl:Ontology ;
   owl:imports <http://topbraid.org/schema/> ;
   rdfs:label "The Athlinks Schema vocabulary".
 
 ### CLASSES
-
 athlinks:TimingInterval
   a rdfs:Class ;
   rdfs:comment "A measured distance over all or part of an athletic event course." ;
@@ -52,7 +50,7 @@ athlinks:IntervalResult a rdfs:Class;
   #schema:duration;
   #athlinks:timingInterval;
   #athlinks:ranking;
-  #athlinks:chipTime .
+  #athlinks:chipTime ;
   #athlinks:clockTime .
 
 athlinks:BracketRanking a rdfs:Class;
@@ -62,7 +60,7 @@ athlinks:BracketRanking a rdfs:Class;
   #athlinks:bracket;
   #athlinks:intervalResult;
   #athlinks:timingInterval;
-  #athlinks:rank.
+  #athlinks:rank;
   #athlinks:agePercentage.
 
 athlinks:Bracket a rdfs:Class.
@@ -74,6 +72,7 @@ athlinks:AthleticRace
   rdfs:subClassOf schema:SportsEvent .
   #members:
   #athlinks:raceType ;
+  #ageReferenceDate.
 
 athlinks:AthleticEvent
   a owl:Class ;
@@ -81,13 +80,16 @@ athlinks:AthleticEvent
   rdfs:label "Athletic Race" ;
   rdfs:subClassOf schema:SportsEvent .
 
-athlinks:AthleticSeries
+athlinks:AthleticEventGroup
   a owl:Class ;
-  rdfs:comment "An Athletic Series, a group of Athletic Events that are part of the same series." ;
-  rdfs:label "Athletic Race" ;
+  rdfs:comment "An Athletic Event Group.  This can be any sort of grouping of events...manually grouped, recurring, etc..." ;
+  rdfs:label "Athletic Event Group" ;
   rdfs:subClassOf schema:SportsEvent .
   #members:
-  #athlinks:seriesType ;
+  #athlinks:subEventGroup;
+  #athlinks:visibility;
+  #athlinks:recurrence;
+  #athlinks:scoring.
 
 ## PROPERTIES
 
@@ -155,12 +157,6 @@ athlinks:pace
   a owl:DataTypeProperty ;
   rdfs:range schema:QuantitativeValue .
 
-athlinks:seriesType
-  a owl:DataTypeProperty;
-  rdfs:range [ a xsd:string ;
-                owl:oneOf("Master" "Social" "Points" "Series")
-              ] .
-
 athlinks:clockTime
   a owl:DataTypeProperty ;
   rdfs:domain athlinks:IntervalResult;
@@ -174,4 +170,45 @@ athlinks:chipTime
 athlinks:agePercentage
   a owl:DataTypeProperty ;
   rdfs:domain athlinks:IntervalResult;
-  rdfs:range schema:Decimal .
+  rdfs:range xsd:decimal .
+
+athlinks:ageReferenceDate a owl:DataTypeProperty;
+  rdfs:label "Age Reference Date";
+  rdfs:comment "When event has a minimum age, this is the date by which they must be that age." ;
+  rdfs:domain athlinks:AthleticRace ;
+  rdfs:range schema:Date .
+
+athlinks:subEventGroup
+  a owl:ObjectProperty;
+  rdfs:comment "A list of AthleticEventGroups" ;
+  rdfs:domain athlinks:AthleticEventGroup ;
+  rdfs:range athlinks:AthleticEventGroup .
+
+athlinks:visibility
+  a owl:DataTypeProperty ;
+  rdfs:comment "Denotes who has access to see an object";
+  rdfs:label "Visibility Access" ;
+  rdfs:domain athlinks:AthleticEventGroup ;
+  rdfs:range [ a xsd:string ;
+                owl:oneOf ("Private" "Friends" "Invite" "Public")
+              ] .
+
+athlinks:recurrence
+  a owl:DataTypeProperty ;
+  rdfs:label "Schedule Recurrance";
+  rdfs:comment "The default recurrence of a certain scheduling item";
+  rdfs:domain athlinks:AthleticEventGroup ;
+  rdfs:range [ a xsd:string ;
+                owl:oneOf ("Monthly" "Yearly" "None")
+              ] .
+
+athlinks:scoring
+  a owl:ObjectProperty ;
+  rdfs:comment "The scoring used on an AthleticEventGroup" ;
+  rdfs:domain athlinks:AthleticEventGroup .
+
+athlinks:directions a owl:ObjectProperty ;
+  rdfs:comment "Directions to an event or race." ;
+  rdfs:domain schema:Event ;
+  rdfs:label "Directions" ;
+  rdfs:range schema:Text.
