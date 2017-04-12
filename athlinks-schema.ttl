@@ -12,19 +12,6 @@
   rdfs:label "The Athlinks Schema vocabulary".
 
 ### CLASSES
-athlinks:TerrainSpecifics a rdfs:Class;
-  rdfs:comment "Specifics about course terrain such as altitude or grade." ;
-  rdfs:label "Terrain Specifics" ;
-  rdfs:subClassOf schema:Landform ;
-  #members:
-  #athlinks:elevUnit;
-  #athlinks:altitude;
-
-athlinks:Directions a rdfs:Class;
-  rdfs:comment "Directions to an event or race." ;
-  rdfs:label "Directions" ;
-  rdfs:subClassOf schema:Text ;
-
 athlinks:TimingInterval
   a rdfs:Class ;
   rdfs:comment "A measured distance over all or part of an athletic event course." ;
@@ -63,7 +50,7 @@ athlinks:IntervalResult a rdfs:Class;
   #schema:duration;
   #athlinks:timingInterval;
   #athlinks:ranking;
-  #athlinks:chipTime .
+  #athlinks:chipTime ;
   #athlinks:clockTime .
 
 athlinks:BracketRanking a rdfs:Class;
@@ -73,7 +60,7 @@ athlinks:BracketRanking a rdfs:Class;
   #athlinks:bracket;
   #athlinks:intervalResult;
   #athlinks:timingInterval;
-  #athlinks:rank.
+  #athlinks:rank;
   #athlinks:agePercentage.
 
 athlinks:Bracket a rdfs:Class.
@@ -85,17 +72,7 @@ athlinks:AthleticRace
   rdfs:subClassOf schema:SportsEvent .
   #members:
   #athlinks:raceType ;
-  #athlinks:startMarked;
-  #athlinks:finishMarked;
-  #athlinks:distanceUnit;
-  #athlinks:integrity;
-  #athlinks:createUser;
-  #athlinks:isHidden;
-  #athlinks:isVisible;
-  #athlinks:isEnabled;
-  #athlinks:isApproved;
-  #athlinks:isHandicap;
-  #athlinks:isNavigable;
+  #ageReferenceDate.
 
 athlinks:AthleticEvent
   a owl:Class ;
@@ -109,10 +86,10 @@ athlinks:AthleticEventGroup
   rdfs:label "Athletic Event Group" ;
   rdfs:subClassOf schema:SportsEvent .
   #members:
-  #athlinks:subEventGroup
-  #athlinks:visibility
-  #athlinks:recurrence
-  #athlinks:scoring
+  #athlinks:subEventGroup;
+  #athlinks:visibility;
+  #athlinks:recurrence;
+  #athlinks:scoring.
 
 ## PROPERTIES
 
@@ -195,81 +172,11 @@ athlinks:agePercentage
   rdfs:domain athlinks:IntervalResult;
   rdfs:range xsd:decimal .
 
-athlinks:isHidden
-  a owl:DataTypeProperty ;
-  rdfs:domain athlinks:AthleticRace;
-  rdfs:range xsd:boolean .
-
-athlinks:isVisible
-  a owl:DataTypeProperty ;
-  rdfs:domain athlinks:AthleticRace;
-  rdfs:range xsd:boolean .
-
-athlinks:isEnabled
-  a owl:DataTypeProperty ;
-  rdfs:domain athlinks:AthleticRace;
-  rdfs:range xsd:boolean .
-
-athlinks:isApproved
-  a owl:DataTypeProperty ;
-  rdfs:domain athlinks:AthleticRace;
-  rdfs:range xsd:boolean .
-
-athlinks:isHandicap
-  a owl:DataTypeProperty ;
-  rdfs:domain athlinks:AthleticRace;
-  rdfs:range xsd:boolean .
-
-athlinks:isNavigable
-  a owl:DataTypeProperty ;
-  rdfs:domain athlinks:AthleticRace;
-  rdfs:range xsd:boolean .
-
-athlinks:elevUnit
-  a owl:DataTypeProperty ;
-  rdfs:domain athlinks:TerrainSpecifics;
-  rdfs:range xsd:float .
-
-athlinks:altitude
-  a owl:DataTypeProperty ;
-  rdfs:domain athlinks:TerrainSpecifics;
-  rdfs:range xsd:float .
-
-athlinks:startMarked
-  a owl:DataTypeProperty ;
-  rdfs:domain athlinks:AthleticRace;
-  rdfs:range xsd:boolean .
-
-athlinks:finishMarked
-  a owl:DataTypeProperty ;
-  rdfs:domain athlinks:AthleticRace;
-  rdfs:range xsd:boolean .
-
-athlinks:distanceUnit
-  a owl:DataTypeProperty ;
-  rdfs:domain athlinks:AthleticRace;
-  rdfs:range xsd:float .
-
-athlinks:integrity
-  a owl:DataTypeProperty ;
-  rdfs:domain athlinks:AthleticRace;
-  rdfs:range xsd:int .
-
-athlinks:createUser
-  a owl:DataTypeProperty ;
-  rdfs:domain athlinks:AthleticRace;
-  rdfs:range xsd:int .
-
-athlinks:difficulty
-    a owl:DataTypeProperty ;
-    rdfs:domain athlinks:AthleticRace;
-    rdfs:range xsd:int .
-
-athlinks:ageReferenceDate
-    a owl:DataTypeProperty;
-    rdfs:comment "When event has a minimum age, this is the date by which they must be that age." ;
-    rdfs:domain athlinks:AthleticRace ;
-    rdfs:range schema:Date .
+athlinks:ageReferenceDate a owl:DataTypeProperty;
+  rdfs:label "Age Reference Date";
+  rdfs:comment "When event has a minimum age, this is the date by which they must be that age." ;
+  rdfs:domain athlinks:AthleticRace ;
+  rdfs:range schema:Date .
 
 athlinks:subEventGroup
   a owl:ObjectProperty;
@@ -279,7 +186,8 @@ athlinks:subEventGroup
 
 athlinks:visibility
   a owl:DataTypeProperty ;
-  rdfs:comment "Denotes who has access to see an object"
+  rdfs:comment "Denotes who has access to see an object";
+  rdfs:label "Visibility Access" ;
   rdfs:domain athlinks:AthleticEventGroup ;
   rdfs:range [ a xsd:string ;
                 owl:oneOf ("Private" "Friends" "Invite" "Public")
@@ -287,7 +195,8 @@ athlinks:visibility
 
 athlinks:recurrence
   a owl:DataTypeProperty ;
-  rdfs:comment "The default recurrence of a certain scheduling item"
+  rdfs:label "Schedule Recurrance";
+  rdfs:comment "The default recurrence of a certain scheduling item";
   rdfs:domain athlinks:AthleticEventGroup ;
   rdfs:range [ a xsd:string ;
                 owl:oneOf ("Monthly" "Yearly" "None")
@@ -296,4 +205,10 @@ athlinks:recurrence
 athlinks:scoring
   a owl:ObjectProperty ;
   rdfs:comment "The scoring used on an AthleticEventGroup" ;
-  rdfs:domain athlinks:AthleticEventGroup ;
+  rdfs:domain athlinks:AthleticEventGroup .
+
+athlinks:directions a owl:ObjectProperty ;
+  rdfs:comment "Directions to an event or race." ;
+  rdfs:domain schema:Event ;
+  rdfs:label "Directions" ;
+  rdfs:range schema:Text.
