@@ -1,214 +1,404 @@
-# baseURI http://adp.athlinks.com/2017/01/rdf-schema#
-
-@prefix athlinks: <http://adp.athlinks.com/2017/01/rdf-schema#> .
-@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix : <http://adp.athlinks.com/schema/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix schema: <http://schema.org/> .
+@base <http://adp.athlinks.com/schema> .
 
-<http://adp.athlinks.com/2017/01/rdf-schema> a owl:Ontology ;
-  owl:imports <http://topbraid.org/schema/> ;
-  rdfs:label "The Athlinks Schema vocabulary".
+<http://adp.athlinks.com/schema> rdf:type owl:Ontology ;
+                                  owl:versionIRI : ;
+                                  owl:imports <http://adp.athlinks.com/schemax/> ;
+                                  rdfs:comment "This file contains Athlinks data vocabulary. The vocabulary is based on the schema.org ontology with our own extensions for concepts specific to human endurance events."@en ;
+                                  rdfs:label "Athlinks data vocabulary"@en ;
+                                  dc:contributor "astn"^^xsd:string ,
+                                                 "nextdude"^^xsd:string ,
+                                                 "warren"^^xsd:string .
 
-### CLASSES
-athlinks:TimingInterval
-  a rdfs:Class ;
-  rdfs:comment "A measured distance over all or part of an athletic event course." ;
-  rdfs:label "Timing interval" ;
-  rdfs:subClassOf schema:Place .
-  #members:
-  #athlinks:defaultPace;
-  #athlinks:distanceFromStart;
-  #athlinks:distance;
-  #schema:fromLocation;
-  #schema:toLocation;
+#################################################################
+#    Annotation properties
+#################################################################
 
-athlinks:TimingPoint a rdfs:Class;
-  rdfs:subClassOf schema:Place;
-  rdfs:label "Timing point";
-  rdfs:comment "A point located within a timing interval at which sensors are deployed to capture tag reads of passing athletes.".
+###  http://purl.org/dc/elements/1.1/contributor
+dc:contributor rdf:type owl:AnnotationProperty .
 
-athlinks:TagRead a rdfs:Class;
-  rdfs:label "RFID tag read";
-  rdfs:comment "The representation of a raw reading of an RFID tag." .
-  #members:
-  #athlinks:timingDevice;
-  #schema:agent;
-  #schema:location;
-  #athlinks:rawTime;
-  #athlinks:adjustedTime.
 
-athlinks:IntervalResult a rdfs:Class;
-  rdfs:label "Interval Result";
-  rdfs:comment "The duration calculated for an interval by an actor.";
-  rdfs:subClassOf schema:MoveAction .
-  #members:
-  #athlinks:beginTagRead;
-  #athlinks:endTagRead;
-  #athlinks:bib;
-  #schema:duration;
-  #athlinks:timingInterval;
-  #athlinks:ranking;
-  #athlinks:chipTime ;
-  #athlinks:clockTime .
+###  http://purl.org/dc/elements/1.1/creator
+dc:creator rdf:type owl:AnnotationProperty .
 
-athlinks:BracketRanking a rdfs:Class;
-  rdfs:label "Bracket Ranking";
-  rdfs:comment "A raking of an Interval Result when ranked within a Bracket." .
-  #members:
-  #athlinks:bracket;
-  #athlinks:intervalResult;
-  #athlinks:timingInterval;
-  #athlinks:rank;
-  #athlinks:agePercentage.
 
-athlinks:Bracket a rdfs:Class.
+###  http://purl.org/dc/elements/1.1/date
+dc:date rdf:type owl:AnnotationProperty .
 
-athlinks:AthleticRace
-  a owl:Class ;
-  rdfs:comment "An athletic race, a distinct course." ;
-  rdfs:label "Athletic Race" ;
-  rdfs:subClassOf schema:SportsEvent .
-  #members:
-  #athlinks:raceType ;
-  #ageReferenceDate.
 
-athlinks:AthleticEvent
-  a owl:Class ;
-  rdfs:comment "An Athletic Event, a group of Athletic Races that are all part of the same event." ;
-  rdfs:label "Athletic Race" ;
-  rdfs:subClassOf schema:SportsEvent .
+#################################################################
+#    Object Properties
+#################################################################
 
-athlinks:AthleticEventGroup
-  a owl:Class ;
-  rdfs:comment "An Athletic Event Group.  This can be any sort of grouping of events...manually grouped, recurring, etc..." ;
-  rdfs:label "Athletic Event Group" ;
-  rdfs:subClassOf schema:SportsEvent .
-  #members:
-  #athlinks:subEventGroup;
-  #athlinks:visibility;
-  #athlinks:recurrence;
-  #athlinks:scoring.
+###  http://adp.athlinks.com/schema/exerciseType
+:exerciseType rdf:type owl:ObjectProperty ;
+              rdfs:domain schema:ExerciseAction ;
+              rdfs:range :AthleticEventCategory ;
+              dc:creator "nextdude"^^xsd:string ;
+              dc:date "2017-07-26T14:00:17Z"^^xsd:dateTime .
 
-## PROPERTIES
 
-athlinks:rank a owl:DataTypeProperty;
-  rdfs:domain athlinks:BracketRanking;
-  rdfs:range schema:Integer.
+###  http://adp.athlinks.com/schema/legacyData
+:legacyData rdf:type owl:ObjectProperty ;
+            rdfs:domain owl:Thing ;
+            rdfs:range :LegacyDataRole ;
+            rdfs:comment "A legacy data record belonging to another system that is related to this object."@en ;
+            rdfs:label "legacy data"@en .
 
-athlinks:timingInterval a owl:ObjectProperty;
-  rdfs:domain athlinks:IntervalResult;
-  rdfs:label "The Interval component of the course";
-  schema:rangeIncludes schema:ExerciseAction .
 
-athlinks:bracket a owl:ObjectProperty;
-  rdfs:domain athlinks:BracketRanking;
-  rdfs:range athlinks:Bracket.
+#################################################################
+#    Data properties
+#################################################################
 
-athlinks:endTagRead a owl:ObjectProperty;
-  rdfs:domain athlinks:IntervalResult;
-  rdfs:range athlinks:TagRead.
+###  http://adp.athlinks.com/schema/siblingOrdering
+:siblingOrdering rdf:type owl:DatatypeProperty ;
+                 rdfs:domain owl:Thing ;
+                 rdfs:range xsd:integer ;
+                 dc:creator "nextdude"^^xsd:string ;
+                 dc:date "2017-07-26T14:18:47Z"^^xsd:dateTime ;
+                 rdfs:comment "The numeric order of an object among siblings of the same property or type."@en ;
+                 rdfs:label "Sibling Ordering"@en .
 
-athlinks:beginTagRead a owl:ObjectProperty;
-  rdfs:domain athlinks:IntervalResult;
-  rdfs:range athlinks:TagRead.
 
-athlinks:timingDevice a owl:ObjectProperty;
-  rdfs:domain athlinks:TagRead;
-  rdfs:range schema:Thing.
+#################################################################
+#    Classes
+#################################################################
 
-athlinks:rawTime a owl:DataTypeProperty;
-  rdfs:domain athlinks:TagRead;
-  rdfs:range schema:DateTime.
+###  http://adp.athlinks.com/schema/AggregateTeam
+:AggregateTeam rdf:type owl:Class ;
+               rdfs:subClassOf schema:SportsTeam ;
+               dc:creator "nextdude"^^xsd:string ;
+               dc:date "2017-05-22T05:19:09Z"^^xsd:dateTime ;
+               rdfs:comment "A team of athletes in an athletic event who each run the full race with their aggregate score determined by some specified procedure."@en ;
+               rdfs:label "Aggregate team"@en .
 
-athlinks:adjustedTime a owl:DataTypeProperty;
-  rdfs:domain athlinks:TagRead;
-  rdfs:range schema:DateTime.
 
-athlinks:ranking a owl:ObjectProperty;
-  rdfs:domain athlinks:IntervalResult;
-  rdfs:range athlinks:BracketRanking.
+###  http://adp.athlinks.com/schema/Athlete
+:Athlete rdf:type owl:Class ;
+         rdfs:subClassOf :AthleticEventRole ;
+         dc:creator "nextdude"^^xsd:string ;
+         dc:date "2017-05-22T06:00:00Z"^^xsd:dateTime ;
+         rdfs:comment "A role that a person or sports team plays when they participate in an athletic event."@en ;
+         rdfs:label "Athlete"@en .
 
-athlinks:defaultPace
-  a owl:ObjectProperty ;
-  rdfs:domain athlinks:TimingInterval ;
-  rdfs:range schema:QuantitativeValue .
 
-athlinks:distanceFromStart
-  a owl:ObjectProperty ;
-  rdfs:domain athlinks:TimingInterval ;
-  rdfs:range schema:QuantitativeValue .
+###  http://adp.athlinks.com/schema/AthleteCohort
+:AthleteCohort rdf:type owl:Class ;
+               rdfs:subClassOf schema:PeopleAudience ;
+               dc:creator "nextdude"^^xsd:string ;
+               dc:date "2017-05-22T06:00:00Z"^^xsd:dateTime ;
+               rdfs:comment "A set of participants in an athletic event grouped together for the purpose of scoring. The groupings are usually defined in terms of age, gender, etc."@en ;
+               rdfs:label "Athlete cohort"@en .
 
-athlinks:distance
-  a owl:ObjectProperty ;
-  rdfs:range schema:QuantitativeValue .
 
-athlinks:raceType
-  a owl:DataTypeProperty;
-  rdfs:range [ a xsd:string ;
-                owl:oneOf ("triathlon" "5k" "10k" "marathon" "other")
-              ] .
-athlinks:bib
-  a owl:DataTypeProperty;
-  rdfs:range xsd:string .
+###  http://adp.athlinks.com/schema/AthleteIdentifierAssignment
+:AthleteIdentifierAssignment rdf:type owl:Class ;
+                             rdfs:subClassOf :AthleticEventRole ;
+                             dc:creator "nextdude"^^xsd:string ;
+                             dc:date "2017-05-22T06:00:00Z"^^xsd:dateTime ;
+                             rdfs:comment "Supports the assignment of identifiers to athletes in the context of a particular event. Examples of identifiers are bibs or timing tags."@en ;
+                             rdfs:label "Athlete identifier assignment"@en .
 
-athlinks:pace
-  a owl:DataTypeProperty ;
-  rdfs:range schema:QuantitativeValue .
 
-athlinks:clockTime
-  a owl:DataTypeProperty ;
-  rdfs:domain athlinks:IntervalResult;
-  rdfs:range schema:Duration .
+###  http://adp.athlinks.com/schema/AthleteResult
+:AthleteResult rdf:type owl:Class ;
+               rdfs:subClassOf schema:ListItem ;
+               dc:creator "nextdude"^^xsd:string ;
+               dc:date "2017-05-22T06:00:00Z"^^xsd:dateTime ;
+               rdfs:comment "A computed time and set of rankings for an athlete who successfully completes an athletic event course. The set of rankings are within the cohorts to which the athlete belongs."@en ;
+               rdfs:label "Athlete result"@en .
 
-athlinks:chipTime
-  a owl:DataTypeProperty ;
-  rdfs:domain athlinks:IntervalResult;
-  rdfs:range schema:Duration .
 
-athlinks:agePercentage
-  a owl:DataTypeProperty ;
-  rdfs:domain athlinks:IntervalResult;
-  rdfs:range xsd:decimal .
+###  http://adp.athlinks.com/schema/AthleteResultList
+:AthleteResultList rdf:type owl:Class ;
+                   rdfs:subClassOf schema:ItemList ;
+                   dc:creator "nextdude"^^xsd:string ;
+                   dc:date "2017-05-22T06:00:00Z"^^xsd:dateTime ;
+                   rdfs:comment "A ranked list of the results of an athletic event, usually bound to a particular athlete cohort."@en ;
+                   rdfs:label "Athlete result list"@en .
 
-athlinks:ageReferenceDate a owl:DataTypeProperty;
-  rdfs:label "Age Reference Date";
-  rdfs:comment "When event has a minimum age, this is the date by which they must be that age." ;
-  rdfs:domain athlinks:AthleticRace ;
-  rdfs:range schema:Date .
 
-athlinks:subEventGroup
-  a owl:ObjectProperty;
-  rdfs:comment "A list of AthleticEventGroups" ;
-  rdfs:domain athlinks:AthleticEventGroup ;
-  rdfs:range athlinks:AthleticEventGroup .
+###  http://adp.athlinks.com/schema/AthleteTimingAction
+:AthleteTimingAction rdf:type owl:Class ;
+                     rdfs:subClassOf schema:CreateAction ;
+                     dc:creator "nextdude"^^xsd:string ;
+                     dc:date "2017-05-22T05:19:09Z"^^xsd:dateTime ;
+                     rdfs:comment "Observing and reporting the time and location of an athlete traversing an athletic event course. In the case of a normal RFID timed event, the agent is the timer, the object is the timing tag worn by the athlete, and the instrument is the timing device used to obtain the measurement. Those values will differ in other circumstances, say if the timing data is contained in a photograph taken by a spectator and uploaded during the race for the purpose of extracting the timing data."@en ;
+                     rdfs:label "Athlete timing action"@en .
 
-athlinks:visibility
-  a owl:DataTypeProperty ;
-  rdfs:comment "Denotes who has access to see an object";
-  rdfs:label "Visibility Access" ;
-  rdfs:domain athlinks:AthleticEventGroup ;
-  rdfs:range [ a xsd:string ;
-                owl:oneOf ("Private" "Friends" "Invite" "Public")
-              ] .
 
-athlinks:recurrence
-  a owl:DataTypeProperty ;
-  rdfs:label "Schedule Recurrance";
-  rdfs:comment "The default recurrence of a certain scheduling item";
-  rdfs:domain athlinks:AthleticEventGroup ;
-  rdfs:range [ a xsd:string ;
-                owl:oneOf ("Monthly" "Yearly" "None")
-              ] .
+###  http://adp.athlinks.com/schema/AthleteTimingController
+:AthleteTimingController rdf:type owl:Class ;
+                         rdfs:subClassOf :AthleteTimingProduct ;
+                         dc:creator "nextdude"^^xsd:string ;
+                         dc:date "2017-05-22T06:00:00Z"^^xsd:dateTime ;
+                         rdfs:comment "An RFID timing controller used to process RFID tag reads during athlete events."@en ;
+                         rdfs:label "Athlete timing controller"@en .
 
-athlinks:scoring
-  a owl:ObjectProperty ;
-  rdfs:comment "The scoring used on an AthleticEventGroup" ;
-  rdfs:domain athlinks:AthleticEventGroup .
 
-athlinks:directions a owl:ObjectProperty ;
-  rdfs:comment "Directions to an event or race." ;
-  rdfs:domain schema:Event ;
-  rdfs:label "Directions" ;
-  rdfs:range schema:Text.
+###  http://adp.athlinks.com/schema/AthleteTimingProduct
+:AthleteTimingProduct rdf:type owl:Class ;
+                      rdfs:subClassOf schema:Product ;
+                      dc:creator "nextdude"^^xsd:string ;
+                      dc:date "2017-05-22T06:00:00Z"^^xsd:dateTime ;
+                      rdfs:comment "An abstract class representing physical devices used for timing athletes."@en ;
+                      rdfs:label "Athlete timing product"@en .
+
+
+###  http://adp.athlinks.com/schema/AthleteTimingSensor
+:AthleteTimingSensor rdf:type owl:Class ;
+                     rdfs:subClassOf :AthleteTimingController ;
+                     dc:creator "nextdude"^^xsd:string ;
+                     dc:date "2017-05-22T06:00:00Z"^^xsd:dateTime ;
+                     rdfs:comment "The antenna deployed on an athletic course that actually senses the RFID timing tag in its RFID field. There will often be multiple sensors deployed that are associated with a given timing controller."@en ;
+                     rdfs:label "Athlete timing sensor"@en .
+
+
+###  http://adp.athlinks.com/schema/AthleteTimingTag
+:AthleteTimingTag rdf:type owl:Class ;
+                  rdfs:subClassOf :AthleteTimingProduct ;
+                  dc:creator "nextdude"^^xsd:string ;
+                  dc:date "2017-05-22T06:00:00Z"^^xsd:dateTime ;
+                  rdfs:comment "An RFID athlete timing tag, usually contained in an athlete's bib."@en ;
+                  rdfs:label "Athlete timing tag"@en .
+
+
+###  http://adp.athlinks.com/schema/AthleticCourse
+:AthleticCourse rdf:type owl:Class ;
+                rdfs:subClassOf schema:Place ;
+                dc:creator "nextdude"^^xsd:string ;
+                dc:date "2017-05-22T06:00:00Z"^^xsd:dateTime ;
+                rdfs:comment "A course on which an athletic event participant competes. This can refer to the entire course of an event, or a sub-course. A course is defined as the interval between two checkpoints."@en ;
+                rdfs:label "Athletic course"@en .
+
+
+###  http://adp.athlinks.com/schema/AthleticCourseCheckpoint
+:AthleticCourseCheckpoint rdf:type owl:Class ;
+                          rdfs:subClassOf :AthleticCourse ;
+                          dc:creator "nextdude"^^xsd:string ;
+                          dc:date "2017-05-22T06:00:00Z"^^xsd:dateTime ;
+                          rdfs:comment "A marked physical point within an athletic course which is used to mark a participant's progress along the course."@en ;
+                          rdfs:label "Athletic course checkpoint"@en .
+
+
+###  http://adp.athlinks.com/schema/AthleticEvent
+:AthleticEvent rdf:type owl:Class ;
+               rdfs:subClassOf schema:SportsEvent ;
+               dc:creator "nextdude"^^xsd:string ;
+               dc:date "2017-05-22T06:00:00Z"^^xsd:dateTime ;
+               rdfs:comment "A sports event where multiple people, participating either as individuals or in teams, compete over a closed course in one or more athletic disciplines."@en ;
+               rdfs:label "Athletic event"@en .
+
+
+###  http://adp.athlinks.com/schema/AthleticEventBrand
+:AthleticEventBrand rdf:type owl:Class ;
+                    rdfs:subClassOf :AthleticEvent ;
+                    owl:disjointWith :AthleticEventSeries ;
+                    dc:creator "nextdude"^^xsd:string ;
+                    dc:date "2017-06-27T02:51:03Z"^^xsd:dateTime ;
+                    rdfs:comment "A collection of athletic events that form a unique brand. The individual events usually occur once per year, and the collection spans mutliple years. Also, the events are usually owned by a single organization that manages and cultivates the brand. Compare to an athletic event series."@en ;
+                    rdfs:label "Athletic event brand"@en .
+
+
+###  http://adp.athlinks.com/schema/AthleticEventCategory
+:AthleticEventCategory rdf:type owl:Class ;
+                       rdfs:subClassOf schema:Enumeration ;
+                       dc:creator "nextdude"^^xsd:string ;
+                       dc:date "2017-05-22T06:00:00Z"^^xsd:dateTime ;
+                       rdfs:comment "A kind of athletic event."@en ;
+                       rdfs:label "Athletic event category"@en .
+
+
+###  http://adp.athlinks.com/schema/AthleticEventProduct
+:AthleticEventProduct rdf:type owl:Class ;
+                      rdfs:subClassOf schema:Product ;
+                      dc:creator "nextdude"^^xsd:string ;
+                      dc:date "2017-05-22T06:00:00Z"^^xsd:dateTime ;
+                      rdfs:comment "An product offered in the context of an athletic event."@en ;
+                      rdfs:label "Athletic event product"@en .
+
+
+###  http://adp.athlinks.com/schema/AthleticEventRole
+:AthleticEventRole rdf:type owl:Class ;
+                   rdfs:subClassOf schema:Role ;
+                   dc:creator "nextdude"^^xsd:string ;
+                   dc:date "2017-05-22T06:00:00Z"^^xsd:dateTime ;
+                   rdfs:comment "An abstract role that encompasses all roles around athletic events."@en ;
+                   rdfs:label "Athletic event role"@en .
+
+
+###  http://adp.athlinks.com/schema/AthleticEventSeries
+:AthleticEventSeries rdf:type owl:Class ;
+                     rdfs:subClassOf :AthleticEvent ;
+                     dc:creator "nextdude"^^xsd:string ;
+                     dc:date "2017-06-27T02:51:03Z"^^xsd:dateTime ;
+                     rdfs:comment "A collection of athletic events, usually over the course of a single calendar year, that comprise a thematic sequence. Compare to an athletic event brand."@en ;
+                     rdfs:label "Athletic event series"@en .
+
+
+###  http://adp.athlinks.com/schema/AthleticEventStatusType
+:AthleticEventStatusType rdf:type owl:Class ;
+                         rdfs:subClassOf schema:EventStatusType ;
+                         dc:creator "nextdude"^^xsd:string ;
+                         dc:date "2017-06-27T17:41:10Z"^^xsd:dateTime ;
+                         rdfs:comment "An enumeration type whose instances represent states that an athletic event may be in."@en ;
+                         rdfs:label "Athletic event status type"@en .
+
+
+###  http://adp.athlinks.com/schema/BikeAction
+:BikeAction rdf:type owl:Class ;
+            rdfs:subClassOf schema:ExerciseAction ;
+            dc:creator "nextdude"^^xsd:string ;
+            dc:date "2017-07-26T14:07:23Z"^^xsd:dateTime ;
+            rdfs:comment "Exercise by biking"@en ;
+            rdfs:label "Bike Action"@en .
+
+
+###  http://adp.athlinks.com/schema/CheckpointTimingDevice
+:CheckpointTimingDevice rdf:type owl:Class ;
+                        rdfs:subClassOf :AthleticEventRole ;
+                        dc:creator "nextdude"^^xsd:string ;
+                        dc:date "2017-05-22T06:00:00Z"^^xsd:dateTime ;
+                        rdfs:comment "A timing controller and sensors when deployed at a given checkpoint on a course."@en ;
+                        rdfs:label "Checkpoint timing device"@en .
+
+
+###  http://adp.athlinks.com/schema/CrossCountryTeam
+:CrossCountryTeam rdf:type owl:Class ;
+                  rdfs:subClassOf :AggregateTeam ;
+                  dc:creator "nextdude"^^xsd:string ;
+                  dc:date "2017-05-22T05:21:23Z"^^xsd:dateTime ;
+                  rdfs:comment "An aggregate team in a cross-country style event."@en ;
+                  rdfs:label "Cross-country team"@en .
+
+
+###  http://adp.athlinks.com/schema/LeaderBoard
+:LeaderBoard rdf:type owl:Class ;
+             rdfs:subClassOf :AthleteResultList ;
+             rdfs:comment "A short result list comprised of the current leaders of an athletic event. Often, this list is limited to a particular cohort of participants."@en ;
+             rdfs:label "Leader board"@en .
+
+
+###  http://adp.athlinks.com/schema/LegacyDataRecord
+:LegacyDataRecord rdf:type owl:Class ;
+                  rdfs:subClassOf schema:Intangible ;
+                  dc:creator "nextdude"^^xsd:string ;
+                  dc:date "2017-05-22T06:00:00Z"^^xsd:dateTime ;
+                  rdfs:comment "A legacy data record holds structured information from a legacy data system."@en ;
+                  rdfs:label "Legacy data record"@en .
+
+
+###  http://adp.athlinks.com/schema/LegacyDataRole
+:LegacyDataRole rdf:type owl:Class ;
+                rdfs:subClassOf schema:Role ;
+                dc:creator "nextdude"^^xsd:string ;
+                dc:date "2017-05-22T06:00:00Z"^^xsd:dateTime ;
+                rdfs:comment "A role played by a legacy data record in the context of some thing."@en ;
+                rdfs:label "Legacy data role"@en .
+
+
+###  http://adp.athlinks.com/schema/ObstacleAction
+:ObstacleAction rdf:type owl:Class ;
+                rdfs:subClassOf schema:ExerciseAction ;
+                dc:creator "nextdude"^^xsd:string ;
+                dc:date "2017-07-26T14:16:41Z"^^xsd:dateTime ;
+                rdfs:comment "Exercise on an obstacle course"@en ;
+                rdfs:label "Obstacle Action"@en .
+
+
+###  http://adp.athlinks.com/schema/RelayTeam
+:RelayTeam rdf:type owl:Class ;
+           rdfs:subClassOf schema:SportsTeam ;
+           dc:creator "nextdude"^^xsd:string ;
+           dc:date "2017-05-22T05:16:50Z"^^xsd:dateTime ;
+           rdfs:comment "A team of athletes in an athletic event that each run part of the event course and their overall time is the sum of their individual times."@en ;
+           rdfs:label "Relay team"@en .
+
+
+###  http://adp.athlinks.com/schema/RunAction
+:RunAction rdf:type owl:Class ;
+           rdfs:subClassOf schema:ExerciseAction ;
+           dc:creator "nextdude"^^xsd:string ;
+           dc:date "2017-07-26T14:06:45Z"^^xsd:dateTime ;
+           rdfs:comment "Exercise by running"@en ;
+           rdfs:label "Run Action"@en .
+
+
+###  http://adp.athlinks.com/schema/SwimAction
+:SwimAction rdf:type owl:Class ;
+            rdfs:subClassOf schema:ExerciseAction ;
+            dc:creator "nextdude"^^xsd:string ;
+            dc:date "2017-07-26T14:06:57Z"^^xsd:dateTime ;
+            rdfs:comment "Exercise by swimming"@en ;
+            rdfs:label "Swim Action"@en .
+
+
+###  http://schema.org/GenderType
+schema:GenderType dc:creator "nextdude"^^xsd:string ;
+                  dc:date "2017-05-22T06:00:00Z"^^xsd:dateTime .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://adp.athlinks.com/schema/Cycling
+:Cycling rdf:type owl:NamedIndividual ,
+                  :AthleticEventCategory ;
+         rdfs:comment "A category of athletic event involving cycling and mountain biking."@en ;
+         rdfs:label "Cycling"@en .
+
+
+###  http://adp.athlinks.com/schema/FiveKRun
+:FiveKRun rdf:type owl:NamedIndividual ,
+                   :AthleticEventCategory ;
+          rdfs:label "5K run"@en .
+
+
+###  http://adp.athlinks.com/schema/Running
+:Running rdf:type owl:NamedIndividual ,
+                  :AthleticEventCategory ;
+         rdfs:label "Running"@en .
+
+
+###  http://adp.athlinks.com/schema/Swimming
+:Swimming rdf:type owl:NamedIndividual ,
+                   :AthleticEventCategory ;
+          rdfs:label "Swimming"@en .
+
+
+###  http://adp.athlinks.com/schema/Unspecified
+:Unspecified rdf:type owl:NamedIndividual ,
+                      schema:GenderType ;
+             rdfs:label "Unspecified"@en .
+
+
+#################################################################
+#    General axioms
+#################################################################
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :BikeAction
+                :ObstacleAction
+                :RunAction
+                :SwimAction
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :BikeAction
+                :RunAction
+                :SwimAction
+              )
+] .
+
+
+###  Generated by the OWL API (version 4.2.8.20170104-2310) https://github.com/owlcs/owlapi
