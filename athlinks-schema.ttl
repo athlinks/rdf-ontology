@@ -55,8 +55,8 @@ dc:date rdf:type owl:AnnotationProperty .
 
 :participatedIn rdf:type owl:ObjectProperty ;
                 rdfs:domain schema:Person ;
-                rdfs:range :Participation ;
-                rdfs:comment "An indication of participation in an athletic event."@en ;
+                rdfs:range :ActivityFeature ;
+                rdfs:comment "An indication of activity in an athletic event."@en ;
                 rdfs:label "participated in"@en .
 
 #################################################################
@@ -345,12 +345,12 @@ dc:date rdf:type owl:AnnotationProperty .
             rdfs:comment "Exercise by swimming"@en ;
             rdfs:label "Swim Action"@en .
 
-:Participation rdf:type owl:Class ;
+:ActivityFeature rdf:type owl:Class ;
             rdfs:subClassOf schema:QualitativeValue ;
             dc:creator "jpflueger"^^xsd:string ;
             dc:date "2017-07-27T17:44:00Z"^^xsd:dateTime ;
-            rdfs:comment "Participation in a type of athletic course"@en ;
-            rdfs:label "Participation"@en .
+            rdfs:comment "Flag describing an activity"@en ;
+            rdfs:label "ActivityFeature"@en .
 
 ###  http://schema.org/GenderType
 schema:GenderType dc:creator "nextdude"^^xsd:string ;
