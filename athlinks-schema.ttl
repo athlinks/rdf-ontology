@@ -221,6 +221,6 @@ athlinks:directions a owl:ObjectProperty ;
 
 athlinks:participatedIn a owl:ObjectProperty ;
   rdfs:domain schema:Person ;
-  rdfs:range :ActivityFeature ;
+  rdfs:range athlinks:ActivityFeature ;
   rdfs:comment "An indication of activity in an athletic event."@en ;
   rdfs:label "participated in"@en .
