@@ -91,6 +91,12 @@ athlinks:AthleticEventGroup
   #athlinks:recurrence;
   #athlinks:scoring.
 
+athlinks:ActivityFeature
+  a owl:Class ;
+  rdfs:subClassOf schema:QualitativeValue ;
+  rdfs:comment "Flag describing an activity"@en ;
+  rdfs:label "ActivityFeature"@en .
+
 ## PROPERTIES
 
 athlinks:rank a owl:DataTypeProperty;
@@ -212,3 +218,9 @@ athlinks:directions a owl:ObjectProperty ;
   rdfs:domain schema:Event ;
   rdfs:label "Directions" ;
   rdfs:range schema:Text.
+
+athlinks:participatedIn a owl:ObjectProperty ;
+  rdfs:domain schema:Person ;
+  rdfs:range :ActivityFeature ;
+  rdfs:comment "An indication of activity in an athletic event."@en ;
+  rdfs:label "participated in"@en .
