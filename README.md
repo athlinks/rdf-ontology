@@ -1,14 +1,13 @@
-# rdf-ontology
+**NB: This document and the athlinks data vocabulary are currently in development, so please expect changes.**
 
-#### This is currently in development, expect changes
-
-# [Athlinks RDF API v0.1 (beta)](#athlinks-rdf-api-v0.1-(beta))
+# [Athlinks RDF API v1.0.0 (beta)](#athlinks-rdf-api-v1.0.0-(beta))
 
 RDF is a standard model for data interchange on the Web. RDF has features that facilitate data merging even if the underlying schemas differ, and it specifically supports the evolution of schemas over time without requiring all the data consumers to be changed.
-Our ontology is based off of schema.org and Open Graph(ogp.me). Search engines use schema.org heavily, and sites like Facebook and Pinterest use Open Graph.
-It is our belief that this improves the portability of data for us and our partners.
+Our ontology is based on [schema.org](http://schema.org/) and [Open Graph](http://ogp.me). 
+Search engines use `schema.org` heavily, and sites like Facebook and Pinterest use Open Graph.
+It is our belief that this improves the portability of data for Athlinks and our partners.
 
-- [Athlinks RDF API v0.1 (beta)](#athlinks-rdf-api-v0.1-(beta))
+- [Athlinks RDF API v1.0.0 (beta)](#athlinks-rdf-api-v1.0.0-(beta))
     - [More information about RDF](#more-information-about-rdf)
     - [The Athlinks Ontology](#the-athlinks-ontology)
     - [The Athlinks RDF Endpoint](#the-athlinks-rdf-endpoint)
@@ -21,15 +20,15 @@ It is our belief that this improves the portability of data for us and our partn
 
 ## [More information about RDF](#more-information-about-rdf)
 
-- https://en.wikipedia.org/wiki/Resource_Description_Framework - High level description of RDF and its formats
-- http://blog.swirrl.com/articles/introduction-to-rdf/ - Concise description of RDF
-- http://docs.rdf4j.org/rdf-tutorial/ - Getting started with RDF
-- http://schema.org - An example ontology
-- http://openid.net/connect/ - Overview of authentication methodology
+- [High level description of RDF and its formats](https://en.wikipedia.org/wiki/Resource_Description_Framework) 
+- [Concise description of RDF](http://blog.swirrl.com/articles/introduction-to-rdf/) 
+- [Getting started with RDF4J](http://docs.rdf4j.org/rdf-tutorial/) 
+- [An example ontology](http://schema.org) 
+- [Overview of authentication methodology](http://openid.net/connect/) 
 
 ## [The Athlinks Ontology](#the-athlinks-ontology)
-https://github.com/athlinks/rdf-ontology/blob/master/athlinks-schema.ttl
 
+In [rdf turtle format](https://github.com/athlinks/rdf-ontology/blob/master/athlinks-schema.ttl).
 This describes the types and predicates that Athlinks expects.
 
 ## [The Athlinks RDF Endpoint](#the-athlinks-rdf-endpoint)
@@ -44,13 +43,13 @@ http://adp.athlinks.com/rdf
 
 Primer: https://www.w3.org/2007/02/turtle/primer/
 
-We also plan on supporting formats such as RDF/XML (https://www.w3.org/TR/rdf-syntax-grammar/) and JSON-LD (https://www.w3.org/TR/json-ld/).
+We also plan on supporting formats such as [RDF/XML](https://www.w3.org/TR/rdf-syntax-grammar/) and [JSON-LD](https://www.w3.org/TR/json-ld/).
 
 Example data upload
 ```bash
 #!/bin/bash
 ACCESSTOKEN=..YOUR_ACCESS_TOKEN.. #See Authentication section below.
-curl -s 'http://host:port/rdf' \
+curl -s 'https://adp.athlinks.com/rdf' \
 	--data-binary @file.ttl \
 	-H "Content-Type: application/x-turtle" \
  	-H "Accept: application/json" \
@@ -66,13 +65,16 @@ curl -s 'http://host:port/rdf' \
 ```
 
 ## [Authentication](#authentication)
-Its likely you will want to use the Client Credentials Grant (https://tools.ietf.org/html/rfc6749#section-4.4) to get your Access Token if your using this from a backed service.
+Its likely you will want to use the [Client Credentials Grant](https://tools.ietf.org/html/rfc6749#section-4.4) to get your 
+access token if your using this from a backed service.
 
-Example Client Credentials Flow to get an AccessToken.
+Our examples make heavy use of [jq](https://stedolan.github.io/jq/), a lightweight and flexible command-line JSON processor.
+
+Example `Client Credentials Flow` to get an access token.
 ```bash
 #!/bin/bash
-CLIENTID=..YOUR_CLIENT_ID..
-CLIENTSECRET=..YOUR_CLIENT_SECRET..
+CLIENTID=<YOUR_CLIENT_ID>
+CLIENTSECRET=<YOUR_CLIENT_SECRET>
 TOKENRESPONSE=$(curl -s \
      -X POST 'https://accounts-dev.athlinks.com/auth/realms/athlinks/protocol/openid-connect/token' \
 	 -H 'Content-Type: application/x-www-form-urlencoded' \
@@ -99,10 +101,9 @@ Here is an example event from RunSignUp converted to using the [Athlinks Ontolog
 Converts to:
 
 ```ttl
-@prefix athlinks: <http://adp.athlinks.com/2017/01/rdf-schema#> .
+@prefix athlinks: <http://adp.athlinks.com/schema/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix rsu: <https://runsignup.com/Rest/> .
-@prefix athlinks: <http://adp.athlinks.com/2017/01/rdf-schema#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
