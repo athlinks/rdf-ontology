@@ -97,6 +97,68 @@ athlinks:ActivityFeature
   rdfs:comment "Flag describing an activity"@en ;
   rdfs:label "ActivityFeature"@en .
 
+## INSTANCES
+athlinks:RunUpTo5k a athlinks:ActivityFeature ;
+    rdfs:comment "Instance of a flag indicating activity in a running event up to 5k in distance" ;
+    rdfs:label "Run up to 5k" .
+athlinks:Run5kTo15k a athlinks:ActivityFeature ;
+    rdfs:comment "Instance of a flag indicating activity in a running event from 5k to 15k in distance" ;
+    rdfs:label "Run 5k to 15k" .
+athlinks:Run15kToHalfMarathon a athlinks:ActivityFeature ;
+    rdfs:comment "Instance of a flag indicating activity in a running event from 15k to Half Marathon in distance" ;
+    rdfs:label "Run 15k to Half Marathon" .
+athlinks:RunHalfToFullMarathon a athlinks:ActivityFeature ;
+    rdfs:comment "Instance of a flag indicating activity in a running event from Half Marathon to Full Marathon in distance" ;
+    rdfs:label "Run Half Marathon to Marathon" .
+athlinks:RunMarathon a athlinks:ActivityFeature ;
+    rdfs:comment "Instance of a flag indicating activity in a Marathon running event" ;
+    rdfs:label "Run Marathon" .
+athlinks:RunUltra a athlinks:ActivityFeature ;
+    rdfs:comment "Instance of a flag indicating activity in a Ultra-marathon running event" ;
+    rdfs:label "Run Ultra" .
+athlinks:MultisportSprint a athlinks:ActivityFeature ;
+    rdfs:comment "Instance of a flag indicating activity in a Triathlon Sprint athletic event" ;
+    rdfs:label "Sprint Triathlon" .
+athlinks:MultisportOlympic a athlinks:ActivityFeature ;
+    rdfs:comment "Instance of a flag indicating activity in a Triathlon Olympic athletic event" ;
+    rdfs:label "Olympic Triathlon" .
+athlinks:MultisportHalfIronman a athlinks:ActivityFeature ;
+    rdfs:comment "Instance of a flag indicating activity in a Half Ironman athletic event" ;
+    rdfs:label "Half Ironman" .
+athlinks:MultisportIronMan a athlinks:ActivityFeature ;
+    rdfs:comment "Instance of a flag indicating activity in an Ironman athletic event" ;
+    rdfs:label "Ironman" .
+athlinks:Aquathlon a athlinks:ActivityFeature ;
+    rdfs:comment "Instance of a flag indicating activity in an Aquathlon athletic event" ;
+    rdfs:label "Aquathlon" .
+athlinks:Aquabike a athlinks:ActivityFeature ;
+    rdfs:comment "Instance of a flag indicating activity in an Aquabike athletic event" ;
+    rdfs:label "Aquabike" .
+athlinks:Duathlon a athlinks:ActivityFeature ;
+    rdfs:comment "Instance of a flag indicating activity in a Duathlon athletic event" ;
+    rdfs:label "Duathlon" .
+athlinks:Swim a athlinks:ActivityFeature ;
+    rdfs:comment "Instance of a flag indicating activity in a Swimming athletic event" ;
+    rdfs:label "Swim" .
+athlinks:MountainBike a athlinks:ActivityFeature ;
+    rdfs:comment "Instance of a flag indicating activity in a Mountain Bike athletic event" ;
+    rdfs:label "Mountain Bike" .
+athlinks:Cycling a athlinks:ActivityFeature ;
+    rdfs:comment "Instance of a flag indicating activity in a Cycling athletic event" ;
+    rdfs:label "Cycling" .
+athlinks:Snow a athlinks:ActivityFeature ;
+    rdfs:comment "Instance of a flag indicating activity in a Snowshow Running athletic event" ;
+    rdfs:label "Snowshow Running" .
+athlinks:Adventure a athlinks:ActivityFeature ;
+    rdfs:comment "Instance of a flag indicating activity in an Adventure athletic event" ;
+    rdfs:label "Adventure" .
+athlinks:Obstacle a athlinks:ActivityFeature ;
+    rdfs:comment "Instance of a flag indicating activity in an Obstacle Course athletic event" ;
+    rdfs:label "Obstacle" .
+athlinks:Other a athlinks:ActivityFeature ;
+    rdfs:comment "Instance of a flag indicating activity in an athletic event not described" ;
+    rdfs:label "Other" .
+
 ## PROPERTIES
 
 athlinks:rank a owl:DataTypeProperty;
@@ -221,6 +283,9 @@ athlinks:directions a owl:ObjectProperty ;
 
 athlinks:participatedIn a owl:ObjectProperty ;
   rdfs:domain schema:Person ;
-  rdfs:range athlinks:ActivityFeature ;
-  rdfs:comment "An indication of activity in an athletic event."@en ;
+  rdfs:range [
+    a athlinks:ActivityFeature ;
+    owl:oneOf (athlinks:RunUpTo5k athlinks:Run5kTo15k athlinks:Run15kToHalfMarathon athlinks:RunHalfToFullMarathon athlinks:RunMarathon athlinks:RunUltra athlinks:MultisportSprint athlinks:MultisportOlympic athlinks:MultisportHalfIronman athlinks:MultisportIronMan athlinks:Aquathlon athlinks:Aquabike athlinks:Duathlon athlinks:Swim athlinks:MountainBike athlinks:Cycling athlinks:Snow athlinks:Adventure athlinks:Obstacle athlinks:Other)
+  ] ;
+  rdfs:comment "An indication of a person participating in an ActivityFeature."@en ;
   rdfs:label "participated in"@en .
