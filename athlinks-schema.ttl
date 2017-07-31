@@ -8,15 +8,16 @@
 @prefix schema: <http://schema.org/> .
 @base <http://adp.athlinks.com/schema> .
 
+<http://adp.athlinks.com/schemax> rdf:type owl:Ontology; rdf:about "schema-latest-owl.ttl" .
+
 <http://adp.athlinks.com/schema> rdf:type owl:Ontology ;
                                   owl:versionIRI : ;
-                                  owl:imports <http://adp.athlinks.com/schemax/> ;
+                                  owl:imports <http://adp.athlinks.com/schemax> ;
                                   rdfs:comment "This file contains Athlinks data vocabulary. The vocabulary is based on the schema.org ontology with our own extensions for concepts specific to human endurance events."@en ;
                                   rdfs:label "Athlinks data vocabulary"@en ;
                                   dc:contributor "astn"^^xsd:string ,
                                                  "nextdude"^^xsd:string ,
-                                                 "warren"^^xsd:string ,
-                                                 "jpflueger"^^xsd:string .
+                                                 "warren"^^xsd:string .
 
 #################################################################
 #    Annotation properties
@@ -53,11 +54,6 @@ dc:date rdf:type owl:AnnotationProperty .
             rdfs:comment "A legacy data record belonging to another system that is related to this object."@en ;
             rdfs:label "legacy data"@en .
 
-:participatedIn rdf:type owl:ObjectProperty ;
-                rdfs:domain schema:Person ;
-                rdfs:range :ActivityFeature ;
-                rdfs:comment "An indication of activity in an athletic event."@en ;
-                rdfs:label "participated in"@en .
 
 #################################################################
 #    Data properties
@@ -249,15 +245,6 @@ dc:date rdf:type owl:AnnotationProperty .
                      rdfs:label "Athletic event series"@en .
 
 
-###  http://adp.athlinks.com/schema/AthleticEventStatusType
-:AthleticEventStatusType rdf:type owl:Class ;
-                         rdfs:subClassOf schema:EventStatusType ;
-                         dc:creator "nextdude"^^xsd:string ;
-                         dc:date "2017-06-27T17:41:10Z"^^xsd:dateTime ;
-                         rdfs:comment "An enumeration type whose instances represent states that an athletic event may be in."@en ;
-                         rdfs:label "Athletic event status type"@en .
-
-
 ###  http://adp.athlinks.com/schema/BikeAction
 :BikeAction rdf:type owl:Class ;
             rdfs:subClassOf schema:ExerciseAction ;
@@ -345,12 +332,6 @@ dc:date rdf:type owl:AnnotationProperty .
             rdfs:comment "Exercise by swimming"@en ;
             rdfs:label "Swim Action"@en .
 
-:ActivityFeature rdf:type owl:Class ;
-            rdfs:subClassOf schema:QualitativeValue ;
-            dc:creator "jpflueger"^^xsd:string ;
-            dc:date "2017-07-27T17:44:00Z"^^xsd:dateTime ;
-            rdfs:comment "Flag describing an activity"@en ;
-            rdfs:label "ActivityFeature"@en .
 
 ###  http://schema.org/GenderType
 schema:GenderType dc:creator "nextdude"^^xsd:string ;
