@@ -287,5 +287,5 @@ athlinks:participatedIn a owl:ObjectProperty ;
     a athlinks:ActivityFeature ;
     owl:oneOf (athlinks:RunUpTo5k athlinks:Run5kTo15k athlinks:Run15kToHalfMarathon athlinks:RunHalfToFullMarathon athlinks:RunMarathon athlinks:RunUltra athlinks:MultisportSprint athlinks:MultisportOlympic athlinks:MultisportHalfIronman athlinks:MultisportIronMan athlinks:Aquathlon athlinks:Aquabike athlinks:Duathlon athlinks:Swim athlinks:MountainBike athlinks:Cycling athlinks:Snow athlinks:Adventure athlinks:Obstacle athlinks:Other)
   ] ;
-  rdfs:comment "An indication of activity in an athletic event."@en ;
+  rdfs:comment "An indication of a person participating in an ActivityFeature."@en ;
   rdfs:label "participated in"@en .
