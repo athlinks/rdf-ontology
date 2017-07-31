@@ -8,6 +8,8 @@
 @prefix schema: <http://schema.org/> .
 @base <http://adp.athlinks.com/schema> .
 
+<http://adp.athlinks.com/schemax> rdf:type owl:Ontology; rdf:about "schema-latest-owl.ttl" .
+
 <http://adp.athlinks.com/schema> rdf:type owl:Ontology ;
                                   owl:versionIRI : ;
                                   owl:imports <http://adp.athlinks.com/schemax/> ;
@@ -250,12 +252,12 @@ dc:date rdf:type owl:AnnotationProperty .
 
 
 ###  http://adp.athlinks.com/schema/AthleticEventStatusType
-:AthleticEventStatusType rdf:type owl:Class ;
-                         rdfs:subClassOf schema:EventStatusType ;
-                         dc:creator "nextdude"^^xsd:string ;
-                         dc:date "2017-06-27T17:41:10Z"^^xsd:dateTime ;
-                         rdfs:comment "An enumeration type whose instances represent states that an athletic event may be in."@en ;
-                         rdfs:label "Athletic event status type"@en .
+#:AthleticEventStatusType rdf:type owl:Class ;
+#                         rdfs:subClassOf schema:EventStatusType ;
+#                         dc:creator "nextdude"^^xsd:string ;
+#                         dc:date "2017-06-27T17:41:10Z"^^xsd:dateTime ;
+#                         rdfs:comment "An enumeration type whose instances represent states that an athletic event may be in."@en ;
+#                         rdfs:label "Athletic event status type"@en .
 
 
 ###  http://adp.athlinks.com/schema/BikeAction
