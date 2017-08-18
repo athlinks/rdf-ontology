@@ -300,9 +300,8 @@ athlinks:participatedIn a owl:ObjectProperty ;
   rdfs:label "participated in"@en .
 
 athlinks:numberOfRaces a owl:DataTypeProperty ;
-  rdfs:domain schema:Person ;
-  rdfs:range xsd:unsignedInt .
   rdfs:comment "Number of races completed by an athlete." ;
   rdfs:label "Number of races" ;
-
+  rdfs:domain schema:Person ;
+  rdfs:range xsd:unsignedInt .
 
