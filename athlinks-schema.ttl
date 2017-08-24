@@ -305,3 +305,6 @@ athlinks:numberOfRaces a owl:DataTypeProperty ;
   rdfs:domain schema:Person ;
   rdfs:range xsd:unsignedInt .
 
+athlinks:GenderNotSpecified a schema:GenderType ;
+  rdfs:comment "Used when a person does not want to specify their gender" ;
+  rdfs:label "Athlinks Gender Not Specified" .
