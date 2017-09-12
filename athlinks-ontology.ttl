@@ -469,10 +469,12 @@ schema:GenderType dc:creator "nextdude"^^xsd:string ;
 
 ## Properties/Predicates
 
+### http://adp.athlinks.com/schema/hasEntry
 :hasEntry a owl:ObjectProperty ;
   rdfs:domain schema:Person ;
   rdfs:range athlinks:AthleticEventEntry .
 
+### http://adp.athlinks.com/schema/entryBelongsTo
 :entryBelongsTo a owl:ObjectProperty ;
   rdfs:domain athlinks:AthleticEventEntry ;
   rdfs:range athlinks:AthleticEvent .
