@@ -258,6 +258,12 @@ dc:date rdf:type owl:AnnotationProperty .
                    rdfs:comment "An abstract role that encompasses all roles around athletic events."@en ;
                    rdfs:label "Athletic event role"@en .
 
+###  https://adp.athlinks.com/schema/AthleticEventEntry
+:AthleticEventEntry rdf:type owl:Class ;
+                    rdfs:subClassOf athlinks:AthleticEventRole ;
+                    dc:creator "berg"^^xsd:string ;
+                    dc:date "2017-09-12T12:00:00Z"^^xsd:dateTime ;
+                    rdfs:comment "A concrete role that captures a Person's entry in an athletic event"
 
 ###  http://adp.athlinks.com/schema/AthleticEventSeries
 :AthleticEventSeries rdf:type owl:Class ;
@@ -266,15 +272,6 @@ dc:date rdf:type owl:AnnotationProperty .
                      dc:date "2017-06-27T02:51:03Z"^^xsd:dateTime ;
                      rdfs:comment "A collection of athletic events, usually over the course of a single calendar year, that comprise a thematic sequence. Compare to an athletic event brand."@en ;
                      rdfs:label "Athletic event series"@en .
-
-
-###  http://adp.athlinks.com/schema/AthleticEventStatusType
-#:AthleticEventStatusType rdf:type owl:Class ;
-#                         rdfs:subClassOf schema:EventStatusType ;
-#                         dc:creator "nextdude"^^xsd:string ;
-#                         dc:date "2017-06-27T17:41:10Z"^^xsd:dateTime ;
-#                         rdfs:comment "An enumeration type whose instances represent states that an athletic event may be in."@en ;
-#                         rdfs:label "Athletic event status type"@en .
 
 
 ###  http://adp.athlinks.com/schema/BikeAction
@@ -470,3 +467,12 @@ schema:GenderType dc:creator "nextdude"^^xsd:string ;
               )
 ] .
 
+## Properties/Predicates
+
+:hasEntry a owl:ObjectProperty ;
+  rdfs:domain schema:Person ;
+  rdfs:range athlinks:AthleticEventEntry .
+
+:entryBelongsTo a owl:ObjectProperty ;
+  rdfs:domain athlinks:AthleticEventEntry ;
+  rdfs:range athlinks:AthleticEvent .
