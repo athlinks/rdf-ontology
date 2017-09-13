@@ -106,12 +106,15 @@ dc:date rdf:type owl:AnnotationProperty .
 
 
 ###  http://adp.athlinks.com/schema/Athlete
-:Athlete rdf:type owl:Class ;
+:AthleticEntryCompetitor rdf:type owl:Class ;
          rdfs:subClassOf :AthleticEventRole ;
          dc:creator "nextdude"^^xsd:string ;
          dc:date "2017-05-22T06:00:00Z"^^xsd:dateTime ;
          rdfs:comment "A role that a person or sports team plays when they participate in an athletic event."@en ;
-         rdfs:label "Athlete"@en .
+         rdfs:label "Athletic Event Competitor"@en .
+         # members:
+         # schema:competitor -> individual (e.g. schema:Person) or team (e.g. schema:SportsTeam)
+         # schema:sportsEvent -> athlinks:AthleticEvent
 
 
 ###  http://adp.athlinks.com/schema/AthleteCohort
@@ -257,13 +260,6 @@ dc:date rdf:type owl:AnnotationProperty .
                    dc:date "2017-05-22T06:00:00Z"^^xsd:dateTime ;
                    rdfs:comment "An abstract role that encompasses all roles around athletic events."@en ;
                    rdfs:label "Athletic event role"@en .
-
-###  https://adp.athlinks.com/schema/AthleticEventEntry
-:AthleticEventEntry rdf:type owl:Class ;
-                    rdfs:subClassOf athlinks:AthleticEventRole ;
-                    dc:creator "berg"^^xsd:string ;
-                    dc:date "2017-09-12T12:00:00Z"^^xsd:dateTime ;
-                    rdfs:comment "A concrete role that captures a Person's entry in an athletic event"
 
 ###  http://adp.athlinks.com/schema/AthleticEventSeries
 :AthleticEventSeries rdf:type owl:Class ;
@@ -466,15 +462,3 @@ schema:GenderType dc:creator "nextdude"^^xsd:string ;
                 :Other
               )
 ] .
-
-## Properties/Predicates
-
-### http://adp.athlinks.com/schema/hasEntry
-:hasEntry a owl:ObjectProperty ;
-  rdfs:domain schema:Person ;
-  rdfs:range athlinks:AthleticEventEntry .
-
-### http://adp.athlinks.com/schema/entryBelongsTo
-:entryBelongsTo a owl:ObjectProperty ;
-  rdfs:domain athlinks:AthleticEventEntry ;
-  rdfs:range athlinks:AthleticEvent .
