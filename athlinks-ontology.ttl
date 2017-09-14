@@ -17,7 +17,8 @@
                                   rdfs:label "Athlinks data vocabulary"@en ;
                                   dc:contributor "astn"^^xsd:string ,
                                                  "nextdude"^^xsd:string ,
-                                                 "warren"^^xsd:string .
+                                                 "warren"^^xsd:string ,
+                                                 "berg"^^xsd:string .
 
 #################################################################
 #    Annotation properties
@@ -105,13 +106,16 @@ dc:date rdf:type owl:AnnotationProperty .
                rdfs:label "Aggregate team"@en .
 
 
-###  http://adp.athlinks.com/schema/Athlete
-:Athlete rdf:type owl:Class ;
+###  http://adp.athlinks.com/schema/AthleticEventCompetitor
+:AthleticEventCompetitor rdf:type owl:Class ;
          rdfs:subClassOf :AthleticEventRole ;
          dc:creator "nextdude"^^xsd:string ;
          dc:date "2017-05-22T06:00:00Z"^^xsd:dateTime ;
          rdfs:comment "A role that a person or sports team plays when they participate in an athletic event."@en ;
-         rdfs:label "Athlete"@en .
+         rdfs:label "Athletic Event Competitor"@en .
+         # members:
+         # schema:competitor -> individual (e.g. schema:Person) or team (e.g. schema:SportsTeam)
+         # schema:sportsEvent -> athlinks:AthleticEvent
 
 
 ###  http://adp.athlinks.com/schema/AthleteCohort
@@ -258,7 +262,6 @@ dc:date rdf:type owl:AnnotationProperty .
                    rdfs:comment "An abstract role that encompasses all roles around athletic events."@en ;
                    rdfs:label "Athletic event role"@en .
 
-
 ###  http://adp.athlinks.com/schema/AthleticEventSeries
 :AthleticEventSeries rdf:type owl:Class ;
                      rdfs:subClassOf :AthleticEvent ;
@@ -266,15 +269,6 @@ dc:date rdf:type owl:AnnotationProperty .
                      dc:date "2017-06-27T02:51:03Z"^^xsd:dateTime ;
                      rdfs:comment "A collection of athletic events, usually over the course of a single calendar year, that comprise a thematic sequence. Compare to an athletic event brand."@en ;
                      rdfs:label "Athletic event series"@en .
-
-
-###  http://adp.athlinks.com/schema/AthleticEventStatusType
-#:AthleticEventStatusType rdf:type owl:Class ;
-#                         rdfs:subClassOf schema:EventStatusType ;
-#                         dc:creator "nextdude"^^xsd:string ;
-#                         dc:date "2017-06-27T17:41:10Z"^^xsd:dateTime ;
-#                         rdfs:comment "An enumeration type whose instances represent states that an athletic event may be in."@en ;
-#                         rdfs:label "Athletic event status type"@en .
 
 
 ###  http://adp.athlinks.com/schema/BikeAction
@@ -469,4 +463,3 @@ schema:GenderType dc:creator "nextdude"^^xsd:string ;
                 :Other
               )
 ] .
-
