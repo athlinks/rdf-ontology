@@ -230,7 +230,7 @@ dc:date rdf:type owl:AnnotationProperty .
                rdfs:subClassOf schema:SportsEvent ;
                dc:creator "nextdude"^^xsd:string ;
                dc:date "2017-05-22T06:00:00Z"^^xsd:dateTime ;
-               rdfs:comment "A sports event where multiple sports events across disciplines have separate competitions"@en ;
+               rdfs:comment "A sports event that occurs in one or more specific places at a definite time and comprises one or more AthleticRaces."@en ;
                rdfs:label "Athletic event"@en .
 
 
