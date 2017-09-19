@@ -216,13 +216,21 @@ dc:date rdf:type owl:AnnotationProperty .
                           rdfs:comment "A marked physical point within an athletic course which is used to mark a participant's progress along the course."@en ;
                           rdfs:label "Athletic course checkpoint"@en .
 
+### http://adp.athlinks.com/schema/AthleticRace
+:AthleticRace rdf:type owl:Class ;
+              rdfs:subClassOf schema:SportsEvent ;
+              dc:creator "warren"^^xsd:string ;
+              dc:date "2017-09-19T17:00:00Z"^^xsd:dateTime ;
+              rdfs:comment "A sports event where multiple people, participating either as individuals or in teams, compete over a closed course in one or more athletic disciplines."@en ;
+              rdfs:label "Athletic race"@en .
+
 
 ###  http://adp.athlinks.com/schema/AthleticEvent
 :AthleticEvent rdf:type owl:Class ;
                rdfs:subClassOf schema:SportsEvent ;
                dc:creator "nextdude"^^xsd:string ;
                dc:date "2017-05-22T06:00:00Z"^^xsd:dateTime ;
-               rdfs:comment "A sports event where multiple people, participating either as individuals or in teams, compete over a closed course in one or more athletic disciplines."@en ;
+               rdfs:comment "A sports event where multiple sports events across disciplines have separate competitions"@en ;
                rdfs:label "Athletic event"@en .
 
 
