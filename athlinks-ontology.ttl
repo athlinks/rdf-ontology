@@ -396,8 +396,17 @@ dc:date rdf:type owl:AnnotationProperty .
 :OverallRanking a owl:NamedIndividual, :CohortRankingType ;
   rdfs:label "Overall Ranking"@en .
 
-:GenderRanking a owl:NamedIndividual, :CohortRankingType ;
-  rdfs:label "Gender Cohort Ranking"@en .
+:GenderRankingMale a owl:NamedIndividual, :CohortRankingType ;
+  rdfs:comment "Cohort Ranking Type for male athletes."@en .
+  rdfs:label "Gender Ranking: Male"@en .
+
+:GenderRankingFemale a owl:NamedIndividual, :CohortRankingType ;
+  rdfs:comment "Cohort Ranking Type for female athletes."@en .
+  rdfs:label "Gender Ranking: Female"@en .
+
+:GenderRankingUnspecified a owl:NamedIndividual, :CohortRankingType ;
+  rdfs:comment "Cohort Ranking Type for athletes with unspecified gender"@en .
+  rdfs:label "Gender Ranking: Unspecified"@en .
 
 ###  http://adp.athlinks.com/schema/CohortRanking
 :CohortRanking rdf:type owl:Class ;
