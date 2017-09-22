@@ -126,6 +126,14 @@ dc:date rdf:type owl:AnnotationProperty .
                rdfs:comment "A set of participants in an athletic event grouped together for the purpose of scoring. The groupings are usually defined in terms of age, gender, etc."@en ;
                rdfs:label "Athlete cohort"@en .
 
+:athleteCohort a owl:ObjectProperty ;
+  rdfs:domain [
+    rdf:type owl:Class ;
+    owl:unionOf ( # We expect this predicate to be applicable to other classes
+      :CohortRanking
+    )
+  ] ;
+  rdfs:range :AthleteCohort . 
 
 ###  http://adp.athlinks.com/schema/AthleteIdentifierAssignment
 :AthleteIdentifierAssignment rdf:type owl:Class ;
@@ -366,26 +374,46 @@ dc:date rdf:type owl:AnnotationProperty .
             rdfs:comment "Exercise by swimming"@en ;
             rdfs:label "Swim Action"@en .
 
-
-
-###  http://adp.athlinks.com/schema/BracketRanking
-:BracketRanking rdf:type owl:Class ;
+###  http://adp.athlinks.com/schema/CohortRankingType
+:CohortRankingType rdf:type owl:Class ;
   rdfs:subClassOf schema:Intangible ;
-  rdfs:comment "An individual result's ranking in a bracket."@en ;
-  rdfs:label "Bracket Ranking" .
+  rdfs:comment "A predefined rule for associating entries to a cohort."@en ;
+  rdfs:label "Cohort Ranking Type"@en .
+
+:cohortRankingType a owl:ObjectProperty ;
+  rdfs:domain :CohortRanking ;
+  rdfs:range [
+    rdf:type owl:Class ;
+    owl:unionOf(
+      :CohortRankingType
+      schema:string
+    )
+  ] ;
+  rdfs:comment "The cohort ranking type of this CohortRanking; either one of the predefined ones, or a string denoting a custom cohort type (e.g. military)."@en ;
+  rdfs:label "cohort ranking type"@en .
+
+###  http://adp.athlinks.com/schema/OverallRanking
+:OverallRanking a owl:NamedIndividual, :CohortRankingType ;
+  rdfs:label "Overall Ranking"@en .
+
+###  http://adp.athlinks.com/schema/CohortRanking
+:CohortRanking rdf:type owl:Class ;
+  rdfs:subClassOf schema:Intangible ;
+  rdfs:comment "An individual result's ranking in a cohort."@en ;
+  rdfs:label "Cohort Ranking" .
   # Expected properties: 
-  #  schema:disambiguatingDescription -> string (e.g. "M20-29")
+  #  :athleteCohort -> :AthleteCohort
   #  :rank -> Int
 
-:bracketRanking a owl:ObjectProperty ;
+:cohortRanking a owl:ObjectProperty ;
   rdfs:domain :AthleteResult ;
-  rdfs:range :BracketRanking ;
-  rdfs:comment "A bracket ranking of the individual result."@en ;
-  rdfs:label "bracket ranking"@en .
+  rdfs:range :CohortRanking ;
+  rdfs:comment "A ranking of the individual result within a cohort."@en ;
+  rdfs:label "cohort ranking"@en .
 
 ###  http://adp.athlinks.com/schema/rank
 :rank a owl:DatatypeProperty ;
-  rdfs:domain :BracketRanking ;
+  rdfs:domain :CohortRanking ;
   rdfs:range schema:Int ;
   rdfs:comment "The numeric rank of an individual in a ranking."@en ;
   rdfs:label "rank"@en .
