@@ -368,7 +368,7 @@ dc:date rdf:type owl:AnnotationProperty .
 
 
 
-###  http://adp.athlinks.com/schema/Ranking
+###  http://adp.athlinks.com/schema/BracketRanking
 :BracketRanking rdf:type owl:Class ;
   rdfs:subClassOf schema:Intangible ;
   rdfs:comment "An individual result's ranking in a bracket."@en ;
