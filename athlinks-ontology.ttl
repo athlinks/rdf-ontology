@@ -396,6 +396,9 @@ dc:date rdf:type owl:AnnotationProperty .
 :OverallRanking a owl:NamedIndividual, :CohortRankingType ;
   rdfs:label "Overall Ranking"@en .
 
+:GenderRanking a owl:NamedIndividual, :CohortRankingType ;
+  rdfs:label "Gender Cohort Ranking"@en .
+
 ###  http://adp.athlinks.com/schema/CohortRanking
 :CohortRanking rdf:type owl:Class ;
   rdfs:subClassOf schema:Intangible ;
