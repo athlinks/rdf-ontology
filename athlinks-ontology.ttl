@@ -111,9 +111,9 @@ dc:date rdf:type owl:AnnotationProperty .
          rdfs:subClassOf :AthleticEventRole ;
          dc:creator "nextdude"^^xsd:string ;
          dc:date "2017-05-22T06:00:00Z"^^xsd:dateTime ;
-         rdfs:comment "A role that a person or sports team plays when they participate in an athletic event."@en ;
+         rdfs:comment "A role that an entry (such as a person or sports team) plays when they participate in an athletic event."@en ;
          rdfs:label "Athletic Event Competitor"@en .
-         # members:
+         # expected predicates:
          # schema:competitor -> individual (e.g. schema:Person) or team (e.g. schema:SportsTeam)
          # schema:sportsEvent -> athlinks:AthleticEvent
 
@@ -367,10 +367,30 @@ dc:date rdf:type owl:AnnotationProperty .
             rdfs:label "Swim Action"@en .
 
 
-###  http://schema.org/GenderType
-schema:GenderType dc:creator "nextdude"^^xsd:string ;
-                  dc:date "2017-05-22T06:00:00Z"^^xsd:dateTime .
 
+###  http://adp.athlinks.com/schema/Ranking
+:BracketRanking rdf:type owl:Class ;
+  rdfs:subClassOf schema:Intangible ;
+  rdfs:comment "An individual result's ranking in a bracket."@en ;
+  rdfs:label "Bracket Ranking" .
+  # Expected properties: 
+  #  schema:disambiguatingDescription -> string (e.g. "M20-29")
+  #  :rank -> Int
+
+:bracketRanking a owl:ObjectProperty ;
+  rdfs:domain :AthleteResult ;
+  rdfs:range :BracketRanking ;
+  rdfs:comment "A bracket ranking of the individual result."@en ;
+  rdfs:label "bracket ranking"@en .
+
+###  http://adp.athlinks.com/schema/rank
+:rank a owl:DatatypeProperty ;
+  rdfs:domain :BracketRanking ;
+  rdfs:range schema:Int ;
+  rdfs:comment "The numeric rank of an individual in a ranking."@en ;
+  rdfs:label "rank"@en .
+
+###  http://adp.athlinks.com/schema/ActivityType
 :ActivityType
   a owl:Class ;
   rdfs:subClassOf schema:QualitativeValue ;
@@ -380,7 +400,13 @@ schema:GenderType dc:creator "nextdude"^^xsd:string ;
 
 :activityType
   a owl:ObjectProperty ;
-  rdfs:domain :AthleticRace ;
+  rdfs:domain [
+    rdf:type owl:Class ;
+    owl:unionOf (
+      :AthleteResult
+      :AthleticRace
+    ) ;
+  ] ;
   rdfs:range :ActivityType ;
   rdfs:comment "A predicate asserting that a race was of the specified activity type"@en ;
   rdfs:label "activity type"@en .
