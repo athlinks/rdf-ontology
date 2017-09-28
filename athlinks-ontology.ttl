@@ -386,7 +386,7 @@ dc:date rdf:type owl:AnnotationProperty .
     rdf:type owl:Class ;
     owl:unionOf(
       :CohortRankingType
-      schema:string
+      xsd:string
     )
   ] ;
   rdfs:comment "The cohort ranking type of this CohortRanking; either one of the predefined ones, or a string denoting a custom cohort type (e.g. military)."@en ;
