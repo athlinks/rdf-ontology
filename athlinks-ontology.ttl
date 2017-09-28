@@ -426,7 +426,7 @@ dc:date rdf:type owl:AnnotationProperty .
 ###  http://adp.athlinks.com/schema/rank
 :rank a owl:DatatypeProperty ;
   rdfs:domain :CohortRanking ;
-  rdfs:range schema:Int ;
+  rdfs:range xsd:integer ;
   rdfs:comment "The numeric rank of an individual in a ranking."@en ;
   rdfs:label "rank"@en .
 
