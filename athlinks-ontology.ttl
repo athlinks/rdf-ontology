@@ -111,9 +111,9 @@ dc:date rdf:type owl:AnnotationProperty .
          rdfs:subClassOf :AthleticEventRole ;
          dc:creator "nextdude"^^xsd:string ;
          dc:date "2017-05-22T06:00:00Z"^^xsd:dateTime ;
-         rdfs:comment "A role that a person or sports team plays when they participate in an athletic event."@en ;
+         rdfs:comment "A role that an entry (such as a person or sports team) plays when they participate in an athletic event."@en ;
          rdfs:label "Athletic Event Competitor"@en .
-         # members:
+         # expected predicates:
          # schema:competitor -> individual (e.g. schema:Person) or team (e.g. schema:SportsTeam)
          # schema:sportsEvent -> athlinks:AthleticEvent
 
@@ -126,6 +126,14 @@ dc:date rdf:type owl:AnnotationProperty .
                rdfs:comment "A set of participants in an athletic event grouped together for the purpose of scoring. The groupings are usually defined in terms of age, gender, etc."@en ;
                rdfs:label "Athlete cohort"@en .
 
+:athleteCohort a owl:ObjectProperty ;
+  rdfs:domain [
+    rdf:type owl:Class ;
+    owl:unionOf ( # We expect this predicate to be applicable to other classes
+      :CohortRanking
+    )
+  ] ;
+  rdfs:range :AthleteCohort . 
 
 ###  http://adp.athlinks.com/schema/AthleteIdentifierAssignment
 :AthleteIdentifierAssignment rdf:type owl:Class ;
@@ -366,11 +374,63 @@ dc:date rdf:type owl:AnnotationProperty .
             rdfs:comment "Exercise by swimming"@en ;
             rdfs:label "Swim Action"@en .
 
+###  http://adp.athlinks.com/schema/CohortRankingType
+:CohortRankingType rdf:type owl:Class ;
+  rdfs:subClassOf schema:Intangible ;
+  rdfs:comment "A predefined rule for associating entries to a cohort."@en ;
+  rdfs:label "Cohort Ranking Type"@en .
 
-###  http://schema.org/GenderType
-schema:GenderType dc:creator "nextdude"^^xsd:string ;
-                  dc:date "2017-05-22T06:00:00Z"^^xsd:dateTime .
+:cohortRankingType a owl:ObjectProperty ;
+  rdfs:domain :CohortRanking ;
+  rdfs:range [
+    rdf:type owl:Class ;
+    owl:unionOf(
+      :CohortRankingType
+      schema:string
+    )
+  ] ;
+  rdfs:comment "The cohort ranking type of this CohortRanking; either one of the predefined ones, or a string denoting a custom cohort type (e.g. military)."@en ;
+  rdfs:label "cohort ranking type"@en .
 
+###  http://adp.athlinks.com/schema/OverallRanking
+:OverallRanking a owl:NamedIndividual, :CohortRankingType ;
+  rdfs:label "Overall Ranking"@en .
+
+:GenderRankingMale a owl:NamedIndividual, :CohortRankingType ;
+  rdfs:comment "Cohort Ranking Type for male athletes."@en ;
+  rdfs:label "Gender Ranking: Male"@en .
+
+:GenderRankingFemale a owl:NamedIndividual, :CohortRankingType ;
+  rdfs:comment "Cohort Ranking Type for female athletes."@en ;
+  rdfs:label "Gender Ranking: Female"@en .
+
+:GenderRankingUnspecified a owl:NamedIndividual, :CohortRankingType ;
+  rdfs:comment "Cohort Ranking Type for athletes with unspecified gender"@en ;
+  rdfs:label "Gender Ranking: Unspecified"@en .
+
+###  http://adp.athlinks.com/schema/CohortRanking
+:CohortRanking rdf:type owl:Class ;
+  rdfs:subClassOf schema:Intangible ;
+  rdfs:comment "An individual result's ranking in a cohort."@en ;
+  rdfs:label "Cohort Ranking" .
+  # Expected properties: 
+  #  :athleteCohort -> :AthleteCohort
+  #  :rank -> Int
+
+:cohortRanking a owl:ObjectProperty ;
+  rdfs:domain :AthleteResult ;
+  rdfs:range :CohortRanking ;
+  rdfs:comment "A ranking of the individual result within a cohort."@en ;
+  rdfs:label "cohort ranking"@en .
+
+###  http://adp.athlinks.com/schema/rank
+:rank a owl:DatatypeProperty ;
+  rdfs:domain :CohortRanking ;
+  rdfs:range schema:Int ;
+  rdfs:comment "The numeric rank of an individual in a ranking."@en ;
+  rdfs:label "rank"@en .
+
+###  http://adp.athlinks.com/schema/ActivityType
 :ActivityType
   a owl:Class ;
   rdfs:subClassOf schema:QualitativeValue ;
@@ -380,7 +440,13 @@ schema:GenderType dc:creator "nextdude"^^xsd:string ;
 
 :activityType
   a owl:ObjectProperty ;
-  rdfs:domain :AthleticRace ;
+  rdfs:domain [
+    rdf:type owl:Class ;
+    owl:unionOf (
+      :AthleteResult
+      :AthleticCourse
+    ) ;
+  ] ;
   rdfs:range :ActivityType ;
   rdfs:comment "A predicate asserting that a race was of the specified activity type"@en ;
   rdfs:label "activity type"@en .
