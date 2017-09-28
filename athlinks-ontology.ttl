@@ -386,7 +386,7 @@ dc:date rdf:type owl:AnnotationProperty .
     rdf:type owl:Class ;
     owl:unionOf(
       :CohortRankingType
-      schema:string
+      xsd:string
     )
   ] ;
   rdfs:comment "The cohort ranking type of this CohortRanking; either one of the predefined ones, or a string denoting a custom cohort type (e.g. military)."@en ;
@@ -426,7 +426,7 @@ dc:date rdf:type owl:AnnotationProperty .
 ###  http://adp.athlinks.com/schema/rank
 :rank a owl:DatatypeProperty ;
   rdfs:domain :CohortRanking ;
-  rdfs:range schema:Int ;
+  rdfs:range xsd:integer ;
   rdfs:comment "The numeric rank of an individual in a ranking."@en ;
   rdfs:label "rank"@en .
 
