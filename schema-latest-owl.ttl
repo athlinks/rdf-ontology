@@ -19,7 +19,7 @@
 
 #----[ Athlinks Version Tag ]----
 
-: a owl:Ontology;
+schemax: a owl:Ontology;
   rdfs:label "schema.org (converted to OWL by Athlinks)";
   owl:versionInfo "2017-09-29T13:19:06.873Z"^^xsd:dateTime;
 .
