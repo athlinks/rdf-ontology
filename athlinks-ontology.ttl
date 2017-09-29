@@ -57,25 +57,13 @@
 # 
 # 
 # http://adp.athlinks.com/schema/age
-
+# Note that this is a virtual property in that the adp-api computes this on the fly based on
+# a person's birthdate, but its a very common value to query, so we put it in the schema
 :age a owl:DatatypeProperty ;
 	rdfs:domain schema:Person ;
 	rdfs:range xsd:integer ;
 	rdfs:comment "The age (in years) of a person."@en ;
 	rdfs:label "age"@en .
-# 
-# http://adp.athlinks.com/schema/courseTime
-
-:courseTime a owl:DatatypeProperty ;
-	rdfs:subPropertyOf owl:topDataProperty .
-# 
-# http://adp.athlinks.com/schema/numberOfRaces
-
-:numberOfRaces a owl:DatatypeProperty ;
-	rdfs:domain schema:Person ;
-	rdfs:range xsd:integer ;
-	rdfs:comment "Number of races completed by an athlete."@en ;
-	rdfs:label "number of races"@en .
 # 
 # http://adp.athlinks.com/schema/rank
 
