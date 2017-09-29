@@ -1,3 +1,9 @@
+####
+# Athlinks Ontology
+# Version: 1.0-3.2
+# Includes owlized version of http://schema.org version 3.2
+####
+
 @prefix : <http://adp.athlinks.com/schema/> .
 @prefix dc: <http://purl.org/dc/elements/1.1/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
@@ -8,64 +14,45 @@
 @prefix schema: <http://schema.org/> .
 
 <http://adp.athlinks.com/schema> a owl:Ontology ;
-	owl:versionIRI <http://adp.athlinks.com/schema/> ;
+	owl:versionIRI <http://adp.athlinks.com/schema/1.0-3.2/> ;
+  # import our owlized version of schema.org
 	owl:imports <http://adp.athlinks.com/schemax/> ;
-	dc:contributor "berg"^^xsd:string ;
 	rdfs:comment "This file contains Athlinks data vocabulary. The vocabulary is based on the schema.org ontology with our own extensions for concepts specific to human endurance events."@en ;
 	rdfs:label "Athlinks data vocabulary"@en ;
-	dc:contributor "astn"^^xsd:string , "nextdude"^^xsd:string , "warren"^^xsd:string .
-# 
-# 
-# #################################################################
-# #
-# #    Object Properties
-# #
-# #################################################################
-# 
-# 
-# http://adp.athlinks.com/schema/exerciseAction
+	dc:contributor "astn" , 
+                 "nextdude" , 
+                 "warren" ,
+                 "berg" .
 
-:exerciseAction a owl:ObjectProperty ;
+####
+# Properties
+####
+:eventAction a owl:ObjectProperty ;
 	rdfs:subPropertyOf owl:topObjectProperty ;
 	rdfs:domain :AthleteResult ;
-	rdfs:range schema:ExerciseAction ;
-	rdfs:comment "A pointer to the the exercise action that is being ranked."@en ;
+	rdfs:range :AthleticEventAction ;
+	rdfs:comment "A pointer to the the athletic event action that is being ranked."@en ;
 	rdfs:label "exercise action"@en .
-# 
-# http://adp.athlinks.com/schema/legacyData
 
 :legacyData a owl:ObjectProperty ;
 	rdfs:domain owl:Thing ;
 	rdfs:range :LegacyDataRole ;
 	rdfs:comment "A legacy data record belonging to another system that is related to this object."@en ;
 	rdfs:label "legacy data"@en .
-# 
-# http://adp.athlinks.com/schema/participatedIn
 
+# TODO: This shouldn't be defined on schema:Person. It should be computed by query.
+# Or available in racer metrics. - nextdude
 :participatedIn a owl:ObjectProperty ;
 	rdfs:domain schema:Person ;
 	rdfs:comment "An indication of a person participating in an ActivityType."@en ;
 	rdfs:label "participated in"@en .
-# 
-# 
-# 
-# #################################################################
-# #
-# #    Data properties
-# #
-# #################################################################
-# 
-# 
-# http://adp.athlinks.com/schema/age
-# Note that this is a virtual property in that the adp-api computes this on the fly based on
-# a person's birthdate, but its a very common value to query, so we put it in the schema
+
+# virtual property - computed on the fly by the api
 :age a owl:DatatypeProperty ;
 	rdfs:domain schema:Person ;
 	rdfs:range xsd:integer ;
-	rdfs:comment "The age (in years) of a person."@en ;
+	rdfs:comment "The age (in years) of a person. Note that we don't store this constantly changing value in our database, but rather compute it dynamically when queried based on schema:birthDate."@en ;
 	rdfs:label "age"@en .
-# 
-# http://adp.athlinks.com/schema/rank
 
 :rank a owl:DatatypeProperty ;
 	rdfs:subPropertyOf schema:position ;
@@ -77,609 +64,329 @@
             xsd:string
           );
         ];
-        rdfs:comment "Rank of a course time result in the context of a particular athlete cohort. The rank may differ from its [position](http://schema.org/position), which is assumed to be sequential. Two items with sequential positions can share the same rank."@en ;
-        rdfs:label "rank"@en .
-# 
-# http://adp.athlinks.com/schema/siblingOrdering
+  rdfs:comment "Rank of a course time result in the context of a particular athlete cohort. The rank may differ from its [position](http://schema.org/position), which is assumed to be sequential. Two items with sequential positions can share the same rank."@en ;
+  rdfs:label "rank"@en .
 
 :siblingOrdering a owl:DatatypeProperty ;
 	rdfs:domain owl:Thing ;
 	rdfs:range xsd:integer ;
 	rdfs:comment "The numeric order of an object among siblings of the same property or type."@en ;
 	rdfs:label "sibling ordering"@en .
-# 
-# 
-# 
-# #################################################################
-# #
-# #    Classes
-# #
-# #################################################################
-# 
-# 
-# http://adp.athlinks.com/schema/AdventureEvent
 
-:AdventureEvent a owl:Class .
-# 
-# http://adp.athlinks.com/schema/AggregateTeam
+# widen the domain of sportEvent to include our AthleticEventRole
+schema:sportsEvent rdfs:domain [
+  rdf:type owl:Class ;
+  owl:oneOf ( schema:ExerciseAction :AthleticEventRole );
+] .
 
+# add schema:competitor to our AthleticEventCompetitor role
+schema:competitor rdfs:domain [
+  rdf:type owl:Class ;
+  owl:oneOf ( schema:SportsTeam :AthleticEventCompetitor )
+] .
+
+# NB: These are currently pending properties in schema.org. We will remove them 
+# from here when they get integrated in a future version of schema.org.
+:about a owl:ObjectTypeProperty ;
+  rdfs:domain schema:CreativeWork ;
+  rdfs:range owl:Thing ;
+  rdfs:comment "The subject matter of the content."@en ;
+  rdfs:label "about"@en .
+
+:subjectOf a owl:ObjectTypeProperty ;
+  rdfs:domain owl:Thing ;
+  rdfs:range [
+    rdf:type owl:Class ;
+    owl:oneOf ( schema:CreativeWork schema:Event )
+  ];
+  rdfs:comment "A creative work or event about this thing."@en ;
+  rdfs:label "subjectOf" .
+
+####
+# Classes
+####
 :AggregateTeam a owl:Class ;
 	rdfs:subClassOf schema:SportsTeam ;
 	rdfs:comment "A team of athletes in an athletic event who each run the full race with their aggregate score determined by some specified procedure."@en ;
 	rdfs:label "Aggregate team"@en .
-# 
-# http://adp.athlinks.com/schema/AquabikeEvent
-
-:AquabikeEvent a owl:Class .
-# 
-# http://adp.athlinks.com/schema/AquathlonEvent
-
-:AquathlonEvent a owl:Class .
-# 
-# http://adp.athlinks.com/schema/AthleteCohort
 
 :AthleteCohort a owl:Class ;
 	rdfs:subClassOf schema:PeopleAudience ;
 	rdfs:comment "A set of participants in an athletic event grouped together for the purpose of scoring. The groupings are often defined in terms of age and gender."@en ;
 	rdfs:label "Athlete cohort"@en .
-# 
-# http://adp.athlinks.com/schema/AthleteResult
 
 :AthleteResult a owl:Class ;
 	rdfs:subClassOf schema:ListItem ;
 	rdfs:comment "A ranking, within a particular athlete cohort, for an competitor who successfully completes an athletic event course or course segment."@en ;
 	rdfs:label "Athlete result"@en .
-# 
-# http://adp.athlinks.com/schema/AthleteResultList
 
 :AthleteResultList a owl:Class ;
 	rdfs:subClassOf schema:ItemList ;
 	rdfs:comment "A ranked list of the results of an athletic event, usually bound to a particular athlete cohort."@en ;
 	rdfs:label "Athlete result list"@en .
-# 
-# http://adp.athlinks.com/schema/AthleteTimingAction
 
 :AthleteTimingAction a owl:Class ;
 	rdfs:subClassOf schema:CreateAction ;
 	rdfs:comment "Observing and reporting the time and location of an athlete traversing an athletic event course. In the case of a normal RFID timed event, the agent is the timer, the object is the timing tag worn by the athlete, and the instrument is the timing device used to obtain the measurement. Those values will differ in other circumstances, say if the timing data is contained in a photograph taken by a spectator and uploaded during the race for the purpose of extracting the timing data."@en ;
 	rdfs:label "Athlete timing action"@en .
-# 
-# http://adp.athlinks.com/schema/AthleteTimingController
 
 :AthleteTimingController a owl:Class ;
 	rdfs:subClassOf :AthleteTimingProduct ;
 	rdfs:comment "An RFID timing controller used to process RFID tag reads during athlete events."@en ;
 	rdfs:label "Athlete timing controller"@en .
-# 
-# http://adp.athlinks.com/schema/AthleteTimingProduct
 
 :AthleteTimingProduct a owl:Class ;
 	rdfs:subClassOf schema:Product ;
 	rdfs:comment "An abstract class representing physical devices used for timing athletes."@en ;
 	rdfs:label "Athlete timing product"@en .
-# 
-# http://adp.athlinks.com/schema/AthleteTimingSensor
 
 :AthleteTimingSensor a owl:Class ;
 	rdfs:subClassOf :AthleteTimingController ;
 	rdfs:comment "The antenna deployed on an athletic course that actually senses the RFID timing tag in its RFID field. There will often be multiple sensors deployed that are associated with a given timing controller."@en ;
 	rdfs:label "Athlete timing sensor"@en .
-# 
-# http://adp.athlinks.com/schema/AthleteTimingTag
 
 :AthleteTimingTag a owl:Class ;
 	rdfs:subClassOf :AthleteTimingProduct ;
 	rdfs:comment "An RFID athlete timing tag, usually contained in an athlete's bib."@en ;
 	rdfs:label "Athlete timing tag"@en .
-# 
-# http://adp.athlinks.com/schema/AthleticCourse
 
 :AthleticCourse a owl:Class ;
 	rdfs:subClassOf schema:Place ;
 	rdfs:comment "A course on which an athletic event participant competes. This can refer to the entire course of an event, or a sub-course. A course is defined as the interval between two checkpoints."@en ;
 	rdfs:label "Athletic course"@en .
-# 
-# http://adp.athlinks.com/schema/AthleticCourseCheckpoint
 
 :AthleticCourseCheckpoint a owl:Class ;
 	rdfs:subClassOf :AthleticCourse ;
 	rdfs:comment "A marked physical point within an athletic course which is used to mark a participant's progress along the course."@en ;
 	rdfs:label "Athletic course checkpoint"@en .
-# 
-# http://adp.athlinks.com/schema/AthleticEvent
 
 :AthleticEvent a owl:Class ;
 	rdfs:subClassOf schema:SportsEvent ;
 	rdfs:comment "A sports event that occurs in one or more specific places at a definite time and comprises one or more athletic races."@en ;
 	rdfs:label "Athletic event"@en .
-# 
-# http://adp.athlinks.com/schema/AthleticEventBrand
+
+:AthleticEventAction a owl:Class ;
+  rdfs:subClassOf schema:ExerciseAction ;
+  rdfs:comment "An exercise action performed during an athletic event."@en ;
+  rdfs:label "Athletic event action"@en .
 
 :AthleticEventBrand a owl:Class ;
 	rdfs:subClassOf :AthleticEvent ;
 	rdfs:comment "A collection of athletic events that form a unique brand. The individual events usually occur once per year, and the collection spans mutliple years. Also, the events are usually owned by a single organization that manages and cultivates the brand. Compare to an athletic event series."@en ;
 	rdfs:label "Athletic event brand"@en .
-# 
-# http://adp.athlinks.com/schema/AthleticEventCategory
-
-:AthleticEventCategory a owl:Class ;
-	rdfs:subClassOf schema:Enumeration ;
-	rdfs:comment "A type of athletic event, like marathon or triathlon."@en ;
-	rdfs:label "Athletic event category"@en .
-# 
-# http://adp.athlinks.com/schema/AthleticEventCompetitor
 
 :AthleticEventCompetitor a owl:Class ;
 	rdfs:subClassOf :AthleticEventRole ;
 	rdfs:comment "A role that an entry (such as a person or sports team) plays when they participate in an athletic event."@en ;
 	rdfs:label "Athletic Event Competitor"@en .
-# 
-# http://adp.athlinks.com/schema/AthleticEventProduct
 
 :AthleticEventProduct a owl:Class ;
 	rdfs:subClassOf schema:Product ;
 	rdfs:comment "An product offered in the context of an athletic event."@en ;
 	rdfs:label "Athletic event product"@en .
-# 
-# http://adp.athlinks.com/schema/AthleticEventRole
 
 :AthleticEventRole a owl:Class ;
 	rdfs:subClassOf schema:Role ;
 	rdfs:comment "An abstract role that encompasses all roles around athletic events."@en ;
 	rdfs:label "Athletic event role"@en .
-# 
-# http://adp.athlinks.com/schema/AthleticEventSeries
 
 :AthleticEventSeries a owl:Class ;
 	rdfs:subClassOf :AthleticEvent ;
 	rdfs:comment "A collection of athletic events, usually over the course of a single calendar year, that comprise a thematic sequence. Compare to an athletic event brand."@en ;
 	rdfs:label "Athletic event series"@en .
-# 
-# http://adp.athlinks.com/schema/AthleticRace
 
 :AthleticRace a owl:Class ;
 	rdfs:subClassOf :AthleticEvent ;
 	rdfs:comment "An athletic event where multiple people, participating either as individuals or in teams, compete over a closed course in one or more athletic disciplines."@en ;
 	rdfs:label "Athletic race"@en .
-# 
-# http://adp.athlinks.com/schema/BikeAction
+
+:AggregateAthleticEventAction a owl:Class ;
+  rdfs:subClassOf :AthleticEventAction ;
+  rdfs:comment "A multi-course athletic event action that comprises multiple different exercise types."@en ;
+	rdfs:label "Aggregate action"@en .
 
 :BikeAction a owl:Class ;
-	rdfs:subClassOf schema:ExerciseAction ;
-	rdfs:comment "Exercise by biking"@en ;
+	rdfs:subClassOf :AthleticEventAction ;
+	rdfs:comment "Athletic event action by biking"@en ;
 	rdfs:label "Bike Action"@en .
-# 
-# http://adp.athlinks.com/schema/CheckpointTimingDevice
 
 :CheckpointTimingDevice a owl:Class ;
 	rdfs:subClassOf :AthleticEventRole ;
 	rdfs:comment "A timing controller and sensors when deployed at a given checkpoint on a course."@en ;
 	rdfs:label "Checkpoint timing device"@en .
-# 
-# http://adp.athlinks.com/schema/CrossCountryTeam
 
 :CrossCountryTeam a owl:Class ;
 	rdfs:subClassOf :AggregateTeam ;
 	rdfs:comment "An aggregate team in a cross-country style event."@en ;
 	rdfs:label "Cross-country team"@en .
-# 
-# http://adp.athlinks.com/schema/CyclingEvent
-
-:CyclingEvent a owl:Class .
-# 
-# http://adp.athlinks.com/schema/DuathlonEvent
-
-:DuathlonEvent a owl:Class .
-# 
-# http://adp.athlinks.com/schema/LeaderBoard
 
 :LeaderBoard a owl:Class ;
 	rdfs:subClassOf :AthleteResultList ;
 	rdfs:comment "A short result list comprised of the current leaders of an athletic event. Often, this list is limited to a particular cohort of participants."@en ;
 	rdfs:label "Leader board"@en .
-# 
-# http://adp.athlinks.com/schema/LegacyDataRecord
 
 :LegacyDataRecord a owl:Class ;
 	rdfs:subClassOf schema:Intangible ;
 	rdfs:comment "A legacy data record holds structured information from a legacy data system."@en ;
 	rdfs:label "Legacy data record"@en .
-# 
-# http://adp.athlinks.com/schema/LegacyDataRole
 
 :LegacyDataRole a owl:Class ;
 	rdfs:subClassOf schema:Role ;
 	rdfs:comment "A role played by a legacy data record in the context of some thing."@en ;
 	rdfs:label "Legacy data role"@en .
-# 
-# http://adp.athlinks.com/schema/MountainBikeEvent
-
-:MountainBikeEvent a owl:Class .
-# 
-# http://adp.athlinks.com/schema/MultisportHalfIronmanEvent
-
-:MultisportHalfIronmanEvent a owl:Class .
-# 
-# http://adp.athlinks.com/schema/MultisportIronmanEvent
-
-:MultisportIronmanEvent a owl:Class .
-# 
-# http://adp.athlinks.com/schema/MultisportOlympicEvent
-
-:MultisportOlympicEvent a owl:Class .
-# 
-# http://adp.athlinks.com/schema/MultisportSprintEvent
-
-:MultisportSprintEvent a owl:Class .
-# 
-# http://adp.athlinks.com/schema/ObstacleAction
 
 :ObstacleAction a owl:Class ;
-	rdfs:subClassOf schema:ExerciseAction ;
-	rdfs:comment "Exercise on an obstacle course"@en ;
+	rdfs:subClassOf :AthleticEventAction ;
+	rdfs:comment "Athletic event action on an obstacle course"@en ;
 	rdfs:label "Obstacle Action"@en .
-# 
-# http://adp.athlinks.com/schema/ObstacleEvent
 
-:ObstacleEvent a owl:Class .
-# 
-# http://adp.athlinks.com/schema/OtherEvent
-
-:OtherEvent a owl:Class .
-# 
-# http://adp.athlinks.com/schema/RelayTeam
+:RacerMetrics a owl:Class ;
+  rdfs:subClassOf schema:DataSet;
+  rdfs:comment "A set of data metrics for a given athlete. The about property should be used to refer to the athlete (schema:Person) about whom the metrics are computed."@en ;
+  rdfs:label "Racer metrics"@en .
 
 :RelayTeam a owl:Class ;
 	rdfs:subClassOf schema:SportsTeam ;
 	rdfs:comment "A team of athletes in an athletic event that each run part of the event course and their overall time is the sum of their individual times."@en ;
 	rdfs:label "Relay team"@en .
-# 
-# http://adp.athlinks.com/schema/Run15kToHalfMarathonEvent
-
-:Run15kToHalfMarathonEvent a owl:Class .
-# 
-# http://adp.athlinks.com/schema/Run5kTo15kEvent
-
-:Run5kTo15kEvent a owl:Class .
-# 
-# http://adp.athlinks.com/schema/RunAction
 
 :RunAction a owl:Class ;
-	rdfs:subClassOf schema:ExerciseAction ;
-	rdfs:comment "Exercise by running"@en ;
+	rdfs:subClassOf :AthleticEventAction ;
+	rdfs:comment "Athletic event action by running"@en ;
 	rdfs:label "Run Action"@en .
-# 
-# http://adp.athlinks.com/schema/RunHalfToFullMarathonEvent
-
-:RunHalfToFullMarathonEvent a owl:Class .
-# 
-# http://adp.athlinks.com/schema/RunMarathonEvent
-
-:RunMarathonEvent a owl:Class .
-# 
-# http://adp.athlinks.com/schema/RunUltraEvent
-
-:RunUltraEvent a owl:Class .
-# 
-# http://adp.athlinks.com/schema/RunUpTo5kEvent
-
-:RunUpTo5kEvent a owl:Class .
-# 
-# http://adp.athlinks.com/schema/SnowAction
 
 :SnowAction a owl:Class ;
-	rdfs:subClassOf schema:ExerciseAction ;
-	rdfs:comment "Exercise in the snow."@en ;
+	rdfs:subClassOf :AthleticEventAction ;
+	rdfs:comment "Athletic event action in the snow."@en ;
 	rdfs:label "Snow Action"@en .
-# 
-# http://adp.athlinks.com/schema/SnowEvent
-
-:SnowEvent a owl:Class .
-# 
-# http://adp.athlinks.com/schema/SnowShoeAction
 
 :SnowShoeAction a owl:Class ;
 	rdfs:subClassOf :SnowAction ;
-	rdfs:comment "Competitive snowshoe activity."@en ;
+	rdfs:comment "Athletic event action by snowshoeing."@en ;
 	rdfs:label "Snowshoe Action"@en .
-# 
-# http://adp.athlinks.com/schema/SwimAction
 
 :SwimAction a owl:Class ;
-	rdfs:subClassOf schema:ExerciseAction ;
-	rdfs:comment "Exercise by swimming"@en ;
+	rdfs:subClassOf :AthleticEventAction ;
+	rdfs:comment "Athletic event action by swimming"@en ;
 	rdfs:label "Swim Action"@en .
-# 
-# http://adp.athlinks.com/schema/SwimEvent
 
-:SwimEvent a owl:Class .
-# 
-# 
-# 
-# #################################################################
-# #
-# #    Individuals
-# #
-# #################################################################
-# 
-# 
-# http://adp.athlinks.com/schema/AdventureEvent
+:AthleticEventCategory a owl:Class ;
+	rdfs:subClassOf schema:Enumeration ;
+	rdfs:comment "A type of athletic event, like marathon or triathlon."@en ;
+	rdfs:label "Athletic event category"@en .
 
-:AdventureEvent a owl:NamedIndividual , :AthleticEventCategory .
-# 
-# http://adp.athlinks.com/schema/AquabikeEvent
-
-:AquabikeEvent a owl:NamedIndividual , :AthleticEventCategory .
-# 
-# http://adp.athlinks.com/schema/AquathlonEvent
-
-:AquathlonEvent a owl:NamedIndividual , :AthleticEventCategory .
-# 
-# http://adp.athlinks.com/schema/CyclingEvent
-
-:CyclingEvent a owl:NamedIndividual , :AthleticEventCategory .
-# 
-# http://adp.athlinks.com/schema/DuathlonEvent
-
-:DuathlonEvent a owl:NamedIndividual , :AthleticEventCategory .
-# 
-# http://adp.athlinks.com/schema/MountainBikeEvent
-
-:MountainBikeEvent a owl:NamedIndividual , :AthleticEventCategory .
-# 
-# http://adp.athlinks.com/schema/MultisportHalfIronmanEvent
-
-:MultisportHalfIronmanEvent a owl:NamedIndividual , :AthleticEventCategory .
-# 
-# http://adp.athlinks.com/schema/MultisportIronManEvent
-
-:MultisportIronManEvent a owl:NamedIndividual , :AthleticEventCategory .
-# 
-# http://adp.athlinks.com/schema/MultisportOlympicEvent
-
-:MultisportOlympicEvent a owl:NamedIndividual , :AthleticEventCategory .
-# 
-# http://adp.athlinks.com/schema/MultisportSprintEvent
-
-:MultisportSprintEvent a owl:NamedIndividual , :AthleticEventCategory .
-# 
-# http://adp.athlinks.com/schema/ObstacleEvent
-
-:ObstacleEvent a owl:NamedIndividual , :AthleticEventCategory .
-# 
-# http://adp.athlinks.com/schema/OtherEvent
-
-:OtherEvent a owl:NamedIndividual , :AthleticEventCategory .
-# 
-# http://adp.athlinks.com/schema/Run15kToHalfMarathonEvent
-
-:Run15kToHalfMarathonEvent a owl:NamedIndividual , :AthleticEventCategory .
-# 
-# http://adp.athlinks.com/schema/Run5kTo15kEvent
-
-:Run5kTo15kEvent a owl:NamedIndividual , :AthleticEventCategory .
-# 
-# http://adp.athlinks.com/schema/RunHalfToFullMarathonEvent
-
-:RunHalfToFullMarathonEvent a owl:NamedIndividual , :AthleticEventCategory .
-# 
-# http://adp.athlinks.com/schema/RunMarathonEvent
-
-:RunMarathonEvent a owl:NamedIndividual , :AthleticEventCategory .
-# 
-# http://adp.athlinks.com/schema/RunUltraEvent
-
-:RunUltraEvent a owl:NamedIndividual , :AthleticEventCategory .
-# 
-# http://adp.athlinks.com/schema/RunUpTo5kEvent
-
-:RunUpTo5kEvent a owl:NamedIndividual , :AthleticEventCategory .
-# 
-# http://adp.athlinks.com/schema/SnowEvent
-
-:SnowEvent a owl:NamedIndividual , :AthleticEventCategory .
-# 
-# http://adp.athlinks.com/schema/SwimEvent
-
-:SwimEvent a owl:NamedIndividual , :AthleticEventCategory .
-# 
-# 
-# 
-# #################################################################
-# #
-# #    Annotations
-# #
-# #################################################################
-# 
-# 
-
-:AdventureEvent rdfs:label "Adventure Event"@en ;
+:AdventureEvent a owl:NamedIndividual , :AthleticEventCategory ;
+  rdfs:label "Adventure Event"@en ;
 	rdfs:comment "An adventure athletic event."@en .
-# 
 
-:AquabikeEvent rdfs:comment "An athletic event comprised of swim and bike activities."@en ;
+:AquabikeEvent a owl:NamedIndividual , :AthleticEventCategory ;
+  rdfs:comment "An athletic event comprised of swim and bike activities."@en ;
 	rdfs:label "Aquabike Event"@en .
-# 
 
-:AquathlonEvent rdfs:label "Aquathlon Event"@en ;
+:AquathlonEvent a owl:NamedIndividual , :AthleticEventCategory ;
+  rdfs:label "Aquathlon Event"@en ;
 	rdfs:comment "An athletic event comprised of a swim and run."@en .
-# 
 
-:CyclingEvent rdfs:label "Cycling Event"@en ;
+:CyclingEvent a owl:NamedIndividual , :AthleticEventCategory ;
+  rdfs:label "Cycling Event"@en ;
 	rdfs:comment "A cycling athletic event."@en .
-# 
 
-:DuathlonEvent rdfs:label "Duathlon Event"@en ;
+:DuathlonEvent a owl:NamedIndividual , :AthleticEventCategory ;
+  rdfs:label "Duathlon Event"@en ;
 	rdfs:comment "An athletic event with two activities."@en .
-# 
 
-:MountainBikeEvent rdfs:comment "A mountain biking athletic event."@en ;
+:MountainBikeEvent a owl:NamedIndividual , :AthleticEventCategory ;
+  rdfs:comment "A mountain biking athletic event."@en ;
 	rdfs:label "Mountain Bike Event"@en .
-# 
 
-:MultisportHalfIronmanEvent rdfs:label "Half Ironman Event"@en ;
+:MultisportHalfIronmanEvent a owl:NamedIndividual , :AthleticEventCategory ;
+  rdfs:label "Half Ironman Event"@en ;
 	rdfs:comment "A half ironman athletic event."@en .
-# 
 
-:MultisportIronManEvent rdfs:comment "An ironman athletic event."@en ;
+:MultisportIronManEvent a owl:NamedIndividual , :AthleticEventCategory ;
+  rdfs:comment "An ironman athletic event."@en ;
 	rdfs:label "Ironman Event"@en .
-#
 
-:MultisportOlympicEvent rdfs:comment "An olympic triathlon."@en ;
+:MultisportOlympicEvent a owl:NamedIndividual , :AthleticEventCategory ;
+  rdfs:comment "An olympic triathlon."@en ;
 	rdfs:label "Olympic Triathlon Event"@en .
-# 
 
-:MultisportSprintEvent rdfs:comment "A sprint triathlon."@en ;
+:MultisportSprintEvent a owl:NamedIndividual , :AthleticEventCategory ;
+  rdfs:comment "A sprint triathlon."@en ;
 	rdfs:label "Sprint Triathlon Event"@en .
-# 
 
-:ObstacleEvent rdfs:comment "An obstacle athletic event."@en ;
+:ObstacleEvent a owl:NamedIndividual , :AthleticEventCategory ;
+  rdfs:comment "An obstacle athletic event."@en ;
 	rdfs:label "Obstacle Event"@en .
-# 
 
-:OtherEvent rdfs:comment "An athletic event in an otherwise unspecified category."@en ;
+:OtherEvent a owl:NamedIndividual , :AthleticEventCategory ;
+  rdfs:comment "An athletic event in an unspecified category."@en ;
 	rdfs:label "Other Event"@en .
-# 
 
-:Run15kToHalfMarathonEvent rdfs:label "Run 15K to Half Marathon Event"@en ;
+:Run15kToHalfMarathonEvent a owl:NamedIndividual , :AthleticEventCategory ;
+  rdfs:label "Run 15K to Half Marathon Event"@en ;
 	rdfs:comment "A running event with a distance from 15K up to a half marathon."@en .
-# 
 
-:Run5kTo15kEvent rdfs:comment "A running event from 5 to 15 kilometers in distance."@en ;
+:Run5kTo15kEvent a owl:NamedIndividual , :AthleticEventCategory ;
+  rdfs:comment "A running event from 5 to 15 kilometers in distance."@en ;
 	rdfs:label "Run 5K to 15K"@en .
-# 
 
-:RunHalfToFullMarathonEvent rdfs:label "Half to Full Marathon Event"@en ;
+:RunHalfToFullMarathonEvent a owl:NamedIndividual , :AthleticEventCategory ;
+  rdfs:label "Half to Full Marathon Event"@en ;
 	rdfs:comment "A running event with a distance from a half to a full marathon."@en .
-# 
 
-:RunMarathonEvent rdfs:comment "A marathon."@en ;
+:RunMarathonEvent a owl:NamedIndividual , :AthleticEventCategory ;
+  rdfs:comment "A marathon."@en ;
 	rdfs:label "Marathon Event"@en .
-# 
 
-:RunUltraEvent rdfs:comment "A running event with an ultramarathon distance."@en ;
+:RunUltraEvent a owl:NamedIndividual , :AthleticEventCategory ;
+  rdfs:comment "An ultra-marathon."@en ;
 	rdfs:label "Ultramarathon Event"@en .
-# 
 
-:RunUpTo5kEvent rdfs:label "Run up to 5K Event"@en ;
+:RunUpTo5kEvent a owl:NamedIndividual , :AthleticEventCategory ;
+  rdfs:label "Run up to 5K Event"@en ;
 	rdfs:comment "A running event up to 5K in distance."@en .
-# 
 
-:SnowEvent rdfs:comment "An athletic event in snow."@en ;
+:SnowEvent a owl:NamedIndividual , :AthleticEventCategory ;
+  rdfs:comment "An athletic event in snow."@en ;
 	rdfs:label "Snow Event"@en .
-# 
 
-:SwimEvent rdfs:label "Swim Event"@en ;
+:SwimEvent a owl:NamedIndividual , :AthleticEventCategory ;
+  rdfs:label "Swim Event"@en ;
 	rdfs:comment "A swimming athletic event."@en .
 
-# 
-# 
-# 
-# #################################################################
-# #
-# #    General axioms
-# #
-# #################################################################
-# 
-# 
+# make subclasses disjoint
+[] a owl:AllDifferent ;
+	owl:members (
+    :AdventureEvent
+    :AquabikeEvent
+    :AquathlonEvent
+    :CyclingEvent
+    :DuathlonEvent
+    :MountainBikeEvent
+    :MultisportHalfIronmanEvent
+    :MultisportIronmanEvent
+    :MultisportOlympicEvent 
+    :MultisportSprintEvent 
+    :ObstacleEvent
+    :OtherEvent
+    :Run15kToHalfMarathonEvent
+    :Run5kTo15kEvent
+    :RunHalfToFullMarathonEvent
+    :RunMarathonEvent
+    :RunUltraEvent
+    :RunUpTo5kEvent
+    :SnowEvent
+    :SwimEvent
+  ) .
 
-_:genid1 a owl:AllDisjointClasses ;
-	owl:members _:genid21 .
+[] a owl:AllDisjointClasses ;
+	owl:members (
+    :AthleticEventBrand
+    :AthleticEventSeries
+    :AthleticRace
+  ) .
 
-_:genid21 a rdf:List ;
-	rdf:first :AdventureEvent ;
-	rdf:rest _:genid20 .
+	
 
-_:genid20 a rdf:List ;
-	rdf:first :AquabikeEvent ;
-	rdf:rest _:genid19 .
 
-_:genid19 a rdf:List ;
-	rdf:first :AquathlonEvent ;
-	rdf:rest _:genid18 .
-
-_:genid18 a rdf:List ;
-	rdf:first :CyclingEvent ;
-	rdf:rest _:genid17 .
-
-_:genid17 a rdf:List ;
-	rdf:first :DuathlonEvent ;
-	rdf:rest _:genid16 .
-
-_:genid16 a rdf:List ;
-	rdf:first :MountainBikeEvent ;
-	rdf:rest _:genid15 .
-
-_:genid15 a rdf:List ;
-	rdf:first :MultisportHalfIronmanEvent ;
-	rdf:rest _:genid14 .
-
-_:genid14 a rdf:List ;
-	rdf:first :MultisportIronmanEvent ;
-	rdf:rest _:genid13 .
-
-_:genid13 a rdf:List ;
-	rdf:first :MultisportOlympicEvent ;
-	rdf:rest _:genid12 .
-
-_:genid12 a rdf:List ;
-	rdf:first :MultisportSprintEvent ;
-	rdf:rest _:genid11 .
-
-_:genid11 a rdf:List ;
-	rdf:first :ObstacleEvent ;
-	rdf:rest _:genid10 .
-
-_:genid10 a rdf:List ;
-	rdf:first :OtherEvent ;
-	rdf:rest _:genid9 .
-
-_:genid9 a rdf:List ;
-	rdf:first :Run15kToHalfMarathonEvent ;
-	rdf:rest _:genid8 .
-
-_:genid8 a rdf:List ;
-	rdf:first :Run5kTo15kEvent ;
-	rdf:rest _:genid7 .
-
-_:genid7 a rdf:List ;
-	rdf:first :RunHalfToFullMarathonEvent ;
-	rdf:rest _:genid6 .
-
-_:genid6 a rdf:List ;
-	rdf:first :RunMarathonEvent ;
-	rdf:rest _:genid5 .
-
-_:genid5 a rdf:List ;
-	rdf:first :RunUltraEvent ;
-	rdf:rest _:genid4 .
-
-_:genid4 a rdf:List ;
-	rdf:first :RunUpTo5kEvent ;
-	rdf:rest _:genid3 .
-
-_:genid3 a rdf:List ;
-	rdf:first :SnowEvent ;
-	rdf:rest _:genid2 .
-
-_:genid2 a rdf:List ;
-	rdf:first :SwimEvent ;
-	rdf:rest rdf:nil .
-# 
-
-_:genid22 a owl:AllDisjointClasses ;
-	owl:members _:genid25 .
-
-_:genid25 a rdf:List ;
-	rdf:first :AthleticEventBrand ;
-	rdf:rest _:genid24 .
-
-_:genid24 a rdf:List ;
-	rdf:first :AthleticEventSeries ;
-	rdf:rest _:genid23 .
-
-_:genid23 a rdf:List ;
-	rdf:first :AthleticRace ;
-	rdf:rest rdf:nil .
-# 
-# Generated by the OWL API (version 4.2.6.20160910-2108) https://github.com/owlcs/owlapi
