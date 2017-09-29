@@ -55,6 +55,12 @@
 	rdfs:comment "The age (in years) of a person. Note that we don't store this constantly changing value in our database, but rather compute it dynamically when queried based on schema:birthDate."@en ;
 	rdfs:label "age"@en .
 
+:athleteCohort a owl:ObjectTypeProperty ;
+  rdfs:domain :AthleteResult ;
+  rdfs:range :AthleteCohort ;
+  rdfs:comment "The athlete cohort this result belongs to."@en ;
+  rdfs:label "athlete cohort"@en .
+
 :rank a owl:DatatypeProperty ;
 	rdfs:subPropertyOf schema:position ;
 	rdfs:domain :AthleteResult ;
