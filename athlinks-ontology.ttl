@@ -13,7 +13,7 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix schema: <http://schema.org/> .
 
-<http://adp.athlinks.com/schema> a owl:Ontology ;
+: a owl:Ontology ;
 	owl:versionIRI <http://adp.athlinks.com/schema/1.0-3.2/> ;
   # import our owlized version of schema.org
 	owl:imports <http://adp.athlinks.com/schemax/> ;
@@ -44,7 +44,8 @@
 # Or available in racer metrics. - nextdude
 :participatedIn a owl:ObjectProperty ;
 	rdfs:domain schema:Person ;
-	rdfs:comment "An indication of a person participating in an ActivityType."@en ;
+  rdfs:range :AthleticEventCategory ;
+	rdfs:comment "An indication of a person participating in an event category."@en ;
 	rdfs:label "participated in"@en .
 
 # virtual property - computed on the fly by the api
