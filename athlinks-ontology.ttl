@@ -74,6 +74,12 @@
   rdfs:comment "Rank of a course time result in the context of a particular athlete cohort. The rank may differ from its [position](http://schema.org/position), which is assumed to be sequential. Two items with sequential positions can share the same rank."@en ;
   rdfs:label "rank"@en .
 
+:eventCategory a owl:ObjectProperty ;
+  rdfs:domain :AthleteRace ;
+  rdfs:range :AthleticEventCategory ;
+  rdfs:comment "The type of athletic event this race belongs to."@en ;
+  rdfs:label "event category" .
+  
 :siblingOrdering a owl:DatatypeProperty ;
 	rdfs:domain owl:Thing ;
 	rdfs:range xsd:integer ;
