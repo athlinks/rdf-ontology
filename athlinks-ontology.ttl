@@ -32,7 +32,7 @@
 	rdfs:domain :AthleteResult ;
 	rdfs:range :AthleticEventAction ;
 	rdfs:comment "A pointer to the the athletic event action that is being ranked."@en ;
-	rdfs:label "exercise action"@en .
+	rdfs:label "event action"@en .
 
 :legacyData a owl:ObjectProperty ;
 	rdfs:domain owl:Thing ;
