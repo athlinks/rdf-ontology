@@ -100,13 +100,13 @@ schema:competitor rdfs:domain [
 
 # NB: These are currently pending properties in schema.org. We will remove them 
 # from here when they get integrated in a future version of schema.org.
-:about a owl:ObjectTypeProperty ;
+schema:about a owl:ObjectTypeProperty ;
   rdfs:domain schema:CreativeWork ;
   rdfs:range owl:Thing ;
   rdfs:comment "The subject matter of the content."@en ;
   rdfs:label "about"@en .
 
-:subjectOf a owl:ObjectTypeProperty ;
+schema:subjectOf a owl:ObjectTypeProperty ;
   rdfs:domain owl:Thing ;
   rdfs:range [
     rdf:type owl:Class ;
