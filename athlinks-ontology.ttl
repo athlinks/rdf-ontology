@@ -254,7 +254,7 @@ schema:subjectOf a owl:ObjectTypeProperty ;
 	rdfs:label "Obstacle Action"@en .
 
 :RacerMetrics a owl:Class ;
-  rdfs:subClassOf schema:DataSet;
+  rdfs:subClassOf schema:DataFeed;
   rdfs:comment "A set of data metrics for a given athlete. The about property should be used to refer to the athlete (schema:Person) about whom the metrics are computed."@en ;
   rdfs:label "Racer metrics"@en .
 
