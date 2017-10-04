@@ -55,7 +55,7 @@
 	rdfs:comment "The age (in years) of a person. Note that we don't store this constantly changing value in our database, but rather compute it dynamically when queried based on schema:birthDate."@en ;
 	rdfs:label "age"@en .
 
-:athleteCohort a owl:ObjectTypeProperty ;
+:athleteCohort a owl:ObjectProperty ;
   rdfs:domain :AthleteResult ;
   rdfs:range :AthleteCohort ;
   rdfs:comment "The athlete cohort this result belongs to."@en ;
@@ -89,28 +89,28 @@
 # widen the domain of sportEvent to include our AthleticEventRole
 schema:sportsEvent rdfs:domain [
   rdf:type owl:Class ;
-  owl:oneOf ( schema:ExerciseAction :AthleticEventRole );
+  owl:unionOf ( schema:ExerciseAction :AthleticEventRole );
 ] .
 
 # add schema:competitor to our AthleticEventCompetitor role
 schema:competitor rdfs:domain [
   rdf:type owl:Class ;
-  owl:oneOf ( schema:SportsTeam :AthleticEventCompetitor )
+  owl:unionOf ( schema:SportsTeam :AthleticEventCompetitor )
 ] .
 
 # NB: These are currently pending properties in schema.org. We will remove them 
 # from here when they get integrated in a future version of schema.org.
-schema:about a owl:ObjectTypeProperty ;
+schema:about a owl:ObjectProperty ;
   rdfs:domain schema:CreativeWork ;
   rdfs:range owl:Thing ;
   rdfs:comment "The subject matter of the content."@en ;
   rdfs:label "about"@en .
 
-schema:subjectOf a owl:ObjectTypeProperty ;
+schema:subjectOf a owl:ObjectProperty ;
   rdfs:domain owl:Thing ;
   rdfs:range [
     rdf:type owl:Class ;
-    owl:oneOf ( schema:CreativeWork schema:Event )
+    owl:unionOf ( schema:CreativeWork schema:Event )
   ];
   rdfs:comment "A creative work or event about this thing."@en ;
   rdfs:label "subjectOf" .
