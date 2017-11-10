@@ -28,11 +28,11 @@
 # Properties
 ####
 :eventAction a owl:ObjectProperty ;
-	rdfs:subPropertyOf owl:topObjectProperty ;
-	rdfs:domain :AthleteResult ;
-	rdfs:range :AthleticEventAction ;
-	rdfs:comment "A pointer to the the athletic event action that is being ranked."@en ;
-	rdfs:label "event action"@en .
+        rdfs:subPropertyOf schema:item ;
+        rdfs:domain :AthleteResult ;
+        rdfs:range :AthleticEventAction ;
+        rdfs:comment "A pointer to the the athletic event action that is being ranked."@en ;
+        rdfs:label "event action"@en .
 
 :legacyData a owl:ObjectProperty ;
 	rdfs:domain owl:Thing ;
@@ -56,9 +56,15 @@
 	rdfs:label "age"@en .
 
 :athleteCohort a owl:ObjectProperty ;
-  rdfs:domain :AthleteResult ;
+  rdfs:domain [
+    rdf:type owl:Class;
+    owl:unionOf (
+      :AthleteResult
+      :AthleteResultList
+    );
+  ];
   rdfs:range :AthleteCohort ;
-  rdfs:comment "The athlete cohort this result belongs to."@en ;
+  rdfs:comment "The athlete cohort to which a result or result list belongs."@en ;
   rdfs:label "athlete cohort"@en .
 
 :rank a owl:DatatypeProperty ;
