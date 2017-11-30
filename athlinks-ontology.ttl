@@ -115,6 +115,64 @@ schema:subjectOf a owl:ObjectProperty ;
   rdfs:comment "A creative work or event about this thing."@en ;
   rdfs:label "subjectOf" .
 
+
+##
+## StepCountInfo properties
+schema:sourceOrganization a owl:ObjectProperty ;
+  rdfs:domain :StepCountInfo ;
+  rdfs:range schema:Organization;
+  rdfs:comment "The Organization on whose behalf the creator was working.";
+  rdfs:label "Source Organization"
+.
+
+schema:startDate a owl:DatatypeProperty;
+  rdfs:comment "The start date and time of the item (in <a href=\"http://en.wikipedia.org/wiki/ISO_8601\">ISO 8601 date format</a>).";
+  rdfs:label "Start Date";
+  rdfs:domain :StepCountInfo ;
+  rdfs:range [
+    rdf:type owl:Class;
+    owl:unionOf (
+      xsd:date
+      xsd:dateTime
+    );
+  ]
+.
+
+schema:endDate a owl:DatatypeProperty;
+  rdfs:comment "The end date and time of the item (in <a href=\"http://en.wikipedia.org/wiki/ISO_8601\">ISO 8601 date format</a>).";
+  rdfs:label "End Date";
+  rdfs:domain :StepCountInfo ;
+  rdfs:range [
+    rdf:type owl:Class;
+    owl:unionOf (
+      xsd:date
+      xsd:dateTime
+    );
+  ]
+.
+
+schema:value a owl:ObjectProperty;
+  rdfs:comment """The value of the quantitative value or property value node""";
+  rdfs:label "Value";
+  rdfs:domain :StepCountInfo ;
+  rdfs:range [
+    rdf:type owl:Class;
+    owl:unionOf (
+      schema:StructuredValue
+      xsd:boolean
+      xsd:float
+    );
+  ]
+.
+
+:steps a owl:DatatypeProperty;
+  rdfs:comment "measured step count info for a Person.";
+  rdfs:label "measured step count info for a Person.";
+  rdfs:domain schema:Person ;
+  rdfs:range :StepCountInfo
+.
+
+
 ####
 # Classes
 ####
@@ -363,6 +421,11 @@ schema:subjectOf a owl:ObjectProperty ;
 :SnowEvent a owl:NamedIndividual , :AthleticEventCategory ;
   rdfs:comment "An athletic event in snow."@en ;
 	rdfs:label "Snow Event"@en .
+
+:StepCountInfo a owl:Class ;
+	rdfs:subClassOf schema:PropertyValue ;
+	rdfs:comment "number of recorded steps"@en ;
+	rdfs:label "number of recorded steps"@en .
 
 :SwimEvent a owl:NamedIndividual , :AthleticEventCategory ;
   rdfs:label "Swim Event"@en ;
