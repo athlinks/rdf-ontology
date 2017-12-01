@@ -118,8 +118,8 @@ schema:subjectOf a owl:ObjectProperty ;
 ##
 ## step count
 :steps a owl:DatatypeProperty;
-  rdfs:comment "measured step count info for a Person.";
-  rdfs:label "measured step count info for a Person.";
+  rdfs:comment "step counts for an individual.";
+  rdfs:label "step counts for an individual.";
 	rdfs:domain [
     rdf:type owl:Class;
     owl:unionOf (
