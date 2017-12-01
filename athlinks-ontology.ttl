@@ -115,15 +115,21 @@ schema:subjectOf a owl:ObjectProperty ;
   rdfs:comment "A creative work or event about this thing."@en ;
   rdfs:label "subjectOf" .
 
-
 ##
 ## step count
 :steps a owl:DatatypeProperty;
   rdfs:comment "measured step count info for a Person.";
   rdfs:label "measured step count info for a Person.";
-  rdfs:domain schema:Person ;
-  rdfs:range schema:Action
+	rdfs:domain [
+    rdf:type owl:Class;
+    owl:unionOf (
+      :AthleticEventCompetitor
+      schema:Person
+    );
+  ];
+  rdfs:range :StepAction
 .
+
 
 ####
 # Classes
@@ -287,6 +293,11 @@ schema:subjectOf a owl:ObjectProperty ;
 	rdfs:subClassOf :SnowAction ;
 	rdfs:comment "Athletic event action by snowshoeing."@en ;
 	rdfs:label "Snowshoe Action"@en .
+
+:StepAction a owl:Class ;
+	rdfs:subClassOf :AthleticEventAction ;
+	rdfs:comment "Athletic event action by stepping"@en ;
+	rdfs:label "Step Action"@en .
 
 :SwimAction a owl:Class ;
 	rdfs:subClassOf :AthleticEventAction ;
