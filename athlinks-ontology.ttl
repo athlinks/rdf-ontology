@@ -115,6 +115,15 @@ schema:subjectOf a owl:ObjectProperty ;
   rdfs:comment "A creative work or event about this thing."@en ;
   rdfs:label "subjectOf" .
 
+##
+## step count: note this is a virtual endpoint which is dynamically populated when requested
+:steps a owl:DatatypeProperty;
+  rdfs:comment "step counts for an individual.";
+  rdfs:label "step counts for an individual.";
+  rdfs:domain schema:Person;
+  rdfs:range :StepAction
+.
+
 ####
 # Classes
 ####
@@ -277,6 +286,11 @@ schema:subjectOf a owl:ObjectProperty ;
 	rdfs:subClassOf :SnowAction ;
 	rdfs:comment "Athletic event action by snowshoeing."@en ;
 	rdfs:label "Snowshoe Action"@en .
+
+:StepAction a owl:Class ;
+	rdfs:subClassOf :AthleticEventAction ;
+	rdfs:comment "Athletic event action by stepping"@en ;
+	rdfs:label "Step Action"@en .
 
 :SwimAction a owl:Class ;
 	rdfs:subClassOf :AthleticEventAction ;
