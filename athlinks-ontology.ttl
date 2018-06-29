@@ -86,6 +86,24 @@
 	rdfs:comment "The numeric order of an object among siblings of the same property or type."@en ;
 	rdfs:label "sibling ordering"@en .
 
+:steps a owl:DatatypeProperty ;
+  rdfs:domain :AthleticEventCompetitor ;
+  rdfs:range xsd:integer;
+  rdfs:comment "The number of steps an athlete took in an athletic event"@en ;
+  rdfs:label "steps"@en .
+
+:startTime a owl:DatatypeProperty ;
+  rdfs:domain :AthleticEventCompetitor ;
+  rdfs:range xsd:dateTime;
+  rdfs:comment "The time the athlete started the event"@en ;
+  rdfs:label "start time"@en .
+
+:endTime a owl:DatatypeProperty ;
+  rdfs:domain :AthleticEventCompetitor ;
+  rdfs:range xsd:dateTime;
+  rdfs:comment "The time the athlete finished the event"@en ;
+  rdfs:label "end time"@en .
+
 # widen the domain of sportEvent to include our AthleticEventRole
 schema:sportsEvent rdfs:domain [
   rdf:type owl:Class ;
